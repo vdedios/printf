@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:08:45 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/19 17:25:00 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/19 17:38:26 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-	//PRUEBAS CON C
+	//PRUEBAS CON c
 	char c;
 
 	c = 'a';
@@ -34,7 +34,7 @@ int main()
 			//'
 			//NO -> printf("%'c\n", c);
 
-	//PRUEBAS CON S
+	//PRUEBAS CON s
 	char *str = "hola que tal";
 
 		//FLAGS
@@ -54,7 +54,7 @@ int main()
 			//NO -> printf("%'c\n", c);
 
 
-	//PRUEBAS CON P
+	//PRUEBAS CON p
 		//FLAGS
 			//num
 			printf("%3p\n", str);
@@ -72,7 +72,7 @@ int main()
 			// NO -> printf("%'p\n", str);
 			
 
-	//PRUEBAS CON N/I
+	//PRUEBAS CON d/i
 	int i;
 
 	i = 35;
@@ -98,9 +98,13 @@ int main()
 			//'
 			printf("%'d\n", i);
 			printf("%'i\n", i);
+			//l ll h hh
+			printf("%ld\n", 32887498348944);
+			printf("%li\n", 32887498348944);
+			printf("%lld\n", 32887499427477238944);
+			printf("%lli\n", 32338499737498348944);
 
-
-	//PRUEBAS CON N/I
+	//PRUEBAS CON u
 		unsigned q;
 
 		q = 35;
@@ -112,13 +116,15 @@ int main()
 			//+
 			//printf("%+u\n", q);
 			//-
-			printf("%-u\n", q);
 			//#
 			//printf("%#u\n", q);
 			//[ ]
 			//printf("% u\n", q);
 			//'
 			printf("%'u\n", q);
+			//l ll h hh
+			printf("%lu\n", 32887498348944);
+			printf("%lu\n", -32887498348944);
 
 	//PRUEBAS CON x/X
 		int char_p;
@@ -148,7 +154,7 @@ int main()
 			//printf("%'X\n", char_p);
 	
 
-	//PRUEBAS CON x/X
+	//PRUEBAS CON n
 		int		*int_p = NULL;
 
 		//FLAGS
