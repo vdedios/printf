@@ -6,16 +6,19 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:42:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/13 17:21:52 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/19 16:08:34 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+//#include <locale.h>
+//setlocale(LC_NUMERIC, "en_US.UTF-8");
+#define LC_NUMERIC	"en_US.UTF-8"
 
 /*
 ** %[flags][width][.precision][lenght]type
-** 		[flags]: num, 0, +, -, #,  ,’
+** 		[flags]: num, 0, +, -, #,  ,'
 ** 		[width]: *
 ** 		[precision]: ?
 ** 		[lenght]: l, ll, h, hh
@@ -24,13 +27,17 @@
 
 int main(void)
 {
-	int	num = 3;//d
+	int				num = 30000000;
+	int				neg = -10;
+	float			var_dec = 3023.9487;
 	
 	//---PROBAR CON OTROS TIPOS DE VARIABES!!!----
 	//FLAGS
 	
 		//número
 		printf("número_salida:%5d\n", num);
+		printf("número_salida:%5.5d\n", num);
+		printf("número_salida:%.5f\n", 5.24);
 
 		//0
 		printf("0_salida:%05d\n", num);
@@ -41,19 +48,51 @@ int main(void)
 		//-
 		printf("-_salida:%-2d\n", num);
 		
-		//BONUS-> probar una vez tenga claras las variables
-		//ya que sólo fucionan con algunas
-			//#
+		//BONUS
+			//# -> funciona solo con f, e, g y x/X
+			printf("#f_salida:%#f y f_salida:%f\n", var_dec, var_dec);
+			printf("#e_salida:%#e y e_salida:%e\n", var_dec, var_dec);
+			printf("#g_salida:%#g y g_salida:%g\n", var_dec, var_dec);
+			printf("#x_salida:%#x y x_salida:%x\n", num, num);
 			//[ ]
-			//’
+			printf("[ ]d_salida:% d y d_salida:%d\n", neg, neg);
+			printf("[ ]d_salida:%    d y d_salida:%d\n", num, num);
+			//'
+			printf("'d_salida:%'d y d_salida:%d\n", 16728367, 16728367);
+
 		//**COMBOS**
 		printf("+5_salida:%+5d\n", num);
 		printf("+05_salida:%+05d\n", num);
 		printf("-_salida:%+-d\n", num);
 
-	//VAR TYPES
+	//WIDTH
+			printf("width_salida:%*d\n", 6, 127);
+			printf("width_salida:%*d\n", 1, 127);
 
-		int	a_var = -13;
+	//PRECISION
+			printf("precision_salida:%.*d\n", 6, 127);
+			printf("precision_salida:%.*d\n", 1, 127);
+			printf("precision_salida:%.*f y %f\n", 1, 127.3, 127.3);
+
+	//WIDTH + PRECISION
+			printf("pre+width_salida:%*.*d\n", 6, 1,  127);
+
+	//LENGHT
+			//l
+			long l = 10;
+			printf("l_salida:%ld\n", l);
+			//ll
+			long long ll = 10;
+			printf("ll_salida:%lld\n", ll);
+			//hh
+			char a = 'a';
+			printf("hh_salida:%hhd\n", a);
+			//h
+			short s = 10;
+			printf("h_salida:%hd\n", s);
+
+	//VAR TYPES
+		int		a_var = -13;
 		int 	p_var;
 		float	f_var = 10.5;
 		double	d_var = 120.00000078;
@@ -82,5 +121,4 @@ int main(void)
 		//%g
 		printf("g_salida:%g\n", f_var);
 		printf("g_salida:%g\n", d_var);
-		
 }
