@@ -6,18 +6,20 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/12 20:46:55 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:31:37 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Versión simplificada sin va_args que saca las marcas de cadena
 //ojo funciones de string.h 
 
-#include "libft.h/libft.h"
+#include "libft/libft.h"
 #include "printf.h"
+#include <stdarg.h>
 
+//ft_extract_format -> extrae el formato
 //Falta que chequee errores de formato -> como va por zonas, sería interesante que se comportara como un atoi
-static char	*ft_get_format(const char *s)
+char	*ft_extract_format(const char *s)
 {
 	int 	l;
 	int		l_types;
@@ -37,19 +39,39 @@ static char	*ft_get_format(const char *s)
 	return (ft_substr(s, 0, l + 2));
 }
 
-int			ft_printf(const char *s)
+//Ejecuta formato. Avanza s en format_spec y concatena en print_buf el valor a extraído y formateado
+char	*ft_formater(const char **s, char *printf_buf, va_list args)
 {
-	char *format;
+	char	*format_spec;
+	
+	format_spec = ft_extract_format(*s);
+	printf("extracted!%s\n", format_spec);
+	//1 -> extract
+	//2 -> ft_analyse (errors)
+	//3 -> ft_type_conv
+	//4 -> ft_flag_conv	
+	//5 -> copy to buf and forward string
+		//print_buf = ft_realloc(ft_formater(format_spec, print_buf));
+		//*s = *s + ft_strlen(format_spec) - 1;
+	return (0);
+}
+
+//(ft_read)
+int		ft_printf(const char *s, ...)
+{
+	char	*print_buf;
+	va_list args;
+
+	va_start(args, s);
+	print_buf = NULL;
 	while(*s)
 	{
 		if (*s == '%')
-		{
-			format = ft_get_format(s);
-			printf("%s\n", format);
-			s = s + ft_strlen(format) - 1;
-			printf("%s\n", s);
-		}
+			ft_formater(&s, print_buf, args);
+		//ft_realloc (s, printf_buf); -> ir guardando lo que no es formato
 		s++;
 	}
-	return (0);
+	va_end(args);
+	//ft_putstr_fd(print_buf, 1);
+	return (ft_strlen(print_buf));
 }

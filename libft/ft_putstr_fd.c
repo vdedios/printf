@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 16:30:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/11 16:30:54 by vde-dios         ###   ########.fr       */
+/*   Created: 2019/11/18 13:10:13 by vde-dios          #+#    #+#             */
+/*   Updated: 2019/12/20 16:52:36 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t cont;
-
-	cont = 0;
-	while (*s++)
-	{
-		cont++;
-	}
-	return (cont);
+	if (s)
+		write(fd, s, ft_strlen(s));
 }

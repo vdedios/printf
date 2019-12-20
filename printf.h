@@ -6,13 +6,13 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/12 20:17:42 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:31:40 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-int	ft_printf(const char *s);
-
+int		ft_printf(const char *s, ...);
+char	*ft_extract_format(const char *s);
 #endif
