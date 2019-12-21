@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:14:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/21 21:16:40 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/21 21:21:12 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ char	*ft_s_conv(char *format_info, va_list args)
 /*
 ** <<p>> type conversion
 */
-char	*ft_p_conv(char *format_info, va_list args);
+char	*ft_p_conv(char *format_info, va_list args)
+{
+
+}
 /*
 char	*ft_di_conv(char *format_info, va_list args);
 char	*ft_u_conv(char *format_info, va_list args);
