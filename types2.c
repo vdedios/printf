@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   types2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 13:10:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/21 13:28:54 by vde-dios         ###   ########.fr       */
+/*   Created: 2019/12/21 17:16:12 by vde-dios          #+#    #+#             */
+/*   Updated: 2019/12/21 17:16:31 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-		write(fd, s, ft_strlen(s));
-}
+void	ft_xX_conv();
+void	ft_n_conv();
+void	ft_f_conv();
+void	ft_e_conv();
+void	ft_g_conv();

@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   printf_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 13:10:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/21 13:28:54 by vde-dios         ###   ########.fr       */
+/*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
+/*   Updated: 2019/12/21 14:06:09 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char 	*ft_string_to_char(char *s)
 {
-	if (s)
-		write(fd, s, ft_strlen(s));
+	char *aux;
+
+	if (!(aux = malloc(2 * sizeof(char))))
+				return (0);
+	*aux = *s;
+	*(aux + 1 ) = '\0';
+	return (aux);
 }

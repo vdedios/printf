@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/20 17:31:37 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/21 21:06:04 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "libft/libft.h"
 #include "printf.h"
-#include <stdarg.h>
 
 //ft_extract_format -> extrae el formato
 //Falta que chequee errores de formato -> como va por zonas, sería interesante que se comportara como un atoi
@@ -36,23 +35,57 @@ char	*ft_extract_format(const char *s)
 			l++;
 		}
 	}
-	return (ft_substr(s, 0, l + 2));
+	return (ft_substr(s, 0, l + 1));
 }
 
-//Ejecuta formato. Avanza s en format_spec y concatena en print_buf el valor a extraído y formateado
-char	*ft_formater(const char **s, char *printf_buf, va_list args)
+char	*ft_analyse(char *format_info, va_list args)
 {
-	char	*format_spec;
-	
-	format_spec = ft_extract_format(*s);
-	printf("extracted!%s\n", format_spec);
+	int i;
+
+	i = 0;
+	while (format_info[i])
+		i++;
+	if (format_info[--i] == 'c')
+		return (ft_c_conv(format_info, args));
+	if (format_info[i] == 's')
+		return (ft_s_conv(format_info, args));
+	/*
+	if (format_info[i] == 'p')
+		ft_p_conv(format_info, args, print_buf);
+	if (format_info[i] == 'd' || format_info[i] == 'i')
+		ft_di_conv(format_info, args, print_buf);
+	if (format_info[i] == 'u')
+		ft_u_conv(format_info, args, print_buf);
+	if (format_info[i] == 'x' || format_info[i] == 'X')
+		ft_xX_conv(format_info, args, print_buf);
+	if (format_info[i] == 'n')
+		ft_n_conv(format_info, args, print_buf);
+	if (format_info[i] == 'f')
+		ft_f_conv(format_info, args, print_buf);
+	if (format_info[i] == 'e')
+		ft_e_conv(format_info, args, print_buf);
+	if (format_info[i] == 'g')
+		ft_g_conv(format_info, args, print_buf);
+	*/
+	return (0);
+}
+
+//Ejecuta formato. Avanza s en format_info y concatena en print_buf el valor a extraído y formateado
+char	*ft_formater(const char **s, char **print_buf, va_list args)
+{
+	char	*format_info;
+	char	*format_aux;
+	(void ) args;	
+
 	//1 -> extract
-	//2 -> ft_analyse (errors)
-	//3 -> ft_type_conv
+	format_info = ft_extract_format(*s);
+	//2 -> ft_analyse (errors) -> ft_type_conv
+	format_aux = ft_analyse(format_info, args);
 	//4 -> ft_flag_conv	
 	//5 -> copy to buf and forward string
-		//print_buf = ft_realloc(ft_formater(format_spec, print_buf));
-		//*s = *s + ft_strlen(format_spec) - 1;
+	
+	*print_buf = ft_strjoin(*print_buf, format_aux);
+	*s = *s + ft_strlen(format_info) - 1;
 	return (0);
 }
 
@@ -60,18 +93,21 @@ char	*ft_formater(const char **s, char *printf_buf, va_list args)
 int		ft_printf(const char *s, ...)
 {
 	char	*print_buf;
-	va_list args;
+	va_list	args;
 
 	va_start(args, s);
-	print_buf = NULL;
+	if (!(print_buf = malloc(1)))
+		return (0);
+	*print_buf = 0;	
 	while(*s)
 	{
-		if (*s == '%')
-			ft_formater(&s, print_buf, args);
-		//ft_realloc (s, printf_buf); -> ir guardando lo que no es formato
+		if (*s == '%' && (*s + 1) != '%')
+			ft_formater(&s, &print_buf, args);
+		else
+		print_buf = ft_strjoin(print_buf, ft_string_to_char((char *)s));
 		s++;
 	}
 	va_end(args);
-	//ft_putstr_fd(print_buf, 1);
-	return (ft_strlen(print_buf));
+	ft_putstr_fd(print_buf, 1);
+	return (ft_strlen(NULL));
 }

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/20 17:31:38 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/21 20:56:46 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int main(void)
 {
-	ft_printf("hola esto es %*###d prooooffffffff %  *3e     ");
+	ft_printf("la primera letra es la %c, la segunda la %c y la última es la %c\n", 'a', 'b', 'z');
+	ft_printf("me llamo %s\n", "victor");
 }
