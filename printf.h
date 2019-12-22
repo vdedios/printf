@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/21 21:21:10 by vde-dios         ###   ########.fr       */
+/*   Updated: 2019/12/22 17:37:37 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,21 @@
 #ifndef PRINTF_H
 # define PRINTF_H
 //METER PROTOTIPOS DE FUNCIONES QUE FALTAN!!
+
+/*
+** utils functions
+*/
 int		ft_printf(const char *s, ...);
 char	*ft_extract_format(const char *s);
 char	*ft_string_to_char(char *s);
+char	*ft_base_conversion(char *num, char *base_a, char *base_b);
+/*
+** type conversion functions
+*/
 char 	*ft_c_conv(char *format_info, va_list args);
 char	*ft_s_conv(char *format_info, va_list args);
-/*
 char	*ft_p_conv(char *format_info, va_list args);
+/*
 char	*ft_di_conv(char *format_info, va_list args);
 char	*ft_u_conv(char *format_info, va_list args);
 char	*ft_xX_conv(char *format_info, va_list args);
