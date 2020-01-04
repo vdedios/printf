@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 13:00:28 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/03 14:04:25 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/04 21:09:55 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_size_num(long int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(long int n)
 {
 	int			size;
 	long int	aux;

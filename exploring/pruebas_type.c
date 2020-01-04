@@ -1,8 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pruebas_type.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:08:45 by vde-dios          #+#    #+#             */
@@ -101,11 +99,13 @@ int main()
 			//l ll h hh
 			printf("%ld\n", 32887498348944);
 			printf("%li\n", 32887498348944);
-			printf("%lld\n", 32887499427477238944);
-			printf("%lli\n", 32338499737498348944);
+			//printf("%lld\n", 32887499427477238944);
+			//printf("%lli\n", 32338499737498348944);
 
 	//PRUEBAS CON u
-		unsigned q;
+		unsigned	q;
+		int			a = -134897;
+		int 		bb;
 
 		q = 35;
 		//FLAGS
@@ -125,6 +125,10 @@ int main()
 			//l ll h hh
 			printf("%lu\n", 32887498348944);
 			printf("%lu\n", -32887498348944);
+			//pruebas con otros tipos
+			printf("UNSIGNED:%u\n", a);
+			bb = a |0x100000000;
+			printf("UNSIGNED:%u\n", bb);
 
 	//PRUEBAS CON x/X
 		int char_p;

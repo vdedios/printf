@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_str_join_one.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 12:46:19 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/04 17:54:54 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/04 17:55:29 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/04 18:01:04 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Allocates (with malloc(3)) and returns a new
-** string, result of the concatenation of s1 and s2.
-*/
-
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_fsecond(char *s1, char *s2)
 {
 	char	*joint;
 	size_t	l;
@@ -38,9 +33,7 @@ char	*ft_strjoin(char *s1, char *s2)
 			joint[l++] = s2[j++];
 	}
 	joint[l] = '\0';
-	free(s1);
 	free(s2);
-	s1 = NULL;
 	s2 = NULL;
 	return (joint);
 }

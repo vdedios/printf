@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2019/12/03 14:35:21 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/04 17:59:10 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC	=	 ft_atoi.c 			\
 			 ft_strchr.c 		\
 			 ft_strdup.c 		\
 			 ft_strjoin.c 		\
+			 ft_strjoin_fsecond.c 		\
 			 ft_strlcat.c 		\
 			 ft_strlcpy.c 		\
 			 ft_strlen.c 		\

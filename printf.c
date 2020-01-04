@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/22 17:37:35 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/04 21:38:43 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ char	*ft_analyse(char *format_info, va_list args)
 		return (ft_s_conv(format_info, args));
 	if (format_info[i] == 'p')
 		return (ft_p_conv(format_info, args));
-	/*
 	if (format_info[i] == 'd' || format_info[i] == 'i')
-		ft_di_conv(format_info, args, print_buf);
+		return (ft_di_conv(format_info, args));
 	if (format_info[i] == 'u')
-		ft_u_conv(format_info, args, print_buf);
+		return (ft_u_conv(format_info, args));
 	if (format_info[i] == 'x' || format_info[i] == 'X')
-		ft_xX_conv(format_info, args, print_buf);
+		return (ft_xX_conv(format_info, args, i));
+	/*
 	if (format_info[i] == 'n')
 		ft_n_conv(format_info, args, print_buf);
 	if (format_info[i] == 'f')
