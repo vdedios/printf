@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 16:18:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/04 21:38:41 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/05 22:10:39 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ char	ft_print_hex(int c, int uplow)
 	return ((char)c);
 }
 
-void	ft_convert_hex(char *hex, int num, int uplow)
+void	ft_convert_hex(char *hex, long int num, int uplow)
 {
 	int i;
 
 	i = 0;
-	while (num > 16)
+	while (num >= 16)
 	{
 		hex[i++] = ft_print_hex(num % 16, uplow);
 		num = num / 16;
@@ -59,4 +59,17 @@ char	*ft_str_rev(char *str)
 	aux = NULL;
 	str[j] = '\0';
 	return (str);
+}
+
+char	*ft_float_str(float num)
+{
+	int		i_part;
+	int  	f_part;
+	float	f_aux;
+	
+	i_part = (int)num;
+	f_aux = 1 + num - i_part;
+	f_part = (int)(f_aux * 10000000) - 10000000;
+	printf("i_part: %d, f_part: %d\n", i_part, f_part);
+	return (0);
 }

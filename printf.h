@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/04 21:38:39 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/05 16:49:13 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,19 @@ char	*ft_p_conv(char *format_info, va_list args);
 char	*ft_di_conv(char *format_info, va_list args);
 char	*ft_u_conv(char *format_info, va_list args);
 char	*ft_xX_conv(char *format_info, va_list args, int i);
-/*
-char	*ft_n_conv(char *format_info, va_list args);
 char	*ft_f_conv(char *format_info, va_list args);
+/*
 char	*ft_e_conv(char *format_info, va_list args);
 char	*ft_g_conv(char *format_info, va_list args);
+char	*ft_n_conv(char *format_info, va_list args);
 */
 
 /*
 ** type conversion utils functions
 */
 char	ft_print_hex(char hex, unsigned char c, int uplow);
-void	ft_convert_hex(char *hex, int num, int uplow);
+void	ft_convert_hex(char *hex, long int num, int uplow);
 char	*ft_str_rev(char *str);
+char	*ft_float_str(float num);
 
 #endif

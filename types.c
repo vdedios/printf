@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:14:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/04 21:24:39 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/05 15:33:42 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ char	*ft_s_conv(char *format_info, va_list args)
 */
 char	*ft_p_conv(char *format_info, va_list args)
 {
-	int		dir;
-	int		aux;
-	int 	size;
-	char	*hex;
+	long int	dir;
+	long int	aux;
+	int 		size;
+	char		*hex;
 	(void)format_info;
 
 	size = 0;
-	dir = (int)va_arg(args, char *);
+	dir = (long int)va_arg(args, char *);
 	aux = dir;
 	while (aux)
 	{
@@ -73,7 +73,7 @@ char	*ft_p_conv(char *format_info, va_list args)
 		return (NULL);
 	ft_convert_hex(hex, dir, 0);
 	ft_str_rev(hex);
-	hex = ft_strjoin_fsecond("0x10", hex);
+	hex = ft_strjoin_fsecond("0x", hex);
 	return (hex);
 }
 /*

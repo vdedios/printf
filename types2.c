@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:16:12 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/04 21:38:45 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/05 16:50:02 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 */
 char	*ft_xX_conv(char *format_info, va_list args, int i)
 {
-	int		num;
-	int		aux;
-	int 	size;
-	char	*hex;
+	long int	num;
+	long int	aux;
+	int 		size;
+	char		*hex;
 	(void)format_info;
 
 	size = 0;
-	num = (int)va_arg(args, int);
+	num = va_arg(args, long int);
 	aux = num;
 	while (aux)
 	{
@@ -39,9 +39,23 @@ char	*ft_xX_conv(char *format_info, va_list args, int i)
 	ft_str_rev(hex);
 	return (hex);
 }
+
 /*
-char	*ft_n_conv(char *format_info, va_list args);
-char	*ft_f_conv(char *format_info, va_list args);
+** <<f>> type conversion
+*/
+char	*ft_f_conv(char *format_info, va_list args)
+{
+	char	*f_str;
+	float	num;
+	(void)format_info;
+
+	num = (float)va_arg(args, double);
+	f_str = ft_float_str(num);
+	return (f_str);
+}
+
+/*
 char	*ft_e_conv(char *format_info, va_list args);
 char	*ft_g_conv(char *format_info, va_list args);
+char	*ft_n_conv(char *format_info, va_list args);
 */
