@@ -20,9 +20,6 @@ int main(void)
 	long int	dir2;
 	int		neg = -43;
 	int		pos = 32423;
-	float	pi = 3.1416;
-	float	pi_t = 3.1;
-	float	pi_l = 3.141592653;
 
 	// %s y %c
 	ft_printf("la primera letra es la %c, la segunda la %c y la última es la %c\n", 'a', 'b', 'z');
@@ -48,8 +45,10 @@ int main(void)
 	ft_printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 	printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 
-	// %f
-	printf("el número pi vale: %f, truncado: %f y long: %f\n", pi, pi_t, pi_l);
-	ft_printf("el número pi vale: %f, truncado: %f y long: %f\n", pi, pi_t, pi_l);
-	printf("multiplicacion: %f\n", 0.123000 * 1000000);
+	// %f	
+	//float	pi = 3.1416;
+	//float	pi_t = 3.1;
+	float	pi_l = 3.141499996185302734375; 
+	printf("el número pi vale: %.19f\n", pi_l);
+	ft_printf("el número pi vale: %f\n", pi_l);
 }

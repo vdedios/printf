@@ -61,15 +61,47 @@ char	*ft_str_rev(char *str)
 	return (str);
 }
 
+int	ft_nexti(float num, int i, int j)
+{
+	if (j < i)
+		return (ft_nexti(num, i, j + 1) * 10);
+		//printf("i:%d\n", ft_nexti(num, i, j + 1) * 10);
+	return (num);
+}
+
+float	ft_nextf(float num, int i, int j)
+{
+	if (j < i)
+		return (ft_nextf(num, i, j + 1) * 10);
+		//printf("f%f menos \n", ft_nextf(num, i, j + 1) * 10);
+	return (num);
+}
+
 char	*ft_float_str(float num)
 {
-	int		i_part;
-	int  	f_part;
-	float	f_aux;
-	
-	i_part = (int)num;
-	f_aux = 1 + num - i_part;
-	f_part = (int)(f_aux * 10000000) - 10000000;
-	printf("i_part: %d, f_part: %d\n", i_part, f_part);
+	int	precision = 19;
+	int 	i;
+	int 	j;
+	int 	k;
+	int 	aux;
+	unsigned long	i_part;
+	char	*f_part;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	i_part = (long)num;
+	if (!(f_part = malloc(precision * sizeof(char))))
+		return (0);
+	while (i++ < precision)
+	{
+		aux = (int)ft_nextf(num, i, j);
+		printf("aux: %d\n", aux);
+		f_part[k++] = aux + '0';
+	}
+	f_part[i] = '\0';
+	//if (f_part + 0.5 <= (num - i_part) * 1e19)
+	//	f_part = f_part + 1;	
+	printf("i_part: %ld, f_part: %s\n", i_part, f_part);
 	return (0);
 }
