@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:14:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/10 17:06:49 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:05:13 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*ft_p_conv(char *format_info, va_list args)
 	hex = ft_strjoin_second("0x", hex);
 	return (hex);
 }
+
 /*
 ** <<d/i>> type conversion
 */
