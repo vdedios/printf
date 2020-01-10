@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:14:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/05 15:33:42 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:06:49 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ char	*ft_p_conv(char *format_info, va_list args)
 	}
 	if (!(hex = malloc(size * sizeof(char))))
 		return (NULL);
-	ft_convert_hex(hex, dir, 0);
-	ft_str_rev(hex);
-	hex = ft_strjoin_fsecond("0x", hex);
+	ft_print_hex(hex, dir, 'x');
+	hex = ft_strjoin_second("0x", hex);
 	return (hex);
 }
 /*

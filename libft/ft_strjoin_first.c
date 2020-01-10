@@ -6,13 +6,13 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:55:29 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/04 18:01:04 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:07:44 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_fsecond(char *s1, char *s2)
+char	*ft_strjoin_first(char *s1, char *s2)
 {
 	char	*joint;
 	size_t	l;
@@ -33,7 +33,7 @@ char	*ft_strjoin_fsecond(char *s1, char *s2)
 			joint[l++] = s2[j++];
 	}
 	joint[l] = '\0';
-	free(s2);
-	s2 = NULL;
+	free(s1);
+	s1 = NULL;
 	return (joint);
 }

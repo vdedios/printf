@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/05 17:07:46 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:26:30 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(void)
 	dir2 = (long int)str;	
 	printf("OG printf %p, %ld, %x\n", str, dir2, 30);
 	ft_printf("ft_printf %p, %ld, %lx\n\n", str, dir2, 30);
-
 	dir2 = (long int)&c;	
 	printf("mi dirección de memoria es con & de c: %p o %ld y en hex es %lx\n", &c, dir2, dir2);
 	ft_printf("mi dirección de memoria es con & de c: %p o %ld y en hex es %lx\n\n", &c, dir2, dir2);
@@ -46,9 +45,9 @@ int main(void)
 	printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 
 	// %f	
-	//float	pi = 3.1416;
-	//float	pi_t = 3.1;
-	float	pi_l = 3.141499996185302734375; 
-	printf("el número pi vale: %.19f\n", pi_l);
+	float	pi_l = 3.1416;
+	//float	pi_l = 3.1;
+	//float	pi_l = 3.141499996185302734375; 
+	printf("OG:el número pi vale: %f\n", pi_l);
 	ft_printf("el número pi vale: %f\n", pi_l);
 }
