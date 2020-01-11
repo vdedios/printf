@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:28:46 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/10 17:15:38 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/11 17:45:29 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char				*ft_strjoin_first(char *s1, char *s);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				*ft_itoa(long long int n);
+char				*ft_itoa_special(long long int n);
 char				*ft_strmapi(char const *s, char(*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);

@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/10 17:03:27 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/11 17:45:47 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC	=	 ft_atoi.c 			\
 			 ft_isdigit.c 		\
 			 ft_isprint.c 		\
 			 ft_itoa.c 		\
+			 ft_itoa_special.c 		\
 			 ft_memccpy.c 		\
 			 ft_memchr.c 		\
 			 ft_memcmp.c 		\

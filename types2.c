@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:16:12 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/10 20:02:30 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/11 17:18:32 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ char	*ft_f_conv(char *format_info, va_list args)
 	return (f_str);
 }
 
+/*
+** <<e>> type conversion
+*/
 char	*ft_e_conv(char *format_info, va_list args)
 {
 	char	*f_str;
