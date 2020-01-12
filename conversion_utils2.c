@@ -6,13 +6,13 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 13:30:49 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/12 17:26:23 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 20:13:39 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static unsigned long long	ft_get_integer(double num, char type)
+unsigned long long	ft_get_integer(double num, char type)
 {
 	unsigned long long	i_num; 
 	int					i;
@@ -52,19 +52,18 @@ char				*ft_get_decimals(double num)
 	i = ft_get_integer(num, 'f');
 	f_num =	num * ft_ten_power(6 + i) -
 		(unsigned long long)(num * ft_ten_power(i)) * ft_ten_power(6);
-	printf("%d %f", i, ft_ten_power(i));
 	if ((num * ft_ten_power(6 + i) - (long long int)(num * ft_ten_power(6 + i)) >= 0.5))
 		f_num = f_num + 1;
 	f_str = ft_itoa(f_num);
 	f_num = (unsigned long long)ft_strlen(f_str);
 	while (decimals++ < 6 - (int)f_num) 
-		f_str = ft_strjoin_first(f_str, "0");
+		f_str = ft_strjoin_second("0", f_str);
 	f_str = ft_strjoin_first(f_str, "e");
 	f_str = ft_strjoin(f_str, ft_itoa_special(-i));
 	return (f_str);
 }
 
-char						*ft_exp_str(float num)
+char				*ft_exp_str(float num)
 {
 	unsigned long long	i_num;
 	char				*f_str;
@@ -82,3 +81,4 @@ char						*ft_exp_str(float num)
 	f_str = ft_get_decimals(num);
 	return (ft_strjoin(i_str, f_str));
 }
+

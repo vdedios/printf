@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/12 17:11:45 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 18:31:16 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ char					*ft_p_conv(char *format_info, va_list args);
 char					*ft_di_conv(char *format_info, va_list args);
 char					*ft_u_conv(char *format_info, va_list args);
 char					*ft_xX_conv(char *format_info, va_list args, int i);
-char					*ft_f_conv(char *format_info, va_list args);
-char					*ft_e_conv(char *format_info, va_list args);
+char					*ft_floatpoint_conv(char *format_info, va_list args, int i);
 /*
-char	*ft_g_conv(char *format_info, va_list args);
 char	*ft_n_conv(char *format_info, va_list args);
 */
 
@@ -55,5 +53,11 @@ double					ft_ten_power(int p);
 int                     ft_count_figures(long long int num);
 char					*ft_float_str(float num);
 char    				*ft_exp_str(float num);
+unsigned long long		ft_get_integer(double num, char type);
+char					*ft_get_decimals(double num);
+char					*ft_exp_str(float num);
+char					*ft_trim_f_zeros(char *num);
+char					*ft_trim_e_zeros(char *num);
+char					*ft_g_conv(double num);
 
 #endif
