@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/11 17:47:14 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:29:28 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ int main(void)
 	printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 
 	// %f	
-	//float	pi_l = 0.000312255;
+	//float	pi_l = 0;
+	float	pi_l = 0.000312255;
 	//float	pi_l = 3122.55;
-	float	pi_l = 3122344987234973234398732.55;
+	//float	pi_l = 987234973234398732.55;
+	//float	pi_l = 98;
 	//float	pi_l = 0.312255;
 	//float	pi_l = 3.1;
 	//float	pi_l = 3.12255;
 	//float	pi_l = 3.141499996185302734375; 
+	//probar infinitos y nans
 	printf("el número pi vale: %f %e %g\n", pi_l, pi_l, pi_l);
 	ft_printf("el número pi vale: %f %e\n", pi_l, pi_l);
 }

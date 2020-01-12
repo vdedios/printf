@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/11 13:38:31 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:11:45 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_n_conv(char *format_info, va_list args);
 */
 void					ft_print_hex(char *hex, long long int num, char uplow);
 double					ft_ten_power(int p);
-int                     ft_count_figures(int num);
+int                     ft_count_figures(long long int num);
 char					*ft_float_str(float num);
 char    				*ft_exp_str(float num);
 

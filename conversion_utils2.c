@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 13:30:49 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/11 17:05:22 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:26:23 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ static unsigned long long	ft_get_integer(double num, char type)
 	int					i;
 	
 	i = 0;
+	if (*((long long int *)&num) == 0)
+		return (0);
 	i_num = (int)num;
 	while (ft_count_figures(i_num) != 1)
 	{
 		if (ft_count_figures(i_num) < 1)
 		{
 			i++;
-			i_num = (int)(num * ft_ten_power(i));	
+			i_num = (long long int)(num * ft_ten_power(i));	
 		}
 		else 
 		{
 			i--;
-			i_num = (int)num * ft_ten_power(i - 1);	
+			i_num = (long long int)num * ft_ten_power(i);	
 		}
 	}
 	if (type == 'i')
@@ -41,16 +43,23 @@ static unsigned long long	ft_get_integer(double num, char type)
 char				*ft_get_decimals(double num)
 {
 	int 				i;
+	int 				decimals;
 	unsigned long long	f_num;
 	char				*f_str;
 
 	i = 0;
+	decimals = 0;
 	i = ft_get_integer(num, 'f');
 	f_num =	num * ft_ten_power(6 + i) -
-		(unsigned long long)(num * ft_ten_power(-1 + i)) * ft_ten_power(6);
-	if (f_num + 0.5 <= num * ft_ten_power(7 + i))
+		(unsigned long long)(num * ft_ten_power(i)) * ft_ten_power(6);
+	printf("%d %f", i, ft_ten_power(i));
+	if ((num * ft_ten_power(6 + i) - (long long int)(num * ft_ten_power(6 + i)) >= 0.5))
 		f_num = f_num + 1;
-	f_str = ft_strjoin_first(ft_itoa(f_num), "e");
+	f_str = ft_itoa(f_num);
+	f_num = (unsigned long long)ft_strlen(f_str);
+	while (decimals++ < 6 - (int)f_num) 
+		f_str = ft_strjoin_first(f_str, "0");
+	f_str = ft_strjoin_first(f_str, "e");
 	f_str = ft_strjoin(f_str, ft_itoa_special(-i));
 	return (f_str);
 }

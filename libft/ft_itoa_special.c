@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 13:00:28 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/11 17:45:08 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 13:04:53 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ static int	ft_size_num(long long int n)
 	i = 0;
 	j = 0;
 	if (n < 0)
-	{
 		n = -n;
-		i++;
-	}
+	i++;
 	if (!n)
-		return (1);
+		return (i + 2);
 	while (n > 0)
 	{
 		n /= 10;
@@ -59,6 +57,8 @@ char		*ft_itoa_special(long long int n)
 		n = -n;
 		num[i++] = '-';
 	}
+	else 
+		num[i++] = '+';
 	if (n / 10 == 0)
 		num[i++] = '0';
 	num[size] = '\0';

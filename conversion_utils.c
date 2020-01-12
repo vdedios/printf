@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 16:18:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/11 14:34:17 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:29:51 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,24 @@ void					ft_print_hex(char *hex, long long int num, char uplow)
 
 double					ft_ten_power(int p)
 {
-	if (p > 1)	
-		return (ft_ten_power(p - 1) * 10);
-	else if (p < 0)
-		return (ft_ten_power(p + 1) / 10);
-	return ((double)10);
+	double	t;
+	int		i;
+	
+	t = 1;
+	i = 0;
+	if (p < 0)
+	{
+		p = -p;
+		while (i++ < p)
+			t = t / 10;
+	}
+	else if (p > 0)
+		while (i++ < p)
+			t = t * 10;
+	return (t);
 }
 
-int						ft_count_figures(int num)
+int						ft_count_figures(long long int num)
 {
 	int d;
 	
@@ -80,7 +90,8 @@ char					*ft_float_str(float num)
 		f_num = f_num + 1;	
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
 	f_str = ft_itoa(f_num);
-	while (decimals++ < 6 - ft_count_figures(f_num)) 
+	i_num = ft_strlen(f_str);
+	while (decimals++ < 6 - (int)i_num) 
 		f_str = ft_strjoin_second("0", f_str);
 	i_str = ft_strjoin_first(i_str, ".");
 	return (ft_strjoin(i_str, f_str));
