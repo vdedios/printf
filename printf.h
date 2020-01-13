@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 11:39:22 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:28:59 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ char					*ft_di_conv(char *format_info, va_list args);
 char					*ft_u_conv(char *format_info, va_list args);
 char					*ft_xX_conv(char *format_info, va_list args, int i);
 char					*ft_floatpoint_conv(char *format_info, va_list args, int i);
-/*
-char	*ft_n_conv(char *format_info, va_list args);
-*/
+void					ft_n_conv(char *format_info, va_list args, char *printf_buf);
 
 /*
 ** type conversion utils functions

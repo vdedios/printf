@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:16:12 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 13:31:59 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:28:51 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ char	*ft_floatpoint_conv(char *format_info, va_list args, int i)
 	return (0);
 }
 
-/*
-char	*ft_n_conv(char *format_info, va_list args);
-*/
+void	ft_n_conv(char *format_info, va_list args, char *printf_buf)
+{
+	long int	dir;
+	int			*num;
+	(void)format_info;
+
+	dir = (long int)va_arg(args, int *);
+	//dir = (long int)va_arg(args, char *);
+	num = (int *)dir;
+	*num = (int)ft_strlen(printf_buf);
+}

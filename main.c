@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 13:31:14 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:31:24 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(void)
 {
 	char	*str = "manuel";
 	char	c = 'm';
+	int		d = 1;
 	int		dir = 0;
 	long int	dir2;
 	int		neg = -43;
@@ -30,8 +31,8 @@ int main(void)
 	printf("OG printf %p, %ld, %x\n", str, dir2, 30);
 	ft_printf("ft_printf %p, %ld, %lx\n\n", str, dir2, 30);
 	dir2 = (long int)&c;	
-	printf("mi dirección de memoria es con & de c: %p o %ld y en hex es %lx\n", &c, dir2, dir2);
-	ft_printf("mi dirección de memoria es con & de c: %p o %ld y en hex es %lx\n\n", &c, dir2, dir2);
+	printf("mi dirección de memoria es con & de c: %p o %ld y en hex es %lx\n", &d, dir2, dir2);
+	ft_printf("mi dirección de memoria es con & de c: %p o %ld y en hex es %lx\n\n", &d, dir2, dir2);
 
 	ft_printf("un negativo: %d\n\n", neg);
 	ft_printf("mi dirección de memoria es esta: %i\n", dir);
@@ -44,8 +45,8 @@ int main(void)
 	ft_printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 	printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 
-	// %f	
-	//float	pi_l = 0;
+	// %f %e y %g	
+	float	pi_l = 0;
 	//float	pi_l = 0.000312255;
 	//float	pi_l = 0.0312255;
 	//float	pi_l = 312222.55;
@@ -59,8 +60,16 @@ int main(void)
 	//float	pi_l = -3.012300;
 	//float	pi_l = 3.0100;
 	//float	pi_l = 3.12255;
-	float	pi_l = 3.141499996185302734375; 
+	//float	pi_l = 3.141499996185302734375; 
 	//probar infinitos y nans
 	printf("el número pi vale: %f %e %g\n", pi_l, pi_l, pi_l);
 	ft_printf("el número pi vale: %f %e %g\n", pi_l, pi_l, pi_l);
+
+	// %n
+	int cc;
+
+	ft_printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
+	printf("%d\n", cc);
+	printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
+	printf("%d\n", cc);
 }
