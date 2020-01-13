@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 18:26:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/12 20:07:19 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:32:50 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_trim_f_zeros(char *num)
 		i--;
 	if(!(num_trimmed = malloc((ft_strlen(num) - i) * sizeof(char))))
 		return (NULL);
+	if (num[i] == '.')
+		i--;
 	while (j < i + 1)
 	{
 		num_trimmed[j] = num[j];
@@ -62,14 +64,27 @@ char	*ft_trim_e_zeros(char *num)
 	return (num_trimmed);
 }
 
-char	*ft_g_conv(double num)
+/*
+** As found in C11 standard, %g conversion must be:
+** if P > X ≥ −4, the conversion is with style f (or F) 
+** and precision P − (X + 1). Otherwise, the conversion 
+** is with style e (or E) and precision P − 1.
+** In both cases insignificant trailing zeros are removed 
+** from the significand, and the decimal point is also 
+** removed if there are no remaining digits following it.
+** A precision of 0 is treated as equivalent to a 
+** precision of 1
+*/
+char	*ft_g_conv(double num, int *exp, int precision)
 {
-	char	*f_out;
-	char	*e_out;
-
-	f_out = ft_trim_f_zeros(ft_float_str(num));
-	e_out = ft_trim_e_zeros(ft_exp_str(num));
-	if (ft_strlen(f_out) < ft_strlen(e_out))
-		return (f_out);
-	return (e_out);
+	char	*aux;
+	aux = ft_exp_str(num, exp, precision);
+	free(aux);
+	aux = NULL;
+	if (precision == 0)
+		precision = 1;
+	*exp = - (*exp);
+	if (precision > *exp && *exp >= -4)
+		return (ft_trim_f_zeros(ft_float_str(num, precision - (*exp + 1))));
+	return (ft_trim_e_zeros(ft_exp_str(num, exp, precision - 1)));
 }

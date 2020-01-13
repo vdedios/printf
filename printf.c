@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/12 20:10:40 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/12 20:17:28 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 //ft_extract_format -> extrae el formato
 //Falta que chequee errores de formato -> como va por zonas, sería interesante que se comportara como un atoi
+//Chequear tipos que llevan mayúsculas
 char	*ft_extract_format(const char *s)
 {
 	int 	l;
