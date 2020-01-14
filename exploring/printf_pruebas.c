@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:42:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2019/12/19 16:08:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 19:27:09 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 /*
 ** %[flags][width][.precision][lenght]type
-** 		[flags]: num, 0, +, -, #,  ,'
-** 		[width]: *
+** 		[flags]: 0, +, -, #,  ,'
+** 		[width]: num, * -> hace atoi
 ** 		[precision]: ?
 ** 		[lenght]: l, ll, h, hh
 ** types: c, s, p, d, i, u, x, X, n, f, g, e
@@ -27,7 +27,7 @@
 
 int main(void)
 {
-	int				num = 30000000;
+	int				num = 12345;
 	int				neg = -10;
 	float			var_dec = 3023.9487;
 	
@@ -35,9 +35,8 @@ int main(void)
 	//FLAGS
 	
 		//número
+		printf("número_salida:%-0dmm\n", num);
 		printf("número_salida:%5d\n", num);
-		printf("número_salida:%5.5d\n", num);
-		printf("número_salida:%.5f\n", 5.24);
 
 		//0
 		printf("0_salida:%05d\n", num);
@@ -48,6 +47,7 @@ int main(void)
 		//-
 		printf("-_salida:%-2d\n", num);
 		
+/*
 		//BONUS
 			//# -> funciona solo con f, e, g y x/X
 			printf("#f_salida:%#f y f_salida:%f\n", var_dec, var_dec);
@@ -60,7 +60,7 @@ int main(void)
 			//'
 			printf("'d_salida:%'d y d_salida:%d\n", 16728367, 16728367);
 
-		//**COMBOS**
+		//COMBOS**
 		printf("+5_salida:%+5d\n", num);
 		printf("+05_salida:%+05d\n", num);
 		printf("-_salida:%+-d\n", num);
@@ -121,4 +121,5 @@ int main(void)
 		//%g
 		printf("g_salida:%g\n", f_var);
 		printf("g_salida:%g\n", d_var);
+		*/
 }

@@ -6,12 +6,13 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:18:38 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 19:38:10 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
+/*
 int main(void)
 {
 	char	*str = "manuel";
@@ -46,9 +47,9 @@ int main(void)
 	printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 
 	// %f %e y %g	
-	float	pi_l = 0;
+	//float	pi_l = 0;
 	//float	pi_l = 0.000312255;
-	//float	pi_l = 0.0312255;
+	float	pi_l = 0.0312255;
 	//float	pi_l = 312222.55;
 	//float	pi_l = 3122.55;
 	
@@ -79,6 +80,14 @@ int main(void)
 
 	ft_printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
 	printf("%d\n", cc);
-	printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
+	printf("aadeberias %g escrib%nir 33 caracteres:", pi_l, &cc);	
 	printf("%d\n", cc);
+}
+*/
+
+int main()
+{
+	int a = 10;
+
+	ft_printf("esto es una prueba de tipos: %+0-#32.lld", a);
 }

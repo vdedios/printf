@@ -6,20 +6,14 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:23:45 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 19:15:43 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//Versión simplificada sin va_args que saca las marcas de cadena
-//ojo funciones de string.h 
 
 #include "libft/libft.h"
 #include "printf.h"
 
-//ft_extract_format -> extrae el formato
-//Falta que chequee errores de formato -> como va por zonas, sería interesante que se comportara como un atoi
 //Chequear tipos que llevan mayúsculas - fF eE gG 
-//Chequear por qué en %p cojo dir de un char y no de un int
 char	*ft_extract_format(const char *s)
 {
 	int 	l;
@@ -46,7 +40,7 @@ char	*ft_analyse(char *format_info, va_list args, char *printf_buf)
 
 	i = 0;
 	while (format_info[i])
-		i++;
+	i++;
 	if (format_info[--i] == 'c')
 		return (ft_c_conv(format_info, args));
 	if (format_info[i] == 's')
@@ -68,16 +62,18 @@ char	*ft_analyse(char *format_info, va_list args, char *printf_buf)
 	return (0);
 }
 
-//Ejecuta formato. Avanza s en format_info y concatena en print_buf el valor a extraído y formateado
 char	*ft_formater(const char **s, char **print_buf, va_list args)
 {
-	char	*format_info;
-	char	*format_aux;
+	char		*format_info;
+	char		*format_aux;
+	t_format	format;
 	(void ) args;	
 
 	//1 -> extract
 	format_info = ft_extract_format(*s);
 	//2 -> ft_analyse (errors) -> ft_type_conv
+	ft_classify_format(format_info, &format);
+
 	format_aux = ft_analyse(format_info, args, *print_buf);
 	//4 -> ft_flag_conv	
 	//5 -> copy to buf and forward string
@@ -87,7 +83,6 @@ char	*ft_formater(const char **s, char **print_buf, va_list args)
 	return (0);
 }
 
-//(ft_read)
 int		ft_printf(const char *s, ...)
 {
 	char	*print_buf;

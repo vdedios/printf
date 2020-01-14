@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:32:52 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 19:56:50 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,32 @@
 
 #ifndef PRINTF_H
 # define PRINTF_H
+
+/*
+** %[flags][width][.precision][lenght]type
+*/
+typedef struct 	s_format
+{
+/*
+** flags
+*/
+	short 		zero;
+	short		plus;
+	short		minus;
+	short		hash;
+	short		space;
+	short		apostrophe;
+/*
+** 
+*/
+	int			width;
+	short		precision;
+	short		l;
+	short		ll;
+	short		h;
+	short		hh;
+	char		type;
+}				t_format;
 
 /*
 ** printf.c
@@ -60,7 +86,7 @@ char					*ft_get_decimals(double num, int *exp, int precision, char type);
 char    				*ft_exp_str(double num, int *exp, int precision, char type);
 
 /*
-** utils_e.c
+** utils_f.c
 */
 double					ft_ten_power(int p);
 unsigned long long		ft_rounding(unsigned long long i_num,
@@ -69,7 +95,7 @@ char					*ft_add_zeroes(char *f_str, int precision);
 char					*ft_float_str(float num, int precision);
 
 /*
-** utils_e.c
+** utils_g.c
 */
 char					*ft_trim_f_zeros(char *num);
 char					*ft_trim_e_zeros(char *num);
@@ -79,10 +105,17 @@ char					*ft_g_conv(double num, int *exp, int precision, char type);
 ** printf_utils.c
 */
 char					*ft_string_to_char(char *s);
+void					ft_classify_format(char *format_info,
+							t_format *format);
 
 /*
 ** utils_xXp.c
 */
 void					ft_print_hex(char *hex, long long int num, char uplow);
+
+/*
+** flags.c
+*/
+
 
 #endif
