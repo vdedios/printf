@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conversion_utils2.c                                :+:      :+:    :+:   */
+/*   utils_e.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/11 13:30:49 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 13:49:19 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/14 15:17:00 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/14 15:17:02 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+int					ft_count_figures(long long int num)
+{
+	int d;
+	
+	d = 0;
+	while (num)		
+	{
+		num = num / 10;
+		d++;
+	}
+	return (d);
+}
 
 unsigned long long	ft_get_integer(double num, char type)
 {
@@ -85,4 +98,3 @@ char				*ft_exp_str(double num, int *exp, int precision, char type)
 	f_str = ft_get_decimals(num, exp, precision, type);
 	return (ft_strjoin(i_str, f_str));
 }
-

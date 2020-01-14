@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 13:42:58 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:32:52 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,65 @@
 # define PRINTF_H
 
 /*
-** main functions
+** printf.c
 */
-int						ft_printf(const char *s, ...);
 char					*ft_extract_format(const char *s);
+char					*ft_analyse(char *format_info,
+							va_list args, char *printf_buf);
+char					*ft_formater(const char **s,
+							char **print_buf, va_list args);
+int						ft_printf(const char *s, ...);
+
 
 /*
-** main utils functions
+** types_cspdiu.c
 */
-char					*ft_string_to_char(char *s);
-
-/*
-** type conversion functions
-*/
-char 					*ft_c_conv(char *format_info, va_list args);
+char					*ft_c_conv(char *format_info, va_list args);
 char					*ft_s_conv(char *format_info, va_list args);
 char					*ft_p_conv(char *format_info, va_list args);
 char					*ft_di_conv(char *format_info, va_list args);
 char					*ft_u_conv(char *format_info, va_list args);
+
+
+/*
+** types_xXfegn.c
+*/
 char					*ft_xX_conv(char *format_info, va_list args, int i);
 char					*ft_floatpoint_conv(char *format_info, va_list args, int i);
 void					ft_n_conv(char *format_info, va_list args, char *printf_buf);
 
 /*
-** type conversion utils functions
+** utils_e.c
 */
-void					ft_print_hex(char *hex, long long int num, char uplow);
-double					ft_ten_power(int p);
-int                     ft_count_figures(long long int num);
-char					*ft_float_str(float num, int precision);
-char    				*ft_exp_str(double num, int *exp, int precision, char type);
+int						ft_count_figures(long long int num);
 unsigned long long		ft_get_integer(double num, char type);
 char					*ft_get_decimals(double num, int *exp, int precision, char type);
+char    				*ft_exp_str(double num, int *exp, int precision, char type);
+
+/*
+** utils_e.c
+*/
+double					ft_ten_power(int p);
+unsigned long long		ft_rounding(unsigned long long i_num,
+							unsigned long long f_num, float num, int precision);
+char					*ft_add_zeroes(char *f_str, int precision);
+char					*ft_float_str(float num, int precision);
+
+/*
+** utils_e.c
+*/
 char					*ft_trim_f_zeros(char *num);
 char					*ft_trim_e_zeros(char *num);
 char					*ft_g_conv(double num, int *exp, int precision, char type);
+
+/*
+** printf_utils.c
+*/
+char					*ft_string_to_char(char *s);
+
+/*
+** utils_xXp.c
+*/
+void					ft_print_hex(char *hex, long long int num, char uplow);
 
 #endif

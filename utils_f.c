@@ -1,41 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_conversion_utils.c                               :+:      :+:    :+:   */
+/*   utils_f.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/04 16:18:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 13:20:51 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/14 15:15:51 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/14 15:30:59 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-/*
-** Decimal to hex conversion applying bit shift
-*/
-void					ft_print_hex(char *hex, long long int num, char uplow)
-{
-	int			i;
-	int			j;
-
-	i = 0;
-	j = 0;
-	while (!(num & (LONG_MASK >> i)))
-		i += 4;
-	while ( i < 64)
-	{
-		hex[j] = (num & (LONG_MASK >> i)) >> (60 - i);
-		if (hex[j] > 9)
-			hex[j] = hex[j] + uplow - 33;
-		else
-			hex[j] = hex[j] + '0';
-		i += 4;
-		j++;
-	}
-	hex[j] = '\0';
-}
 
 double					ft_ten_power(int p)
 {
@@ -54,19 +29,6 @@ double					ft_ten_power(int p)
 		while (i++ < p)
 			t = t * 10;
 	return (t);
-}
-
-int						ft_count_figures(long long int num)
-{
-	int d;
-	
-	d = 0;
-	while (num)		
-	{
-		num = num / 10;
-		d++;
-	}
-	return (d);
 }
 
 unsigned long long		ft_rounding(unsigned long long i_num,
