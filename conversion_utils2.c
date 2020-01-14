@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 13:30:49 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 12:34:27 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:49:19 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ unsigned long long	ft_get_integer(double num, char type)
 		return (i);
 }
 
-char				*ft_get_decimals(double num, int *exp, int precision)
+char				*ft_get_decimals(double num, int *exp, int precision, char type)
 {
 	int 				decimals;
 	unsigned long long	f_num;
@@ -58,12 +58,15 @@ char				*ft_get_decimals(double num, int *exp, int precision)
 	f_num = (unsigned long long)ft_strlen(f_str);
 	while (decimals++ < precision - (int)f_num) 
 		f_str = ft_strjoin_second("0", f_str);
-	f_str = ft_strjoin_first(f_str, "e");
+	if (type == 'E')
+		f_str = ft_strjoin_first(f_str, "E");
+	else
+		f_str = ft_strjoin_first(f_str, "e");
 	f_str = ft_strjoin(f_str, ft_itoa_special(-*exp));
 	return (f_str);
 }
 
-char				*ft_exp_str(double num, int *exp, int precision)
+char				*ft_exp_str(double num, int *exp, int precision, char type)
 {
 	unsigned long long	i_num;
 	char				*f_str;
@@ -79,7 +82,7 @@ char				*ft_exp_str(double num, int *exp, int precision)
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
 	if (precision != 0)
 		i_str = ft_strjoin_first(i_str, ".");
-	f_str = ft_get_decimals(num, exp, precision);
+	f_str = ft_get_decimals(num, exp, precision, type);
 	return (ft_strjoin(i_str, f_str));
 }
 

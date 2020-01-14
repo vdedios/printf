@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 15:30:48 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:55:21 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 //ft_extract_format -> extrae el formato
 //Falta que chequee errores de formato -> como va por zonas, sería interesante que se comportara como un atoi
-//Chequear tipos que llevan mayúsculas - fF eE gG
+//Chequear tipos que llevan mayúsculas - fF eE gG 
 //Chequear por qué en %p cojo dir de un char y no de un int
 char	*ft_extract_format(const char *s)
 {
@@ -27,7 +27,7 @@ char	*ft_extract_format(const char *s)
 	char	*types;
 
 	l = 0;
-	types = "cspdiuxXnfge";
+	types = "cspdiuxXnfgeFGE";
 	l_types = ft_strlen(types);
 	while (s[l] != *types++ && s[l])
 	{
@@ -59,8 +59,9 @@ char	*ft_analyse(char *format_info, va_list args, char *printf_buf)
 		return (ft_u_conv(format_info, args));
 	if (format_info[i] == 'x' || format_info[i] == 'X')
 		return (ft_xX_conv(format_info, args, i));
-	if (format_info[i] == 'f' || format_info[i] == 'e'
-			|| format_info[i] == 'g')
+	if (format_info[i] == 'f' || format_info[i] == 'e'||
+			format_info[i] == 'g'||format_info[i] == 'F'|| 
+			format_info[i] == 'E' || format_info[i] == 'G')
 		return (ft_floatpoint_conv(format_info, args, i));
 	if (format_info[i] == 'n')
 		ft_n_conv(format_info, args, printf_buf);

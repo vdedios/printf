@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 13:25:10 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:50:41 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int main(void)
 	printf("el número pi vale: %f %e %g\n", pi_l, pi_l, pi_l);
 	ft_printf("el número pi vale: %f %e %g\n", pi_l, pi_l, pi_l);
 
+	printf("el número pi vale: %F %E %G\n", pi_l, pi_l, pi_l);
+	ft_printf("el número pi vale: %F %E %G\n", pi_l, pi_l, pi_l);
 	double *infinity;
 	long long int inf;
 	inf = 0x7F80000000000000;

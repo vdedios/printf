@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 18:26:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 13:32:50 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:45:57 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,15 @@ char	*ft_trim_e_zeros(char *num)
 ** A precision of 0 is treated as equivalent to a 
 ** precision of 1
 */
-char	*ft_g_conv(double num, int *exp, int precision)
+char	*ft_g_conv(double num, int *exp, int precision, char type)
 {
 	char	*aux;
-	aux = ft_exp_str(num, exp, precision);
+
+	if (type == 'G')
+		type = 'E';
+	else
+		type = 'e';
+	aux = ft_exp_str(num, exp, precision, type);
 	free(aux);
 	aux = NULL;
 	if (precision == 0)
@@ -86,5 +91,5 @@ char	*ft_g_conv(double num, int *exp, int precision)
 	*exp = - (*exp);
 	if (precision > *exp && *exp >= -4)
 		return (ft_trim_f_zeros(ft_float_str(num, precision - (*exp + 1))));
-	return (ft_trim_e_zeros(ft_exp_str(num, exp, precision - 1)));
+	return (ft_trim_e_zeros(ft_exp_str(num, exp, precision - 1, type)));
 }
