@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:16:12 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 15:28:51 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:35:10 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,21 @@ char	*ft_xX_conv(char *format_info, va_list args, int i)
 */
 char	*ft_floatpoint_conv(char *format_info, va_list args, int i)
 {
-	double	num;
-	int		exp;
-	int 	precision;
+	double				num;
+	int					exp;
+	int 				precision;
+	unsigned long long	aux;
 
 	exp = 0;
 	precision = 6;
 	num = va_arg(args, double);
+	aux = *((unsigned long long int *)&num);
+	if (aux >= INF && aux < NAN)
+		return (ft_strjoin_none("inf", 0));
+	else if (aux >= NAN && aux < MINF)
+		return (ft_strjoin_none("nan", 0));
+	else if (aux >= MINF)
+		return (ft_strjoin_none("-inf", 0));
 	if (format_info[i] == 'f')
 		return (ft_float_str(num, precision));
 	else if (format_info[i] == 'e')

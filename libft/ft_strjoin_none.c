@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:46:19 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 11:35:39 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 11:20:29 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_none(char *s1, char *s2)
 {
 	char	*joint;
 	size_t	l;
@@ -38,9 +38,5 @@ char	*ft_strjoin(char *s1, char *s2)
 			joint[l++] = s2[j++];
 	}
 	joint[l] = '\0';
-	free(s1);
-	free(s2);
-	s1 = NULL;
-	s2 = NULL;
 	return (joint);
 }

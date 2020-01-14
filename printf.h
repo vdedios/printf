@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/13 15:28:59 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:27:00 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "libft/libft.h"
 
 #define LONG_MASK 0xF000000000000000
+#define INF 0x7FF0000000000000
+#define MINF 0xFFF0000000000000
+#define NAN 0x7FF8000000000000
 
 #ifndef PRINTF_H
 # define PRINTF_H

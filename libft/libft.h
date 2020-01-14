@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:28:46 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/11 17:45:29 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/14 11:37:34 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *s1);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char *s1, char *s);
+char				*ft_strjoin_none(char *s1, char *s);
 char				*ft_strjoin_second(char *s1, char *s);
 char				*ft_strjoin_first(char *s1, char *s);
 char				*ft_strtrim(char const *s1, char const *set);
