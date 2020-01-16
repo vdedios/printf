@@ -6,17 +6,16 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:27:31 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 19:02:36 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/16 16:35:56 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-/*
-void	ft_num(char *str, char *identifier)
+void	ft_plus(char *str, t_format format)
 {
-	int num;
-
-	num = 0;
+	if (str[0] != '-')
+		str = ft_strjoin_second("+", str);
 }
-*/
+
+

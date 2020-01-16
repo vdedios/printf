@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:42:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 19:27:09 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/16 17:28:43 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,13 @@
 
 int main(void)
 {
-	int				num = 12345;
-	int				neg = -10;
-	float			var_dec = 3023.9487;
+	int				num = 1238;
+	unsigned int		num2 = -12;
+	float			f = 3023.9487;
+	char			*s = "hola me llamo manolo";
 	
-	//---PROBAR CON OTROS TIPOS DE VARIABES!!!----
-	//FLAGS
-	
-		//número
-		printf("número_salida:%-0dmm\n", num);
-		printf("número_salida:%5d\n", num);
-
-		//0
-		printf("0_salida:%05d\n", num);
-
-		//+
-		printf("+_salida:%+d\n", num);
-		
-		//-
-		printf("-_salida:%-2d\n", num);
+		printf("-_salida:%010.05d\n", num);
+		printf("-_salida:%010.5X\n", num);
 		
 /*
 		//BONUS

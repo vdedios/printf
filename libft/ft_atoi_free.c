@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 16:27:18 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 11:44:40 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:49:01 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ static int	ft_isthespace(int c)
 	return (0);
 }
 
-int			ft_atoi(const char *str)
+int			ft_atoi_free(char *str)
 {
 	int sign;
 	int nbr;
+	int l;
 
 	sign = 1;
 	nbr = 0;
+	l = ft_strlen(str);
 	while (ft_isthespace(*str))
 		str++;
 	if (*str == '-' || *str == '+')
@@ -40,5 +42,7 @@ int			ft_atoi(const char *str)
 		nbr = (nbr * 10) + (*str - '0');
 		str++;
 	}
+	free (str - l);
+	str = NULL;
 	return (nbr * sign);
 }

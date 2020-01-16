@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:28:46 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 11:37:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:48:39 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 char				*ft_strnstr(const char *haystack,
 const char *needle, size_t len);
 int					ft_atoi(const char *str);
+int					ft_atoi_free(char *str);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *s1);
 char				*ft_substr(char const *s, unsigned int start, size_t len);

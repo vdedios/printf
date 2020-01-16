@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 19:15:43 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/16 17:00:47 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "printf.h"
 
 //Chequear tipos que llevan mayúsculas - fF eE gG 
+//Puede que haya fugas de memoria en extract_format
+//Inicializar estructura para controlar valores -> hacer una función que inicialice
 char	*ft_extract_format(const char *s)
 {
 	int 	l;
@@ -67,12 +69,15 @@ char	*ft_formater(const char **s, char **print_buf, va_list args)
 	char		*format_info;
 	char		*format_aux;
 	t_format	format;
+	t_flags		flags;
 	(void ) args;	
 
+	format.flags = &flags;
 	//1 -> extract
 	format_info = ft_extract_format(*s);
 	//2 -> ft_analyse (errors) -> ft_type_conv
-	ft_classify_format(format_info, &format);
+	
+	ft_classify_format(format_info, &format, args);
 
 	format_aux = ft_analyse(format_info, args, *print_buf);
 	//4 -> ft_flag_conv	

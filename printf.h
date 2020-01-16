@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 19:56:50 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/16 17:29:46 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,24 @@
 /*
 ** %[flags][width][.precision][lenght]type
 */
-typedef struct 	s_format
+
+typedef struct	s_flags
 {
-/*
-** flags
-*/
-	short 		zero;
-	short		plus;
-	short		minus;
+	short 		zero; //OK
+	short		plus; //OK
+	short		minus;//OK
 	short		hash;
 	short		space;
 	short		apostrophe;
-/*
-** 
-*/
-	int			width;
-	short		precision;
-	short		l;
-	short		ll;
-	short		h;
-	short		hh;
-	char		type;
+}				t_flags;
+
+typedef struct 	s_format
+{
+	t_flags		*flags;
+	int			width;//OK
+	int			precision;//OK
+	char		lenght;//recoger con mayor longitud
+	char		type;//OK
 }				t_format;
 
 /*
@@ -106,7 +103,7 @@ char					*ft_g_conv(double num, int *exp, int precision, char type);
 */
 char					*ft_string_to_char(char *s);
 void					ft_classify_format(char *format_info,
-							t_format *format);
+							t_format *format, va_list args);
 
 /*
 ** utils_xXp.c
@@ -114,8 +111,11 @@ void					ft_classify_format(char *format_info,
 void					ft_print_hex(char *hex, long long int num, char uplow);
 
 /*
-** flags.c
+** utils_format.c
 */
-
+void	ft_check_flags(t_format *format, char set);
+int		ft_check_number(char *format_info, int *i, va_list args);
+char	ft_check_lenght(char *format_info, int *i);
+void	ft_classify_format(char *format_info, t_format *format, va_list args);
 
 #endif

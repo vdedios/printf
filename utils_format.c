@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_utils.c                                     :+:      :+:    :+:   */
+/*   utils_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 16:04:45 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/16 16:07:37 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/16 16:56:43 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char 	*ft_string_to_char(char *s)
-{
-	char *aux;
-
-	if (!(aux = malloc(2 * sizeof(char))))
-		return (0);
-	*aux = *s;
-	*(aux + 1 ) = '\0';
-	return (aux);
-}
-
-/*
 void	ft_check_flags(t_format *format, char set)
 {
 	(void)format;
@@ -93,7 +81,7 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 		ft_check_flags(format, format_info[i]);
 		i++;
 	}
-	if (format_info[i] >= '0' ||format_info[i] <= '9'
+	if (format_info[i] > '0' ||format_info[i] <= '9'
 			||format_info[i] == '*')
 		format->width = ft_check_number(format_info, &i, args);
 	if (format_info[i] >= '.')
@@ -105,4 +93,3 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 		format->lenght = ft_check_lenght(format_info, &i);
 	format->type = format_info[i];
 }
-*/

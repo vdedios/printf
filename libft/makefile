@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/14 11:36:28 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/16 11:47:34 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS	=	 -Werror -Wall -Wextra
 AR	=	 ar -rcs
 
 SRC	=	 ft_atoi.c 			\
+			 ft_atoi_free.c 	\
 			 ft_bzero.c 		\
 			 ft_calloc.c 		\
 			 ft_isalnum.c 		\
@@ -26,8 +27,8 @@ SRC	=	 ft_atoi.c 			\
 			 ft_isascii.c 		\
 			 ft_isdigit.c 		\
 			 ft_isprint.c 		\
-			 ft_itoa.c 		\
-			 ft_itoa_special.c 		\
+			 ft_itoa.c 			\
+			 ft_itoa_special.c 	\
 			 ft_memccpy.c 		\
 			 ft_memchr.c 		\
 			 ft_memcmp.c 		\
@@ -42,9 +43,9 @@ SRC	=	 ft_atoi.c 			\
 			 ft_strchr.c 		\
 			 ft_strdup.c 		\
 			 ft_strjoin.c 		\
-			 ft_strjoin_none.c 		\
-			 ft_strjoin_second.c 		\
-			 ft_strjoin_first.c 		\
+			 ft_strjoin_none.c 	\
+			 ft_strjoin_second.c\
+			 ft_strjoin_first.c \
 			 ft_strlcat.c 		\
 			 ft_strlcpy.c 		\
 			 ft_strlen.c 		\
