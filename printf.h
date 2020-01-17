@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 17:29:46 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/17 21:07:43 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct	s_flags
 	short 		zero; //OK
 	short		plus; //OK
 	short		minus;//OK
-	short		hash;
+	short		hash;//para el trailing de ceros modificar directamente en funciones
 	short		space;
-	short		apostrophe;
+	char		*apostrophe;
 }				t_flags;
 
 typedef struct 	s_format

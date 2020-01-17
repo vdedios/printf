@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:07:37 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 16:56:43 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:09:37 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,28 @@ void	ft_check_flags(t_format *format, char set)
 	else if (set == ' ')
 		format->flags->space = 1;
 	else if (set == 39)
-		format->flags->apostrophe = 1;
+	{
+		if (!(format->flags->apostrophe = malloc (2 * sizeof(char))))
+			return (NULL);
+		//OJO! si no se usara (por error de formato por ejemplo, liberar memoria)
+		format->flags->apostrophe[0] = ',';
+		format->flags->apostrophe[1] = '\0';
+	}
 }
 
-int 	ft_check_number(char *format_info, int *i, va_list args)
+int 	ft_check_number(char *format_info, int *i, va_list args, t_format *format)
 {
 	int		j;
 	int		k;
 	char	*num;
 		
 	if (format_info[*i] == '*')
-		return (va_arg(args, int));
+	{
+		k = va_arg(args, int);
+		if (k < 0 && format_info[*i - 1] != '.')
+			format->minus = 1;
+		return (k);
+	}
 	j = *i;
 	k = 0;
 	while (format_info[j] >= '0' && format_info[j] <= '9')
@@ -83,11 +94,11 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 	}
 	if (format_info[i] > '0' ||format_info[i] <= '9'
 			||format_info[i] == '*')
-		format->width = ft_check_number(format_info, &i, args);
+		format->width = ft_check_numbej(format_info, &i, args, format);
 	if (format_info[i] >= '.')
 	{
 		i++;
-		format->precision = ft_check_number(format_info, &i, args);
+		format->precision = ft_check_number(format_info, &i, args, format);
 	}
 	if (format_info[i] == 'h' ||format_info[i] == 'l')
 		format->lenght = ft_check_lenght(format_info, &i);

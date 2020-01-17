@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 17:29:24 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:03:47 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_precision(t_format format, char *str)
 	//con s
 	else if (format.type == 's')
 		str = ft_trim_string(str, format.precision)
-	//con f, g, e ya está
+	//con f, g, e casi está: mirar como integrar con el código una vez tenga todo listo
 }
 
 
