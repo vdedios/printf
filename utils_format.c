@@ -6,13 +6,13 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:07:37 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 17:31:21 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:54:35 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_check_flags(t_format *format, char set)
+short	ft_check_flags(t_format *format, char set)
 {
 	(void)format;
 
@@ -29,11 +29,12 @@ void	ft_check_flags(t_format *format, char set)
 	else if (set == 39)
 	{
 		if (!(format->flags->apostrophe = malloc (2 * sizeof(char))))
-			return (NULL);
+			return (0);
 		//OJO! si no se usara (por error de formato por ejemplo, liberar memoria)
 		format->flags->apostrophe[0] = ',';
 		format->flags->apostrophe[1] = '\0';
 	}
+	return (1);
 }
 
 int 	ft_check_number(char *format_info, int *i, va_list args, t_format *format)
@@ -46,7 +47,7 @@ int 	ft_check_number(char *format_info, int *i, va_list args, t_format *format)
 	{
 		k = va_arg(args, int);
 		if (k < 0 && format_info[*i - 1] != '.')
-			format->minus = 1;
+			format->flags->minus = 1;
 		return (k);
 	}
 	j = *i;
@@ -94,7 +95,7 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 	}
 	if (format_info[i] > '0' ||format_info[i] <= '9'
 			||format_info[i] == '*')
-		format->width = ft_check_numbej(format_info, &i, args, format);
+		format->width = ft_check_number(format_info, &i, args, format);
 	if (format_info[i] >= '.')
 	{
 		i++;

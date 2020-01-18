@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 17:18:16 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:51:02 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** <<xX>> type conversion
 */
-char	*ft_xX_conv(t_format format, va_list args, int i)
+char	*ft_xX_conv(t_format format, va_list args)
 {
 	long int	num;
 	int 		s;
@@ -39,7 +39,7 @@ char	*ft_xX_conv(t_format format, va_list args, int i)
 /*
 ** <<f>> <<e>> <<g>> type conversion
 */
-char	*ft_floatpoint_conv(t_format format, va_list args, int i)
+char	*ft_floatpoint_conv(t_format format, va_list args)
 {
 	double				num;
 	int					exp;
@@ -63,6 +63,9 @@ char	*ft_floatpoint_conv(t_format format, va_list args, int i)
 	return (0);
 }
 
+/*
+** <<n>> type conversion
+*/
 void	ft_n_conv(t_format format, va_list args, char *printf_buf)
 {
 	long int	dir;

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 17:18:08 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:00:03 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 typedef struct	s_flags
 {
-	short 		zero; //OK
+	short 		zero; //OK -
 	short		plus; //OK
 	short		minus;//OK
 	short		hash;//OK
@@ -47,15 +47,26 @@ typedef struct 	s_format
 }				t_format;
 
 /*
+** flags.c
+*/
+char					*ft_plus(char *str, t_format format);
+char					*ft_hash(char *str, t_format format);
+char					*ft_space(char *str, t_format format);
+char					*ft_apostrophe(char *str, t_format format);
+
+/*
 ** printf.c
 */
 char					*ft_extract_format(const char *s);
-char					*ft_pre_format(va_list args, char *printf_buf
-							t_format format);
-char					*ft_formater(const char **s,
-							char **print_buf, va_list args);
+char					*ft_pre_format(va_list args, t_format format, char *printf_buf);
+char					*ft_formater(const char **s, char **print_buf, va_list args);
 int						ft_printf(const char *s, ...);
 
+/*
+** thousands_utils.c
+*/
+char					*ft_thousands_sep(char *str, t_format format);
+void					ft_separate_float(int i, char *integer, char *decimal, char *str);
 
 /*
 ** types_cspdiu.c
@@ -70,8 +81,8 @@ char					*ft_u_conv(t_format format, va_list args);
 /*
 ** types_xXfegn.c
 */
-char					*ft_xX_conv(t_format format, va_list args, int i);
-char					*ft_floatpoint_conv(t_format format, va_list args, int i);
+char					*ft_xX_conv(t_format format, va_list args);
+char					*ft_floatpoint_conv(t_format format, va_list args);
 void					ft_n_conv(t_format format, va_list args, char *printf_buf);
 
 /*
@@ -79,8 +90,8 @@ void					ft_n_conv(t_format format, va_list args, char *printf_buf);
 */
 int						ft_count_figures(long long int num);
 unsigned long long		ft_get_integer(double num, char type);
-char					*ft_get_decimals(double num, int *exp, int precision, char type);
-char    				*ft_exp_str(double num, int *exp, int precision, char type);
+char					*ft_get_decimals(double num, int *exp, t_format format);
+char    				*ft_exp_str(double num, int *exp, t_format format);
 
 /*
 ** utils_f.c
@@ -92,18 +103,26 @@ char					*ft_add_zeroes(char *f_str, int precision);
 char					*ft_float_str(float num, t_format format);
 
 /*
+** utils_format.c
+*/
+short					ft_check_flags(t_format *format, char set);
+int						ft_check_number(char *format_info, int *i, va_list args, t_format *format);
+char					ft_check_lenght(char *format_info, int *i);
+void					ft_classify_format(char *format_info, t_format *format, va_list args);
+
+/*
 ** utils_g.c
 */
 char					*ft_trim_f_zeros(char *num);
 char					*ft_trim_e_zeros(char *num);
-char					*ft_g_conv(double num, int *exp, int precision, char type);
+char					*ft_g_conv(double num, int *exp, t_format format);
 
 /*
-** printf_utils.c
+** utils_printf.c
 */
 char					*ft_string_to_char(char *s);
-void					ft_classify_format(char *format_info,
-							t_format *format, va_list args);
+void					ft_initialize_format(t_format *format);
+void					ft_post_format(char *format_aux, t_format format);
 
 /*
 ** utils_xXp.c
@@ -111,11 +130,11 @@ void					ft_classify_format(char *format_info,
 void					ft_print_hex(char *hex, long long int num, char uplow);
 
 /*
-** utils_format.c
+** width_precision.c
 */
-void	ft_check_flags(t_format *format, char set);
-int		ft_check_number(char *format_info, int *i, va_list args);
-char	ft_check_lenght(char *format_info, int *i);
-void	ft_classify_format(char *format_info, t_format *format, va_list args);
+char					*ft_set_spaces(int num, char symbol);
+char					*ft_trim_string(char *str, int pos);
+char					*ft_width(t_format format, char *str);
+char					*ft_precision(t_format format, char *str);
 
 #endif

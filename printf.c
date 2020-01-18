@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 17:30:13 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:13:52 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_extract_format(const char *s)
 	return (ft_substr(s, 0, l + 1));
 }
 
-char	*ft_pre_format(va_list args, t_format format)
+char	*ft_pre_format(va_list args, t_format format, char *print_buf)
 {
 	if (format.type == 'c')
 		return (ft_c_conv(format, args));
@@ -44,18 +44,18 @@ char	*ft_pre_format(va_list args, t_format format)
 		return (ft_s_conv(format, args));
 	if (format.type == 'p')
 		return (ft_p_conv(format, args));
-	if (format.type == 'd' || format.type[i] == 'i')
+	if (format.type == 'd' || format.type == 'i')
 		return (ft_di_conv(format, args));
 	if (format.type == 'u')
 		return (ft_u_conv(format, args));
 	if (format.type == 'x' || format.type == 'X')
-		return (ft_xX_conv(format, args, i));
+		return (ft_xX_conv(format, args));
 	if (format.type == 'f' || format.type == 'e'||
 			format.type == 'g'||format.type == 'F'|| 
 			format.type == 'E' || format.type == 'G')
-		return (ft_floatpoint_conv(format, args, i));
+		return (ft_floatpoint_conv(format, args));
 	if (format.type == 'n')
-		ft_n_conv(format.type, args, printf_buf);
+		ft_n_conv(format, args, print_buf);
 	return (0);
 }
 
@@ -69,7 +69,7 @@ char	*ft_formater(const char **s, char **print_buf, va_list args)
 
 	format.flags = &flags;
 	//0 -> INITIALIZE FORMAT -> defaut prec = 6
-	ft_intialize_format(&format);
+	ft_initialize_format(&format);
 	
 	//1 -> extract format
 	format_info = ft_extract_format(*s);
@@ -78,11 +78,10 @@ char	*ft_formater(const char **s, char **print_buf, va_list args)
 	ft_classify_format(format_info, &format, args);
 
 	//3 -> get values and pre-process
-	format_aux = ft_pre_format(args, format);
+	format_aux = ft_pre_format(args, format, *print_buf);
 
 	//4 -> apply post-process flags
-	ft_post_format(format_aux, format)
-	//activados y va a ir llamando a la funcion
+	ft_post_format(format_aux, format);
 	
 	//5 -> copy to buf and forward string
 	*print_buf = ft_strjoin(*print_buf, format_aux);

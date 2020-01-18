@@ -6,13 +6,12 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/17 20:52:09 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:16:34 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-/*
 int main(void)
 {
 	char	*str = "manuel";
@@ -82,12 +81,4 @@ int main(void)
 	printf("%d\n", cc);
 	printf("aadeberias %g escrib%nir 33 caracteres:", pi_l, &cc);	
 	printf("%d\n", cc);
-}
-*/
-
-int main()
-{
-	int a = 10;
-
-	ft_printf("esto es una prueba de tipos: %+0-#32.988lld", a);
 }

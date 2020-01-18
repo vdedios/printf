@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 12:55:14 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:58:09 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_set_spaces(int num, char symbol)
 	i = 0;
 	if(!(spaces = malloc(num * sizeof(char) + 1)))	
 		return (NULL);
-	while (i < spaces)	
+	while (i < num)	
 		spaces[i++] = symbol;
 	spaces[i] = '\0';
 	return (spaces);
@@ -45,25 +45,23 @@ char	*ft_trim_string(char *str, int pos)
 	return (trimmed);
 }
 
-void	ft_width(t_format format, char *str)
+char	*ft_width(t_format format, char *str)
 {
-	if (format.zero && !format.minus && !format.precision)
-		str = ft_strjoin(ft_set_spaces(format.width, '0'), str);
-	else if (format.minus)
-		str = ft_strjoin(str, ft_set_spaces(format.width, ' '));
+	if (format.flags->zero && !format.flags->minus && !format.precision)
+		return (ft_strjoin(ft_set_spaces(format.width, '0'), str));
+	else if (format.flags->minus)
+		return (ft_strjoin(str, ft_set_spaces(format.width, ' ')));
 	else 
-		str = ft_strjoin(ft_set_spaces(format.width, ' '), str);
+		return (ft_strjoin(ft_set_spaces(format.width, ' '), str));
 }
 
-void	ft_precision(t_format format, char *str)
+char	*ft_precision(t_format format, char *str)
 {
-	//con d, i, u
 	if (format.type == 'd' || format.type == 'i' ||
-			format.type == 'u' || format.type == 'x'
+			format.type == 'u' ||format.type == 'x'
 			|| format.type == 'X')
-		str = ft_strjoin(ft_set_spaces(format.width, '0'), str);
-	//con s
+		return (ft_strjoin(ft_set_spaces(format.width, '0'), str));
 	else if (format.type == 's')
-		str = ft_trim_string(str, format.precision)
-	//con f, g, e casi está: mirar como integrar con el código una vez tenga todo listo
+		return (ft_trim_string(str, format.precision));
+	return (0);
 }

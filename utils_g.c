@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:17:17 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 17:21:03 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:55:46 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,11 @@ char	*ft_g_conv(double num, int *exp, t_format format)
 	if (format.precision > *exp && *exp >= -4)
 	{
 		format.precision = format.precision - (*exp + 1);
-		if (format.hash)
+		if (format.flags->hash)
 			return (ft_float_str(num, format));
 		else
 			return (ft_trim_f_zeros(ft_float_str(num, format)));
 	}
-	return (ft_trim_e_zeros(ft_exp_str(num, exp, precision - 1, type)));
+	format.precision = format.precision - 1;
+	return (ft_trim_e_zeros(ft_exp_str(num, exp, format)));
 }
