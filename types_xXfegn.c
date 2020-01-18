@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:16:44 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:18:16 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** <<xX>> type conversion
 */
-char	*ft_xX_conv(char *format_info, va_list args, int i)
+char	*ft_xX_conv(t_format format, va_list args, int i)
 {
 	long int	num;
 	int 		s;
@@ -32,22 +32,20 @@ char	*ft_xX_conv(char *format_info, va_list args, int i)
 	}
 	if (!(hex = malloc(s * sizeof(char))))
 		return (NULL);
-	ft_print_hex(hex, num, format_info[i]);
+	ft_print_hex(hex, num, format.type);
 	return (hex);
 }
 
 /*
 ** <<f>> <<e>> <<g>> type conversion
 */
-char	*ft_floatpoint_conv(char *format_info, va_list args, int i)
+char	*ft_floatpoint_conv(t_format format, va_list args, int i)
 {
 	double				num;
 	int					exp;
-	int 				precision;
 	unsigned long long	aux;
 
 	exp = 0;
-	precision = 6;
 	num = va_arg(args, double);
 	aux = *((unsigned long long int *)&num);
 	if (aux >= INF && aux < NAN)
@@ -56,20 +54,20 @@ char	*ft_floatpoint_conv(char *format_info, va_list args, int i)
 		return (ft_strjoin_none("nan", 0));
 	else if (aux >= MINF)
 		return (ft_strjoin_none("-inf", 0));
-	if (format_info[i] == 'f' || format_info[i] == 'F')
-		return (ft_float_str(num, precision));
-	else if (format_info[i] == 'e' || format_info[i] == 'E')
-		return (ft_exp_str(num, &exp, precision, format_info[i]));
-	else if (format_info[i] == 'g' || format_info[i] == 'G')
-		return (ft_g_conv(num, &exp, precision, format_info[i]));
+	if (format.type == 'f' || format.type == 'F')
+		return (ft_float_str(num, format));
+	else if (format.type == 'e' || format.type == 'E')
+		return (ft_exp_str(num, &exp, format));
+	else if (format.type == 'g' || format.type == 'G')
+		return (ft_g_conv(num, &exp, format));
 	return (0);
 }
 
-void	ft_n_conv(char *format_info, va_list args, char *printf_buf)
+void	ft_n_conv(t_format format, va_list args, char *printf_buf)
 {
 	long int	dir;
 	int			*num;
-	(void)format_info;
+	(void)format;
 
 	dir = (long int)va_arg(args, int *);
 	//dir = (long int)va_arg(args, char *);

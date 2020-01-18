@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:42:20 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/17 21:05:45 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 16:49:52 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,21 @@ int main(void)
 	int				num = 1238;
 	char			thousands;
 	unsigned int	num2 = -12;
-	float			f = 3023.9487;
+	float			f = 1;
 	char			locale;
 
 		//#
-		printf("#d_salida:%#f y d_salida:%f\n", f, f);
+		printf("#d_salida:%#.0f y d_salida:%.0f\n", f, f);
 		printf("#d_salida:%#e y d_salida:%e\n\n", f, f);
 
 		//[ ]
 		printf("[ ]d_salida:% d y d_salida:%d\n", num, num2);
 		printf("[ ]d_salida:%    d y d_salida:%d\n\n", num, num2);
 		//'
-		struct lconv *dec_symbols;
-		setlocale(LC_NUMERIC, "en_US.UTF-8");
-		*(dec_symbols->thousands_sep) = __btowc (*_NL_CURRENT (LC_NUMERIC, _THOUSANDS_SEP));
-		printf("thousands: %c\n", *(dec_symbols->thousands_sep));
+		//struct lconv *dec_symbols;
+		//setlocale(LC_NUMERIC, "en_US.UTF-8");
+		//*(dec_symbols->thousands_sep) = __btowc (*_NL_CURRENT (LC_NUMERIC, _THOUSANDS_SEP));
+		//printf("thousands: %c\n", *(dec_symbols->thousands_sep));
 		printf("'d_salida:%'d y d_salida:%d\n", 16728367, 16728367);
 		printf("'d_salida:%'f y d_salida:%f\n", f, f);
 /*

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/17 21:07:43 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:18:08 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct	s_flags
 	short 		zero; //OK
 	short		plus; //OK
 	short		minus;//OK
-	short		hash;//para el trailing de ceros modificar directamente en funciones
-	short		space;
-	char		*apostrophe;
+	short		hash;//OK
+	short		space;//OK
+	char		*apostrophe;//OK - sin coger símbolo de sistema
 }				t_flags;
 
 typedef struct 	s_format
@@ -42,7 +42,7 @@ typedef struct 	s_format
 	t_flags		*flags;
 	int			width;//OK
 	int			precision;//OK
-	char		lenght;//recoger con mayor longitud
+	char		lenght;
 	char		type;//OK
 }				t_format;
 
@@ -50,8 +50,8 @@ typedef struct 	s_format
 ** printf.c
 */
 char					*ft_extract_format(const char *s);
-char					*ft_analyse(char *format_info,
-							va_list args, char *printf_buf);
+char					*ft_pre_format(va_list args, char *printf_buf
+							t_format format);
 char					*ft_formater(const char **s,
 							char **print_buf, va_list args);
 int						ft_printf(const char *s, ...);
@@ -60,19 +60,19 @@ int						ft_printf(const char *s, ...);
 /*
 ** types_cspdiu.c
 */
-char					*ft_c_conv(char *format_info, va_list args);
-char					*ft_s_conv(char *format_info, va_list args);
-char					*ft_p_conv(char *format_info, va_list args);
-char					*ft_di_conv(char *format_info, va_list args);
-char					*ft_u_conv(char *format_info, va_list args);
+char					*ft_c_conv(t_format format, va_list args);
+char					*ft_s_conv(t_format format, va_list args);
+char					*ft_p_conv(t_format format, va_list args);
+char					*ft_di_conv(t_format format, va_list args);
+char					*ft_u_conv(t_format format, va_list args);
 
 
 /*
 ** types_xXfegn.c
 */
-char					*ft_xX_conv(char *format_info, va_list args, int i);
-char					*ft_floatpoint_conv(char *format_info, va_list args, int i);
-void					ft_n_conv(char *format_info, va_list args, char *printf_buf);
+char					*ft_xX_conv(t_format format, va_list args, int i);
+char					*ft_floatpoint_conv(t_format format, va_list args, int i);
+void					ft_n_conv(t_format format, va_list args, char *printf_buf);
 
 /*
 ** utils_e.c
@@ -89,7 +89,7 @@ double					ft_ten_power(int p);
 unsigned long long		ft_rounding(unsigned long long i_num,
 							unsigned long long f_num, float num, int precision);
 char					*ft_add_zeroes(char *f_str, int precision);
-char					*ft_float_str(float num, int precision);
+char					*ft_float_str(float num, t_format format);
 
 /*
 ** utils_g.c

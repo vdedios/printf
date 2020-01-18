@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:30:59 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:01:33 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char					*ft_add_zeroes(char *f_str, int precision)
 	return (f_str);
 }
 
-char					*ft_float_str(float num, int precision)
+char					*ft_float_str(float num, t_format format)
 {
 	unsigned long long	i_num;
 	unsigned long long	f_num;
@@ -72,17 +72,20 @@ char					*ft_float_str(float num, int precision)
 		i_str = "-";
 	}
 	i_num = (num);
-	f_num = num *  ft_ten_power(precision) - i_num * ft_ten_power(precision);
-	if (precision <= 0)
+	f_num = num *  ft_ten_power(format.precision) - i_num * ft_ten_power(format.precision);
+	if (format.precision <= 0)
 	{
-		i_num = ft_rounding(i_num, f_num, num, precision);
+		i_num = ft_rounding(i_num, f_num, num, format.precision);
 		i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
+		//# que no quite punto, comprobar
+		if (format.hash)
+			i_str = ft_strjoin_first(i_str, ".");
 		return (i_str);
 	}
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
 	i_str = ft_strjoin_first(i_str, ".");
-	f_num = ft_rounding(i_num, f_num, num, precision);
+	f_num = ft_rounding(i_num, f_num, num, format.precision);
 	f_str = ft_itoa(f_num);
-	f_str = ft_add_zeroes(f_str, precision);
+	f_str = ft_add_zeroes(f_str, format.precision);
 	return (ft_strjoin(i_str, f_str));
 }

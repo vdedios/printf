@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:17:17 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:17:19 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:21:03 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,27 @@ char	*ft_trim_e_zeros(char *num)
 ** A precision of 0 is treated as equivalent to a 
 ** precision of 1
 */
-char	*ft_g_conv(double num, int *exp, int precision, char type)
+char	*ft_g_conv(double num, int *exp, t_format format)
 {
 	char	*aux;
 
-	if (type == 'G')
-		type = 'E';
+	if (format.type == 'G')
+		format.type = 'E';
 	else
-		type = 'e';
-	aux = ft_exp_str(num, exp, precision, type);
+		format.type = 'e';
+	aux = ft_exp_str(num, exp, format);
 	free(aux);
 	aux = NULL;
-	if (precision == 0)
-		precision = 1;
+	if (format.precision == 0)
+		format.precision = 1;
 	*exp = - (*exp);
-	if (precision > *exp && *exp >= -4)
-		return (ft_trim_f_zeros(ft_float_str(num, precision - (*exp + 1))));
+	if (format.precision > *exp && *exp >= -4)
+	{
+		format.precision = format.precision - (*exp + 1);
+		if (format.hash)
+			return (ft_float_str(num, format));
+		else
+			return (ft_trim_f_zeros(ft_float_str(num, format)));
+	}
 	return (ft_trim_e_zeros(ft_exp_str(num, exp, precision - 1, type)));
 }

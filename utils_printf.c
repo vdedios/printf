@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 16:04:45 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:31:02 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,25 @@ char 	*ft_string_to_char(char *s)
 	return (aux);
 }
 
+void	ft_initialize_format(t_format *format)
+{
+	format->flags->zero = 0;
+	format->flags->plus = 0;
+	format->flags->minus = 0;
+	format->flags->hash = 0;
+	format->flags->space = 0;
+	format->flags->zero = 0;
+	format->flags->apostrophe = NULL;
+	format->width = 0;
+	format->precision = 0;
+	format->lenght = '\0';
+	format->type = '\0';
+}
+
+void	ft_post_format(format_info, &format, args)
+{
+
+}
 /*
 void	ft_check_flags(t_format *format, char set)
 {

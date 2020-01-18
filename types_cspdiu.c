@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/14 15:18:03 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/18 13:27:00 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /*
 ** <<c>> type conversion
 */
-char	*ft_c_conv(char *format_info, va_list args)
+char	*ft_c_conv(t_format format, va_list args)
 {
 	char *aux;
-	(void)format_info;
+	(void)format;
 
 	if (!(aux = malloc(sizeof(char))))
 		return (NULL);
@@ -31,12 +31,12 @@ char	*ft_c_conv(char *format_info, va_list args)
 /*
 ** <<s>> type conversion
 */
-char	*ft_s_conv(char *format_info, va_list args)
+char	*ft_s_conv(t_format format, va_list args)
 {
 	char	*aux;
 	char	*aux2;
 	int		l;
-	(void)format_info;
+	(void)format;
 
 	//1º gestión de error
 	//2º conversión de tipo
@@ -53,13 +53,13 @@ char	*ft_s_conv(char *format_info, va_list args)
 /*
 ** <<p>> type conversion
 */
-char	*ft_p_conv(char *format_info, va_list args)
+char	*ft_p_conv(t_format format, va_list args)
 {
 	long int	dir;
 	long int	aux;
 	int 		size;
 	char		*hex;
-	(void)format_info;
+	(void)format;
 
 	size = 0;
 	dir = (long int)va_arg(args, char *);
@@ -79,10 +79,10 @@ char	*ft_p_conv(char *format_info, va_list args)
 /*
 ** <<d/i>> type conversion
 */
-char	*ft_di_conv(char *format_info, va_list args)
+char	*ft_di_conv(t_format format, va_list args)
 {
 	int		num;
-	(void)format_info;
+	(void)format;
 
 	//1º gestión de error
 	//2º conversión de tipo
@@ -93,10 +93,10 @@ char	*ft_di_conv(char *format_info, va_list args)
 /*
 ** <<u>> type conversion
 */
-char	*ft_u_conv(char *format_info, va_list args)
+char	*ft_u_conv(t_format format, va_list args)
 {
 	long int	num;
-	(void)format_info;
+	(void)format;
 
 	//1º gestión de error
 	//2º conversión de tipo
