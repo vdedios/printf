@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 19:51:02 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:01:40 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_xX_conv(t_format format, va_list args)
 	if (!(hex = malloc(s * sizeof(char))))
 		return (NULL);
 	ft_print_hex(hex, num, format.type);
+	if (format.precision)
+		return (ft_precision(format, hex));
 	return (hex);
 }
 

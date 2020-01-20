@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 19:57:19 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:01:23 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	ft_initialize_format(t_format *format)
 
 char	*ft_post_format(char *format_aux, t_format format)
 {
-	printf("format.plus:%d\n", format.flags->plus);
-	if (format.flags->plus && (!format.flags->zero || !format.precision))
+	if (format.flags->plus && !format.flags->zero)
 		format_aux = ft_plus(format_aux, format);
 	if (format.flags->space)
 		format_aux = ft_space(format_aux, format);
@@ -51,13 +50,10 @@ char	*ft_post_format(char *format_aux, t_format format)
 		format_aux = ft_apostrophe(format_aux, format);
 	if (format.width)
 		format_aux = ft_width(format, format_aux);
-	if (format.precision)
-		format_aux = ft_precision(format, format_aux);
-	if (format.flags->plus && (format.flags->zero || format.precision))
+	if (format.flags->plus && format.flags->zero)
 		format_aux = ft_plus(format_aux, format);
 	return (format_aux);
 	//else if (format.lenght)
-
 }
 
 /*

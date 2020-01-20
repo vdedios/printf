@@ -6,11 +6,12 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 19:16:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 13:28:53 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include <locale.h>
 
 int main(void)
 {
@@ -25,8 +26,9 @@ int main(void)
 	*/
 
 	// %s y %c
-	printf("O:% .5d\n", -123);
-	ft_printf("R:% .05d\n", 123);
+	setlocale(LC_NUMERIC, "en_US.UTF-8");
+	printf("O:%'+05.05f\n", 123456.0);
+	ft_printf("R:%'f\n", 123456.0);
 
 	/*
 	// %d, %p
@@ -42,8 +44,6 @@ int main(void)
 
 	// %u
 	printf("esto es un negativo:%u y esto un positivo:%u\n", neg, pos);
-	ft_printf("esto es un negativo:%u y esto un positivo:%u\n", neg, pos);
-
 	// %x y %X
 	ft_printf("esto es un x:%x y esto un X:%X\n", pos, pos);
 	printf("esto es un x:%x y esto un X:%X\n", pos, pos);
