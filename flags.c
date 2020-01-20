@@ -34,7 +34,7 @@ char	*ft_hash(char *str, t_format format)
 char	*ft_space(char *str, t_format format)
 {
 	if (!format.flags->plus && str[0] != '-')
-		return (ft_strjoin_second("+", str));
+		return (ft_strjoin_second(" ", str));
 	return (str);
 }
 

@@ -81,7 +81,7 @@ char	*ft_formater(const char **s, char **print_buf, va_list args)
 	format_aux = ft_pre_format(args, format, *print_buf);
 
 	//4 -> apply post-process flags
-	ft_post_format(format_aux, format);
+	format_aux = ft_post_format(format_aux, format);
 	
 	//5 -> copy to buf and forward string
 	*print_buf = ft_strjoin(*print_buf, format_aux);

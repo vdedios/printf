@@ -62,7 +62,7 @@ int 	ft_check_number(char *format_info, int *i, va_list args, t_format *format)
 		*i = *i + 1;
 	}
 	num[k] = '\0';
-	return (ft_atoi_free(num));
+	return (ft_atoi(num));
 }
 
 char	ft_check_lenght(char *format_info, int *i)
@@ -96,7 +96,7 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 	if (format_info[i] > '0' ||format_info[i] <= '9'
 			||format_info[i] == '*')
 		format->width = ft_check_number(format_info, &i, args, format);
-	if (format_info[i] >= '.')
+	if (format_info[i] == '.')
 	{
 		i++;
 		format->precision = ft_check_number(format_info, &i, args, format);

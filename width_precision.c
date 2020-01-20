@@ -18,12 +18,17 @@ char	*ft_set_spaces(int num, char symbol)
 	int 	i;
 
 	i = 0;
-	if(!(spaces = malloc(num * sizeof(char) + 1)))	
+	if (num > 0)
+	{
+		if(!(spaces = malloc(num * sizeof(char) + 1)))	
+			return (NULL);
+		while (i < num)	
+			spaces[i++] = symbol;
+		spaces[i] = '\0';
+		return (spaces);
+	}
+	else
 		return (NULL);
-	while (i < num)	
-		spaces[i++] = symbol;
-	spaces[i] = '\0';
-	return (spaces);
 }
 
 char	*ft_trim_string(char *str, int pos)
@@ -47,6 +52,10 @@ char	*ft_trim_string(char *str, int pos)
 
 char	*ft_width(t_format format, char *str)
 {
+	if (format.flags->zero)
+		format.width = format.width - ft_strlen(str) - 1;
+	else 
+		format.width = format.width - ft_strlen(str);
 	if (format.flags->zero && !format.flags->minus && !format.precision)
 		return (ft_strjoin(ft_set_spaces(format.width, '0'), str));
 	else if (format.flags->minus)
@@ -60,7 +69,10 @@ char	*ft_precision(t_format format, char *str)
 	if (format.type == 'd' || format.type == 'i' ||
 			format.type == 'u' ||format.type == 'x'
 			|| format.type == 'X')
-		return (ft_strjoin(ft_set_spaces(format.width, '0'), str));
+	{
+		format.precision = format.precision - ft_strlen(str);
+		return (ft_strjoin(ft_set_spaces(format.precision, '0'), str));
+	}
 	else if (format.type == 's')
 		return (ft_trim_string(str, format.precision));
 	return (0);

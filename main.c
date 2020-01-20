@@ -14,6 +14,7 @@
 
 int main(void)
 {
+	/*
 	char	*str = "manuel";
 	char	c = 'm';
 	int		d = 1;
@@ -21,11 +22,13 @@ int main(void)
 	long int	dir2;
 	int		neg = -43;
 	int		pos = 32423;
+	*/
 
 	// %s y %c
-	ft_printf("la primera letra es la %c, la segunda la %c y la última es la %c\n", 'a', 'b', 'z');
-	ft_printf("me llamo %s. Yo me llamo %s y mi nombre empieza por la letra %c\n\n", "victor", str, c);
+	printf("O:% .5d\n", -123);
+	ft_printf("R:% .05d\n", 123);
 
+	/*
 	// %d, %p
 	dir2 = (long int)str;	
 	printf("OG printf %p, %ld, %x\n", str, dir2, 30);
@@ -81,4 +84,5 @@ int main(void)
 	printf("%d\n", cc);
 	printf("aadeberias %g escrib%nir 33 caracteres:", pi_l, &cc);	
 	printf("%d\n", cc);
+	*/
 }

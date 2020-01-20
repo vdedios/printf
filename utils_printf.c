@@ -38,20 +38,24 @@ void	ft_initialize_format(t_format *format)
 	format->type = '\0';
 }
 
-void	ft_post_format(char *format_aux, t_format format)
+char	*ft_post_format(char *format_aux, t_format format)
 {
-	if (format.flags->plus)
+	printf("format.plus:%d\n", format.flags->plus);
+	if (format.flags->plus && (!format.flags->zero || !format.precision))
 		format_aux = ft_plus(format_aux, format);
-	else if (format.flags->space)
+	if (format.flags->space)
 		format_aux = ft_space(format_aux, format);
-	else if (format.flags->hash)
+	if (format.flags->hash)
 		format_aux = ft_hash(format_aux, format);
-	else if (format.flags->apostrophe)
+	if (format.flags->apostrophe)
 		format_aux = ft_apostrophe(format_aux, format);
-	else if (format.width)
+	if (format.width)
 		format_aux = ft_width(format, format_aux);
-	else if (format.precision)
+	if (format.precision)
 		format_aux = ft_precision(format, format_aux);
+	if (format.flags->plus && (format.flags->zero || format.precision))
+		format_aux = ft_plus(format_aux, format);
+	return (format_aux);
 	//else if (format.lenght)
 
 }

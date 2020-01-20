@@ -122,7 +122,7 @@ char					*ft_g_conv(double num, int *exp, t_format format);
 */
 char					*ft_string_to_char(char *s);
 void					ft_initialize_format(t_format *format);
-void					ft_post_format(char *format_aux, t_format format);
+char					*ft_post_format(char *format_aux, t_format format);
 
 /*
 ** utils_xXp.c
