@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:51:47 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 14:39:39 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:30:29 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ char	*ft_thousands_sep(char *str, t_format format)
 	char	*aux2;
 
 	i = 3;
-	new_size = (ft_strlen(str) + (int)(ft_strlen(str) / 3));
+	new_size = ft_strlen(str) + (int)(ft_strlen(str) / 3);
 	if (!(aux1 = malloc(new_size *sizeof(char) + 1)))
 		return (NULL);
-	printf("str %s\n", aux1);
 	if (!(aux2 = malloc(4 * sizeof(char))))
 		return (NULL);
 	while (i < new_size)
@@ -32,7 +31,9 @@ char	*ft_thousands_sep(char *str, t_format format)
 		aux2[1] = str[i - 2];
 		aux2[2] = str[i - 1];
 		aux2[3] = '\0';
-		aux2 = ft_strjoin_none(aux2, format.flags->apostrophe);
+		aux2 = ft_strjoin_first(aux2, format.flags->apostrophe);
+		printf("--------ENTRO con %d!--------\n", i);
+		printf("--------aux2:%s\n", aux2);
 		aux1 = ft_strjoin(aux1, aux2);
 		i += 3;
 	}

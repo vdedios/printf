@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:27:31 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 12:10:24 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:12:51 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_apostrophe(char *str, t_format format)
 	i = 0;
 	if (format.type == 'd' || format.type == 'i' || format.type == 'u')
 		str = ft_thousands_sep(str, format);
-	else if(format.type == 'f' || format.type == 'g')
+	if(format.type == 'f' || format.type == 'g')
 	{
 		while (str[i] != '.')
 			i++;

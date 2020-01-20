@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 20:00:03 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:07:29 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct 	s_format
 	t_flags		*flags;
 	int			width;//OK
 	int			precision;//OK
+	int			float_precision;//OK
 	char		lenght;
 	char		type;//OK
 }				t_format;

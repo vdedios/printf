@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:07:37 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 19:54:35 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:11:19 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,12 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 	if (format_info[i] == '.')
 	{
 		i++;
+		format->float_precision = 1;
 		format->precision = ft_check_number(format_info, &i, args, format);
 	}
 	if (format_info[i] == 'h' ||format_info[i] == 'l')
 		format->lenght = ft_check_lenght(format_info, &i);
 	format->type = format_info[i];
+	if (!format->precision && (format->type == 'f' || format->type == 'e' || format->type == 'g'))
+	format->precision = 6;
 }
