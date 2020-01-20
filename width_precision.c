@@ -39,7 +39,7 @@ char	*ft_trim_string(char *str, int pos)
 	i = 0;
 	if (!(trimmed = malloc(pos * sizeof(char))))
 		return (NULL);
-	while (i < pos)
+	while (i < pos && str[i])
 	{
 		trimmed[i] = str[i];
 		i++;

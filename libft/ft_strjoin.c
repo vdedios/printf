@@ -30,17 +30,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	l = 0;
 	i = 0;
 	j = 0;
-	printf("---------s1:%s s2:%s\n", s1, s2);
 	while (l < (ft_strlen(s1) + ft_strlen(s2)))
 	{
 		if (l < ft_strlen(s1))
 			joint[l++] = s1[i++];
 		else
 			joint[l++] = s2[j++];
-		if (l == 20)
-			break;
-		joint[l] = '\0';
-		printf("l:%d l_s2:%d || joint:%s s2:%s\n", (int)l, (int)ft_strlen(s2), joint, s2);
 	}
 	joint[l] = '\0';
 	free(s1);

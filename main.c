@@ -26,9 +26,8 @@ int main(void)
 	*/
 
 	// %s y %c
-	setlocale(LC_NUMERIC, "en_US.UTF-8");
-	printf("O:%'+05.05f\n", 123456.0);
-	ft_printf("R:%'+05.05f\n", 123456.0);
+	printf("O:%5.500s\n", "yo soy manolo del bombo");
+	ft_printf("R:%5.500s\n", "yo soy manolo del bombo");
 
 	/*
 	// %d, %p

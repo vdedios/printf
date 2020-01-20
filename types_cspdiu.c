@@ -38,8 +38,6 @@ char	*ft_s_conv(t_format format, va_list args)
 	int		l;
 	(void)format;
 
-	//1º gestión de error
-	//2º conversión de tipo
 	aux = va_arg(args, char *);
 	l = ft_strlen(aux);
 	if (!(aux2 = malloc(l * sizeof(char) + 1)))
@@ -47,6 +45,8 @@ char	*ft_s_conv(t_format format, va_list args)
 	while (*aux)
 		*aux2++ = *aux++;
 	*aux2 = '\0';
+	if (format.precision)
+		return (ft_precision(format, aux2 - l));
 	return (aux2 - l);
 }
 
