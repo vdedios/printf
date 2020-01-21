@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 15:46:17 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:12:38 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ char	*ft_trim_string(char *str, int pos)
 	return (trimmed);
 }
 
-char	*ft_width(t_format format, char *str)
+char	*ft_width(t_format *format, char *str)
 {
 	if (!*str)
-		format.width = format.width - 1;
+		format->width = format->width - 1;
 	else 
-		format.width = format.width - ft_strlen(str);
-	if (format.flags->zero && !format.flags->minus)
-		return (ft_strjoin(ft_set_spaces(format.width, '0'), str));
-	else if (format.flags->minus)
-		return (ft_strjoin(str, ft_set_spaces(format.width, ' ')));
+		format->width = format->width - ft_strlen(str);
+	if (format->flags->zero && !format->flags->minus)
+		return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
+	else if (format->flags->minus)
+		return (ft_strjoin(str, ft_set_spaces(format->width, ' ')));
 	else 
-		return (ft_strjoin(ft_set_spaces(format.width, ' '), str));
+		return (ft_strjoin(ft_set_spaces(format->width, ' '), str));
 }
 
 char	*ft_precision(t_format format, char *str)
@@ -84,3 +84,4 @@ char	*ft_precision(t_format format, char *str)
 		return (ft_trim_string(str, format.precision));
 	return (0);
 }
+

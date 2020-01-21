@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:28:46 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 17:21:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:10:37 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void				*ft_memmove(void *dst, const void *src, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *s);
+size_t				ft_intlen(int *s);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -49,6 +50,7 @@ void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *s1);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char *s1, char *s);
+int					*ft_intjoin(int *s1, int *s);
 char				*ft_strjoin_none(char *s1, char *s);
 char				*ft_strjoin_second(char *s1, char *s);
 char				*ft_strjoin_first(char *s1, char *s);
@@ -59,7 +61,7 @@ char				*ft_itoa_special(long long int n);
 char				*ft_strmapi(char const *s, char(*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
-void				ft_putstr_len(char *s, int fd, int l);
+int					ft_putstr_len(char *s, int fd, int *pos);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 19:49:44 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:37:42 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	ft_printf(" hola que tal tengo %d años\n", 3);
+	ft_printf("%.s", "hola manola");
 	/*
 	char	*str = "manuel";
 	char	c = 'm';

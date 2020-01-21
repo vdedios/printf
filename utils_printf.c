@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 17:29:12 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:36:41 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ char 	*ft_string_to_char(char *s)
 
 void	ft_initialize_format(t_format *format)
 {
+	int 	i;
+
+	i = 0;
 	format->flags->zero = 0;
 	format->flags->plus = 0;
 	format->flags->minus = 0;
@@ -37,106 +40,33 @@ void	ft_initialize_format(t_format *format)
 	format->float_precision = 0;
 	format->length = '\0';
 	format->type = '\0';
+	format->print_l = NULL;
+	format->last_pos = -1;
 }
 
-char	*ft_post_format(char *format_aux, t_format format)
-{
-	if (format.flags->plus && !format.flags->zero)
-		format_aux = ft_plus(format_aux, format);
-	if (format.flags->space)
-		format_aux = ft_space(format_aux, format);
-	if (format.flags->hash)
-		format_aux = ft_hash(format_aux, format);
-	if (format.flags->apostrophe)
-		format_aux = ft_apostrophe(format_aux, format);
-	if (format.width)
-		format_aux = ft_width(format, format_aux);
-	if (format.flags->plus && format.flags->zero)
-		format_aux = ft_plus(format_aux, format);
-	return (format_aux);
-	//else if (format.length)
-}
-
-/*
-void	ft_check_flags(t_format *format, char set)
-{
-	(void)format;
-
-	if (set == '0')
-		format->flags->zero = 1;
-	else if (set == '+')
-		format->flags->plus = 1;
-	else if (set == '-')
-		format->flags->minus = 1;
-	else if (set == '#')
-		format->flags->hash = 1;
-	else if (set == ' ')
-		format->flags->space = 1;
-	else if (set == 39)
-		format->flags->apostrophe = 1;
-}
-
-int 	ft_check_number(char *format_info, int *i, va_list args)
-{
-	int		j;
-	int		k;
-	char	*num;
-		
-	if (format_info[*i] == '*')
-		return (va_arg(args, int));
-	j = *i;
-	k = 0;
-	while (format_info[j] >= '0' && format_info[j] <= '9')
-		j++;
-	if (!(num = malloc((j - *i + 1) *  sizeof(char))))
-		return (0);
-	while (*i < j)
-	{
-		num[k++] = format_info[*i];
-		*i = *i + 1;
-	}
-	num[k] = '\0';
-	return (ft_atoi_free(num));
-}
-
-char	ft_check_length(char *format_info, int *i)
-{
-	if (format_info[*i + 1] == 'l')
-	{
-		*i = *i + 2;
-		return ('L');
-	}
-	else if (format_info[*i + 1] == 'h')
-	{
-		*i = *i + 2;
-		return ('H');
-	}
-	*i = *i + 1;
-	return (format_info[*i - 1]);
-}
-
-void	ft_classify_format(char *format_info, t_format *format, va_list args)
+char	*ft_post_format(char *format_aux, t_format *format)
 {
 	int i;
 
-	i = 1;
-	while (format_info[i] == '0' ||format_info[i] == '+'
-			|| format_info[i] == '-' || format_info[i] == '#'
-			|| format_info[i] == ' ' || format_info[i] == 39)
+	i = 0;
+	if (format->flags->plus && !format->flags->zero)
+		format_aux = ft_plus(format_aux, *format);
+	if (format->flags->space)
+		format_aux = ft_space(format_aux, *format);
+	if (format->flags->hash)
+		format_aux = ft_hash(format_aux, *format);
+	if (format->flags->apostrophe)
+		format_aux = ft_apostrophe(format_aux, *format);
+	if (format->width)
+		format_aux = ft_width(format, format_aux);
+	if (format->flags->plus && format->flags->zero)
+		format_aux = ft_plus(format_aux, *format);
+	if (format->last_pos != -1 && !format->flags->minus)
 	{
-		ft_check_flags(format, format_info[i]);
-		i++;
+		while (format->print_l[i] != -1)
+			i++;
+		i--;
+		format->print_l[i] = format->print_l[i] + format->width;
 	}
-	if (format_info[i] >= '0' ||format_info[i] <= '9'
-			||format_info[i] == '*')
-		format->width = ft_check_number(format_info, &i, args);
-	if (format_info[i] >= '.')
-	{
-		i++;
-		format->precision = ft_check_number(format_info, &i, args);
-	}
-	if (format_info[i] == 'h' ||format_info[i] == 'l')
-		format->length = ft_check_length(format_info, &i);
-	format->type = format_info[i];
+	return (format_aux);
 }
-*/

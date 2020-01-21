@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 19:49:32 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:59:10 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,30 @@ char	*ft_extract_format(const char *s)
 	return (ft_substr(s, 0, l + 1));
 }
 
-char	*ft_pre_format(va_list args, t_format format, char *print_buf)
+char	*ft_pre_format(va_list args, t_format *format, char *print_buf)
 {
-	if (format.type == 'c')
-		return (ft_c_conv(format, args));
-	if (format.type == 's')
-		return (ft_s_conv(format, args));
-	if (format.type == 'p')
-		return (ft_p_conv(format, args));
-	if (format.type == 'd' || format.type == 'i')
-		return (ft_di_conv(format, args));
-	if (format.type == 'u')
-		return (ft_u_conv(format, args));
-	if (format.type == 'x' || format.type == 'X')
-		return (ft_xX_conv(format, args));
-	if (format.type == 'f' || format.type == 'e'||
-			format.type == 'g'||format.type == 'F'|| 
-			format.type == 'E' || format.type == 'G')
-		return (ft_floatpoint_conv(format, args));
-	if (format.type == 'n')
-		ft_n_conv(format, args, print_buf);
+	if (format->type == 'c')
+		return (ft_c_conv(format, args, (int)ft_strlen(print_buf)));
+	if (format->type == 's')
+		return (ft_s_conv(*format, args));
+	if (format->type == 'p')
+		return (ft_p_conv(*format, args));
+	if (format->type == 'd' || format->type == 'i')
+		return (ft_di_conv(*format, args));
+	if (format->type == 'u')
+		return (ft_u_conv(*format, args));
+	if (format->type == 'x' || format->type == 'X')
+		return (ft_xX_conv(*format, args));
+	if (format->type == 'f' || format->type == 'e'||
+			format->type == 'g'||format->type == 'F'|| 
+			format->type == 'E' || format->type == 'G')
+		return (ft_floatpoint_conv(*format, args));
+	if (format->type == 'n')
+		ft_n_conv(*format, args, print_buf);
 	return (0);
 }
 
-void	ft_formater(const char **s, char **print_buf, va_list args)
+void	ft_formater(const char **s, char **print_buf, va_list args, int **c_nulls)
 {
 	char		*format_info;
 	char		*format_aux;
@@ -78,23 +78,24 @@ void	ft_formater(const char **s, char **print_buf, va_list args)
 	ft_classify_format(format_info, &format, args);
 
 	//3 -> get values and pre-process
-	format_aux = ft_pre_format(args, format, *print_buf);
+	format_aux = ft_pre_format(args, &format, *print_buf);
 
 	//4 -> apply post-process flags
-	format_aux = ft_post_format(format_aux, format);
+	format_aux = ft_post_format(format_aux, &format);
 	
 	//5 -> copy to buf and forward string
 	*print_buf = ft_strjoin(*print_buf, format_aux);
 	*s = *s + ft_strlen(format_info) - 1;
+	*c_nulls = format.print_l;
+	//printf("c_null[0]:%d\n", (*c_nulls)[0]);
 }
 
 int		ft_printf(const char *s, ...)
 {
 	char	*print_buf;
+	int		*c_nulls;
 	va_list	args;
-	int 	l;
 
-	l = 0;
 	va_start(args, s);
 	if (!(print_buf = malloc(1)))
 		return (0);
@@ -102,16 +103,11 @@ int		ft_printf(const char *s, ...)
 	while(*s)
 	{
 		if (*s == '%' && (*s + 1) != '%')
-			ft_formater(&s, &print_buf, args);
+			ft_formater(&s, &print_buf, args, &c_nulls);
 		else
-		{
 			print_buf = ft_strjoin(print_buf, ft_string_to_char((char *)s));
-			write(1, s, 1);
-			l++;
-		}
 		s++;
 	}
 	va_end(args);
-	ft_putstr_fd(print_buf, 1);
-	return (ft_strlen(print_buf));
+	return (ft_putstr_len(print_buf, 1, c_nulls));
 }

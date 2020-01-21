@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 19:27:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:29:52 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 /*
 ** <<c>> type conversion
 */
-char	*ft_c_conv(t_format format, va_list args)
+char	*ft_c_conv(t_format *format, va_list args, int pos)
 {
-	char *aux;
+	char	*aux;
+	int 	*pos_zero;
 	(void)format;
 
 	if (!(aux = malloc(2 * sizeof(char))))
@@ -26,7 +27,13 @@ char	*ft_c_conv(t_format format, va_list args)
 	*(aux + 1) = '\0';
 	if (*aux == '\0')
 	{
+		if (!(pos_zero = malloc(2 * sizeof(int))))
+			return (NULL);
 		*aux = 1;
+		pos_zero[0] = pos;
+		format->last_pos = pos;
+		pos_zero[1] = -1;
+		format->print_l = ft_intjoin(format->print_l, pos_zero);
 	}
 	return (aux);
 }
