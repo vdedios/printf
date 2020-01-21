@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/16 11:47:34 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/21 13:10:54 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS	=	 -Werror -Wall -Wextra
 
 AR	=	 ar -rcs
 
-SRC	=	 ft_atoi.c 			\
+SRC	=	 	ft_atoi.c 			\
 			 ft_atoi_free.c 	\
 			 ft_bzero.c 		\
 			 ft_calloc.c 		\
@@ -75,19 +75,19 @@ OBJ_BONUS=	$(BONUS:%.c=%.o)
 all	:	$(NAME)
 
 $(NAME)	: 	$(OBJS) libft.h
-	$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
 
 %.o	:	%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I.
+	@$(CC) $(CFLAGS) -c $< -o $@ -I.
 
 bonus	:	$(OBJS) $(OBJ_BONUS) libft.h
-	$(AR) $(NAME) $(OBJ_BONUS) $(OBJS)
+	@$(AR) $(NAME) $(OBJ_BONUS) $(OBJS)
 
 clean	:
-	rm -rf $(OBJS) $(OBJ_BONUS)
+	@rm -rf $(OBJS) $(OBJ_BONUS)
 
 fclean	: 	clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re	:	fclean all
 
