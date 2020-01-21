@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/21 13:25:08 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/21 13:30:28 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,10 +54,10 @@ OBJ_BONUS=	$(BONUS:%.c=%.o)
 all	:	$(NAME)
 
 $(NAME)	: 	$(OBJS) printf.h
-		@echo Loading libft ⏳...
+		@echo Loading libft ...⏳
 		@make -C $(LIB_DIR)
 		@cp $(LIB_DIR)$(LIBFT) ./$(NAME)
-		@echo buildind everyhing 🔨...
+		@echo buildind everyhing ...🔨
 		@$(AR) $(NAME) $(OBJS)
 		@echo done, like a boss 😎
 
@@ -68,14 +68,15 @@ bonus	:	$(OBJS) $(OBJ_BONUS) printf.h
 	@$(AR) $(NAME) $(OBJ_BONUS) $(OBJS)
 
 clean	:
-	@echo Cleaning 🧻 
+	@echo Cleaning ...🧼
 	@@@rm -rf $(OBJS) $(OBJ_BONUS)
 	@make -C $(LIB_DIR) clean
+	@echo everything cleaned and shiny 🗑
 
 fclean	: 	clean
 	@rm -rf $(NAME)
 
 re	:	fclean all
-	@echo You can go now to the stars 🚀
+	@echo Now you can reach the stars 🚀
 
 .PHONY: clean fclean all re bonus
