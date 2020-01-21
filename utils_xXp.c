@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:17:43 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 19:09:54 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 16:25:51 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void					ft_print_hex(char *hex, long long int num, char uplow)
 
 	i = 0;
 	j = 0;
-	while (!(num & (LONG_MASK >> i)))
+	while (!(num & (LONG_MASK >> i)) && (i < 64))
 		i += 4;
+	if (i >= 64)
+		hex[j] = '0';
+	j++;
 	while ( i < 64)
 	{
 		hex[j] = (num & (LONG_MASK >> i)) >> (60 - i);

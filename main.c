@@ -6,15 +6,16 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 11:35:07 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 19:49:44 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include <locale.h>
 
 int main(void)
 {
+	ft_printf(" hola que tal tengo %d años\n", 3);
+	/*
 	char	*str = "manuel";
 	char	c = 'm';
 	int		d = 1;
@@ -80,4 +81,5 @@ int main(void)
 	printf("%d\n", cc);
 	printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
 	printf("%d\n", cc);
+	*/
 }

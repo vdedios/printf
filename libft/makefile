@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/21 13:10:54 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/21 17:20:58 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC	=	 	ft_atoi.c 			\
 			 ft_putendl_fd.c 	\
 			 ft_putnbr_fd.c 	\
 			 ft_putstr_fd.c 	\
+			 ft_putstr_len.c 	\
 			 ft_split.c 		\
 			 ft_strchr.c 		\
 			 ft_strdup.c 		\

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 11:31:20 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 19:27:34 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ char	*ft_c_conv(t_format format, va_list args)
 	char *aux;
 	(void)format;
 
-	if (!(aux = malloc(sizeof(char))))
+	if (!(aux = malloc(2 * sizeof(char))))
 		return (NULL);
-	//1º gestión de error
-	//2º conversión de tipo
 	*aux = va_arg(args, int);
+	*(aux + 1) = '\0';
+	if (*aux == '\0')
+	{
+		*aux = 1;
+	}
 	return (aux);
 }
 

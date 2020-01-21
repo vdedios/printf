@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 11:32:35 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 19:49:32 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_pre_format(va_list args, t_format format, char *print_buf)
 	return (0);
 }
 
-char	*ft_formater(const char **s, char **print_buf, va_list args)
+void	ft_formater(const char **s, char **print_buf, va_list args)
 {
 	char		*format_info;
 	char		*format_aux;
@@ -86,14 +86,15 @@ char	*ft_formater(const char **s, char **print_buf, va_list args)
 	//5 -> copy to buf and forward string
 	*print_buf = ft_strjoin(*print_buf, format_aux);
 	*s = *s + ft_strlen(format_info) - 1;
-	return (0);
 }
 
 int		ft_printf(const char *s, ...)
 {
 	char	*print_buf;
 	va_list	args;
+	int 	l;
 
+	l = 0;
 	va_start(args, s);
 	if (!(print_buf = malloc(1)))
 		return (0);
@@ -103,10 +104,14 @@ int		ft_printf(const char *s, ...)
 		if (*s == '%' && (*s + 1) != '%')
 			ft_formater(&s, &print_buf, args);
 		else
-		print_buf = ft_strjoin(print_buf, ft_string_to_char((char *)s));
+		{
+			print_buf = ft_strjoin(print_buf, ft_string_to_char((char *)s));
+			write(1, s, 1);
+			l++;
+		}
 		s++;
 	}
 	va_end(args);
 	ft_putstr_fd(print_buf, 1);
-	return (ft_strlen(NULL));
+	return (ft_strlen(print_buf));
 }

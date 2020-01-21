@@ -1,3 +1,6 @@
+#Test folders and files
+pft
+
 #Vim files
 *.swp
 *.swo
@@ -54,3 +57,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+pft_2019/
