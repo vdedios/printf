@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:07:37 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 15:11:19 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:29:05 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int 	ft_check_number(char *format_info, int *i, va_list args, t_format *format)
 	return (ft_atoi(num));
 }
 
-char	ft_check_lenght(char *format_info, int *i)
+char	ft_check_length(char *format_info, int *i)
 {
 	if (format_info[*i + 1] == 'l')
 	{
@@ -103,7 +103,7 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 		format->precision = ft_check_number(format_info, &i, args, format);
 	}
 	if (format_info[i] == 'h' ||format_info[i] == 'l')
-		format->lenght = ft_check_lenght(format_info, &i);
+		format->length = ft_check_length(format_info, &i);
 	format->type = format_info[i];
 	if (!format->precision && (format->type == 'f' || format->type == 'e' || format->type == 'g'))
 	format->precision = 6;

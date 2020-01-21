@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 15:07:29 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:41:02 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct 	s_format
 	int			width;//OK
 	int			precision;//OK
 	int			float_precision;//OK
-	char		lenght;
+	char		length;
 	char		type;//OK
 }				t_format;
 
@@ -108,7 +108,7 @@ char					*ft_float_str(float num, t_format format);
 */
 short					ft_check_flags(t_format *format, char set);
 int						ft_check_number(char *format_info, int *i, va_list args, t_format *format);
-char					ft_check_lenght(char *format_info, int *i);
+char					ft_check_length(char *format_info, int *i);
 void					ft_classify_format(char *format_info, t_format *format, va_list args);
 
 /*

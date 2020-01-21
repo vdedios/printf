@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 15:11:12 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:35:07 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int main(void)
 {
-	/*
 	char	*str = "manuel";
 	char	c = 'm';
 	int		d = 1;
@@ -23,13 +22,11 @@ int main(void)
 	long int	dir2;
 	int		neg = -43;
 	int		pos = 32423;
-	*/
 
 	// %s y %c
-	printf("O:%5.500s\n", "yo soy manolo del bombo");
-	ft_printf("R:%5.500s\n", "yo soy manolo del bombo");
+	printf("O:%5.5s\n", "yo soy manolo del bombo");
+	ft_printf("R:%5.5s\n", "yo soy manolo del bombo");
 
-	/*
 	// %d, %p
 	dir2 = (long int)str;	
 	printf("OG printf %p, %ld, %x\n", str, dir2, 30);
@@ -81,7 +78,6 @@ int main(void)
 
 	ft_printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
 	printf("%d\n", cc);
-	printf("aadeberias %g escrib%nir 33 caracteres:", pi_l, &cc);	
+	printf("aadeberias %g escribir 33 caracteres: %n", pi_l, &cc);	
 	printf("%d\n", cc);
-	*/
 }

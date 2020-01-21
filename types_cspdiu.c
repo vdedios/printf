@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 10:57:08 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:31:20 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,17 @@ char	*ft_p_conv(t_format format, va_list args)
 */
 char	*ft_di_conv(t_format format, va_list args)
 {
-	int		num;
+	long long	int		num;
 	(void)format;
 
 	//1º gestión de error
 	//2º conversión de tipo
-	num = va_arg(args, int);
+	if (format.length == 'l')
+		num = va_arg(args, long int);
+	else if (format.length == 'L')
+		num = va_arg(args, long long int);
+	else
+		num = va_arg(args, int);
 	if (format.precision)
 		return (ft_precision(format, ft_itoa(num)));
 	return (ft_itoa(num));
@@ -97,13 +102,18 @@ char	*ft_di_conv(t_format format, va_list args)
 */
 char	*ft_u_conv(t_format format, va_list args)
 {
-	long int	num;
+	long long int	num;
 	(void)format;
 
 	//1º gestión de error
 	//2º conversión de tipo
-	num = va_arg(args, int);
-	if (num < 0)	
+	if (format.length == 'l')
+		num = va_arg(args, long int);
+	else if (format.length == 'L')
+		num = va_arg(args, long long int);
+	else
+		num = va_arg(args, int);
+	if (num < 0)
 		num = num + 4294967296;
 	if (format.precision)
 		return (ft_precision(format, ft_itoa(num)));

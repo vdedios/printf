@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 11:01:40 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:33:59 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,29 @@
 /*
 ** <<xX>> type conversion
 */
-char	*ft_xX_conv(t_format format, va_list args)
+long long	ft_xX_values(t_format format, va_list args) 
 {
-	long int	num;
-	int 		s;
-	int 		aux;
-	char		*hex;
+	long long num;
+
+	if (format.length == 'l')
+		num = va_arg(args, long int);
+	else if (format.length == 'L')
+		num = va_arg(args, long long int);
+	else
+		num = va_arg(args, int);
+	return (num);
+}
+
+char		*ft_xX_conv(t_format format, va_list args)
+{
+	long long int	num;
+	int 			s;
+	int 			aux;
+	char			*hex;
 
 	s = 0;
 	aux = 0;
-	num = va_arg(args, long int);
+	num = ft_xX_values(format, args);
 	while (aux)
 	{
 		aux = aux / 10;
@@ -41,7 +54,7 @@ char	*ft_xX_conv(t_format format, va_list args)
 /*
 ** <<f>> <<e>> <<g>> type conversion
 */
-char	*ft_floatpoint_conv(t_format format, va_list args)
+char		*ft_floatpoint_conv(t_format format, va_list args)
 {
 	double				num;
 	int					exp;
@@ -68,7 +81,7 @@ char	*ft_floatpoint_conv(t_format format, va_list args)
 /*
 ** <<n>> type conversion
 */
-void	ft_n_conv(t_format format, va_list args, char *printf_buf)
+void		ft_n_conv(t_format format, va_list args, char *printf_buf)
 {
 	long int	dir;
 	int			*num;

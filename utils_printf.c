@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 15:11:36 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:29:32 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_initialize_format(t_format *format)
 	format->width = 0;
 	format->precision = 0;
 	format->float_precision = 0;
-	format->lenght = '\0';
+	format->length = '\0';
 	format->type = '\0';
 }
 
@@ -54,7 +54,7 @@ char	*ft_post_format(char *format_aux, t_format format)
 	if (format.flags->plus && format.flags->zero)
 		format_aux = ft_plus(format_aux, format);
 	return (format_aux);
-	//else if (format.lenght)
+	//else if (format.length)
 }
 
 /*
@@ -99,7 +99,7 @@ int 	ft_check_number(char *format_info, int *i, va_list args)
 	return (ft_atoi_free(num));
 }
 
-char	ft_check_lenght(char *format_info, int *i)
+char	ft_check_length(char *format_info, int *i)
 {
 	if (format_info[*i + 1] == 'l')
 	{
@@ -136,7 +136,7 @@ void	ft_classify_format(char *format_info, t_format *format, va_list args)
 		format->precision = ft_check_number(format_info, &i, args);
 	}
 	if (format_info[i] == 'h' ||format_info[i] == 'l')
-		format->lenght = ft_check_lenght(format_info, &i);
+		format->length = ft_check_length(format_info, &i);
 	format->type = format_info[i];
 }
 */
