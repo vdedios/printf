@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 04:52:35 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:23:12 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int		ft_printf(const char *s, ...)
 	if (!(print_buf = malloc(1)))
 		return (0);
 	*print_buf = 0;	
+	c_nulls = 0;	
 	while(*s)
 	{
 		if (*s == '%')
