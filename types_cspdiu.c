@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 02:41:00 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 03:06:41 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*ft_p_conv(t_format format, va_list args)
  */
 char	*ft_di_conv(t_format format, va_list args)
 {
-	long long	int		num;
+	long long int		num;
 	(void)format;
 
 	//1º gestión de error

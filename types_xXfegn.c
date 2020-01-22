@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 22:53:25 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 02:56:28 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 */
 long long	ft_xX_values(t_format format, va_list args) 
 {
-	long long num;
+	long long int 	num;
 
 	if (format.length == 'l')
 		num = va_arg(args, long int);
 	else if (format.length == 'L')
 		num = va_arg(args, long long int);
 	else
-		num = va_arg(args, int);
+		num = va_arg(args, unsigned int);
 	return (num);
 }
 
@@ -46,8 +46,10 @@ char		*ft_xX_conv(t_format format, va_list args)
 	if (!(hex = malloc(s * sizeof(char))))
 		return (NULL);
 	ft_print_hex(hex, num, format.type);
-	if (format.precision != -1)
+	if (format.precision)
 		return (ft_precision(format, hex));
+	else if (!format.precision && !num)
+		return (ft_strjoin_none(NULL, NULL));
 	return (hex);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 01:44:07 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 04:52:35 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ char	*ft_extract_format(const char *s)
 			l++;
 		}
 	}
-	return (ft_substr(s, 0, l + 1));
+	if (l < (int)ft_strlen(s))
+		return (ft_substr(s, 0, l + 1));
+	return (NULL);
 }
 
 char	*ft_pre_format(va_list args, t_format *format, char *print_buf)
@@ -87,7 +89,10 @@ void	ft_formater(const char **s, char **print_buf, va_list args, int **c_nulls)
 	
 	//5 -> copy to buf and forward string
 	*print_buf = ft_strjoin(*print_buf, format_aux);
-	*s = *s + ft_strlen(format_info) - 1;
+	if (format_info)
+		*s = *s + ft_strlen(format_info) - 1;
+	else
+		*s = *s + ft_strlen(*s) - 1;
 	*c_nulls = format.print_l;
 	//printf("c_null[0]:%d\n", (*c_nulls)[0]);
 }
