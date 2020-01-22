@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 11:33:59 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:53:25 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char		*ft_xX_conv(t_format format, va_list args)
 	if (!(hex = malloc(s * sizeof(char))))
 		return (NULL);
 	ft_print_hex(hex, num, format.type);
-	if (format.precision)
+	if (format.precision != -1)
 		return (ft_precision(format, hex));
 	return (hex);
 }
@@ -63,6 +63,8 @@ char		*ft_floatpoint_conv(t_format format, va_list args)
 	exp = 0;
 	num = va_arg(args, double);
 	aux = *((unsigned long long int *)&num);
+	if (format.precision == -1)
+		format.precision = 6;
 	if (aux >= INF && aux < NAN)
 		return (ft_strjoin_none("inf", 0));
 	else if (aux >= NAN && aux < MINF)

@@ -6,15 +6,15 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 22:29:52 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 02:41:00 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
 /*
-** <<c>> type conversion
-*/
+ ** <<c>> type conversion
+ */
 char	*ft_c_conv(t_format *format, va_list args, int pos)
 {
 	char	*aux;
@@ -39,30 +39,26 @@ char	*ft_c_conv(t_format *format, va_list args, int pos)
 }
 
 /*
-** <<s>> type conversion
-*/
+ ** <<s>> type conversion
+ */
 char	*ft_s_conv(t_format format, va_list args)
 {
 	char	*aux;
-	char	*aux2;
-	int		l;
 	(void)format;
 
 	aux = va_arg(args, char *);
-	l = ft_strlen(aux);
-	if (!(aux2 = malloc(l * sizeof(char) + 1)))
-		return (NULL);
-	while (*aux)
-		*aux2++ = *aux++;
-	*aux2 = '\0';
-	if (format.precision)
-		return (ft_precision(format, aux2 - l));
-	return (aux2 - l);
+	if (aux)
+		aux = ft_strjoin_none(aux, NULL);
+	else
+		aux = ft_strjoin_none("(null)", NULL);
+	if (format.precision != -1)
+		return (ft_precision(format, aux));
+	return (aux);
 }
 
 /*
-** <<p>> type conversion
-*/
+ ** <<p>> type conversion
+ */
 char	*ft_p_conv(t_format format, va_list args)
 {
 	long int	dir;
@@ -72,6 +68,7 @@ char	*ft_p_conv(t_format format, va_list args)
 	(void)format;
 
 	size = 0;
+	//va_arg(unsigned long int)
 	dir = (long int)va_arg(args, char *);
 	aux = dir;
 	while (aux)
@@ -82,13 +79,15 @@ char	*ft_p_conv(t_format format, va_list args)
 	if (!(hex = malloc(size * sizeof(char))))
 		return (NULL);
 	ft_print_hex(hex, dir, 'x');
+	if (format.precision != -1)
+		return (ft_strjoin_second("0x", ft_precision(format, hex)));
 	hex = ft_strjoin_second("0x", hex);
 	return (hex);
 }
 
 /*
-** <<d/i>> type conversion
-*/
+ ** <<d/i>> type conversion
+ */
 char	*ft_di_conv(t_format format, va_list args)
 {
 	long long	int		num;
@@ -104,12 +103,14 @@ char	*ft_di_conv(t_format format, va_list args)
 		num = va_arg(args, int);
 	if (format.precision)
 		return (ft_precision(format, ft_itoa(num)));
+	else if (!format.precision && !num)
+		return (ft_strjoin_none(NULL, NULL));
 	return (ft_itoa(num));
 }
 
 /*
-** <<u>> type conversion
-*/
+ ** <<u>> type conversion
+ */
 char	*ft_u_conv(t_format format, va_list args)
 {
 	long long int	num;
@@ -127,5 +128,7 @@ char	*ft_u_conv(t_format format, va_list args)
 		num = num + 4294967296;
 	if (format.precision)
 		return (ft_precision(format, ft_itoa(num)));
+	else if (!format.precision && !num)
+		return (ft_strjoin_none(NULL, NULL));
 	return (ft_itoa(num));
 }

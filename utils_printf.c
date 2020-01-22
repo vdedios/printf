@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 22:36:41 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 23:29:46 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_initialize_format(t_format *format)
 	format->flags->zero = 0;
 	format->flags->apostrophe = NULL;
 	format->width = 0;
-	format->precision = 0;
+	format->precision = -1;
 	format->float_precision = 0;
 	format->length = '\0';
 	format->type = '\0';

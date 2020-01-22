@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 19:35:10 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:51:34 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char					*ft_float_str(float num, t_format format)
 	{
 		i_num = ft_rounding(i_num, f_num, num, format.precision);
 		i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
-		//# que no quite punto, comprobar
 		if (format.flags->hash)
 			i_str = ft_strjoin_first(i_str, ".");
 		return (i_str);

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 22:37:42 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 02:35:48 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int main(void)
 {
-	ft_printf("%.s", "hola manola");
+	//ft_printf("F:%8.90x\n", 1123);
+	ft_printf("%05%\n");
+	printf("%05%");
 	/*
 	char	*str = "manuel";
 	char	c = 'm';

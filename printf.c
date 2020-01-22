@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 21:59:10 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 01:44:07 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_extract_format(const char *s)
 	int		l_types;
 	char	*types;
 
-	l = 0;
-	types = "cspdiuxXnfgeFGE";
+	l = 1;
+	types = "cspdiuxXnfgeFGE%";
 	l_types = ft_strlen(types);
 	while (s[l] != *types++ && s[l])
 	{
@@ -56,6 +56,8 @@ char	*ft_pre_format(va_list args, t_format *format, char *print_buf)
 		return (ft_floatpoint_conv(*format, args));
 	if (format->type == 'n')
 		ft_n_conv(*format, args, print_buf);
+	if (format->type == '%')
+		return (ft_strjoin_none("%", NULL));
 	return (0);
 }
 
@@ -102,8 +104,10 @@ int		ft_printf(const char *s, ...)
 	*print_buf = 0;	
 	while(*s)
 	{
-		if (*s == '%' && (*s + 1) != '%')
+		if (*s == '%')
+		{
 			ft_formater(&s, &print_buf, args, &c_nulls);
+		}
 		else
 			print_buf = ft_strjoin(print_buf, ft_string_to_char((char *)s));
 		s++;

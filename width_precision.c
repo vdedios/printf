@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 22:12:38 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 02:38:26 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,24 @@ char	*ft_trim_string(char *str, int pos)
 
 char	*ft_width(t_format *format, char *str)
 {
-	if (!*str)
-		format->width = format->width - 1;
-	else 
-		format->width = format->width - ft_strlen(str);
-	if (format->flags->zero && !format->flags->minus)
-		return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
-	else if (format->flags->minus)
+	if (format->flags->zero && !format->flags->minus 
+			&& format->precision == -1)
+	{
+			if (format->width > (int)ft_strlen(str))
+			{
+				if (str[0] == '-')
+				{
+					str[0] = '0';
+					format->width = format->width - ft_strlen(str) - 1;
+					str = ft_strjoin(ft_set_spaces(format->width, '0'), str);
+					return (ft_strjoin_second("-", str));
+				}
+				format->width = format->width - ft_strlen(str);
+				return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
+			}
+	}
+	format->width = format->width - ft_strlen(str);
+	if (format->flags->minus)
 		return (ft_strjoin(str, ft_set_spaces(format->width, ' ')));
 	else 
 		return (ft_strjoin(ft_set_spaces(format->width, ' '), str));
@@ -68,19 +79,24 @@ char	*ft_precision(t_format format, char *str)
 {
 	if (format.type == 'd' || format.type == 'i' ||
 			format.type == 'u' ||format.type == 'x'
-			|| format.type == 'X')
+			|| format.type == 'X' || (format.type == 'p' 
+				&& format.precision))
 	{
-		if (str[0] == '-')
+		if (format.precision > (int)ft_strlen(str))
 		{
-			str[0] = '0';
+			if (str[0] == '-')
+			{
+				str[0] = '0';
+				format.precision = format.precision - ft_strlen(str);
+				str = ft_strjoin(ft_set_spaces(format.precision, '0'), str);
+				return (ft_strjoin_second("-", str));
+			}
 			format.precision = format.precision - ft_strlen(str);
-			str = ft_strjoin(ft_set_spaces(format.precision, '0'), str);
-			return (ft_strjoin_second("-", str));
+			return (ft_strjoin(ft_set_spaces(format.precision, '0'), str));
 		}
-		format.precision = format.precision - ft_strlen(str);
-		return (ft_strjoin(ft_set_spaces(format.precision, '0'), str));
+		return (str);
 	}
-	else if (format.type == 's')
+	else if (format.type == 's' || format.type == 'p')
 		return (ft_trim_string(str, format.precision));
 	return (0);
 }
