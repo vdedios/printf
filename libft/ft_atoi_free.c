@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 16:27:18 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/16 15:49:01 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:23:48 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			ft_atoi_free(char *str)
 		nbr = (nbr * 10) + (*str - '0');
 		str++;
 	}
-	free (str - l);
+	free(str - l);
 	str = NULL;
 	return (nbr * sign);
 }

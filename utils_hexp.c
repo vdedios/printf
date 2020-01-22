@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 15:17:43 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 02:46:00 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/22 17:18:40 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/22 17:27:17 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Decimal to hex conversion applying bit shift
 */
+
 void					ft_print_hex(char *hex, long long int num, char uplow)
 {
 	int			i;
@@ -29,7 +30,7 @@ void					ft_print_hex(char *hex, long long int num, char uplow)
 		hex[j] = '0';
 		j++;
 	}
-	while ( i < 64)
+	while (i < 64)
 	{
 		hex[j] = (num & (LONG_MASK >> i)) >> (60 - i);
 		if (hex[j] > 9)

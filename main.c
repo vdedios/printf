@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 13:16:31 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:27:47 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int main(void)
 {
-	int n1;
 	//ft_printf("F:%8.90x\n", 1123);
 	//printf("%x", 4294967295u);
 	//ft_printf("%1$");
-	n1 = ft_printf("hello, world!");
+	ft_printf("%f", -1.5);
+	printf("%f", -1.5);
 	//n2 = printf("Ohello, world!");
-	printf("n1:%d\n", n1);
 	//ft_printf("F:'%s'", "hello");
 	/*
 	char	*str = "manuel";

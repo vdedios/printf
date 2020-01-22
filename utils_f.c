@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/21 22:51:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:16:41 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double					ft_ten_power(int p)
 {
 	double	t;
 	int		i;
-	
+
 	t = 1;
 	i = 0;
 	if (p < 0)
@@ -32,18 +32,17 @@ double					ft_ten_power(int p)
 }
 
 unsigned long long		ft_rounding(unsigned long long i_num,
-							unsigned long long f_num, float num, int precision)
+		unsigned long long f_num, float num, int precision)
 {
 	if (precision <= 0)
 	{
 		if (i_num + 0.5 <= num)
-			i_num = i_num + 1;	
+			i_num = i_num + 1;
 		return (i_num);
 	}
 	if (f_num + 0.5 <= (num - i_num) * ft_ten_power(precision))
-		f_num = f_num + 1;	
+		f_num = f_num + 1;
 	return (f_num);
-
 }
 
 char					*ft_add_zeroes(char *f_str, int precision)
@@ -53,26 +52,32 @@ char					*ft_add_zeroes(char *f_str, int precision)
 
 	decimals = 0;
 	i = ft_strlen(f_str);
-	while (decimals++ < precision - (int)i) 
+	while (decimals++ < precision - (int)i)
 		f_str = ft_strjoin_second("0", f_str);
 	return (f_str);
 }
 
-char					*ft_float_str(float num, t_format format)
+static char				*ft_check_neg(double *num)
+{
+	if (num < 0)
+	{
+		*num = -(*num);
+		return ("-");
+	}
+	return (0);
+}
+
+char					*ft_float_str(double num, t_format format)
 {
 	unsigned long long	i_num;
 	unsigned long long	f_num;
 	char				*f_str;
 	char				*i_str;
 
-	i_str = 0;
-	if (num < 0)
-	{
-		num = - num;
-		i_str = "-";
-	}
+	i_str = ft_check_neg(&num);
 	i_num = (num);
-	f_num = num *  ft_ten_power(format.precision) - i_num * ft_ten_power(format.precision);
+	f_num = num * ft_ten_power(format.precision) -
+		i_num * ft_ten_power(format.precision);
 	if (format.precision <= 0)
 	{
 		i_num = ft_rounding(i_num, f_num, num, format.precision);

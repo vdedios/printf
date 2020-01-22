@@ -6,21 +6,22 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 03:06:41 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:51:47 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
 /*
- ** <<c>> type conversion
- */
+** <<c>> type conversion
+*/
+
 char	*ft_c_conv(t_format *format, va_list args, int pos)
 {
 	char	*aux;
-	int 	*pos_zero;
-	(void)format;
+	int		*pos_zero;
 
+	(void)format;
 	if (!(aux = malloc(2 * sizeof(char))))
 		return (NULL);
 	*aux = va_arg(args, int);
@@ -39,13 +40,14 @@ char	*ft_c_conv(t_format *format, va_list args, int pos)
 }
 
 /*
- ** <<s>> type conversion
- */
+** <<s>> type conversion
+*/
+
 char	*ft_s_conv(t_format format, va_list args)
 {
 	char	*aux;
-	(void)format;
 
+	(void)format;
 	aux = va_arg(args, char *);
 	if (aux)
 		aux = ft_strjoin_none(aux, NULL);
@@ -57,18 +59,18 @@ char	*ft_s_conv(t_format format, va_list args)
 }
 
 /*
- ** <<p>> type conversion
- */
+** <<p>> type conversion
+*/
+
 char	*ft_p_conv(t_format format, va_list args)
 {
 	long int	dir;
 	long int	aux;
-	int 		size;
+	int			size;
 	char		*hex;
-	(void)format;
 
+	(void)format;
 	size = 0;
-	//va_arg(unsigned long int)
 	dir = (long int)va_arg(args, char *);
 	aux = dir;
 	while (aux)
@@ -86,15 +88,14 @@ char	*ft_p_conv(t_format format, va_list args)
 }
 
 /*
- ** <<d/i>> type conversion
- */
+** <<d/i>> type conversion
+*/
+
 char	*ft_di_conv(t_format format, va_list args)
 {
 	long long int		num;
-	(void)format;
 
-	//1º gestión de error
-	//2º conversión de tipo
+	(void)format;
 	if (format.length == 'l')
 		num = va_arg(args, long int);
 	else if (format.length == 'L')
@@ -109,15 +110,14 @@ char	*ft_di_conv(t_format format, va_list args)
 }
 
 /*
- ** <<u>> type conversion
- */
+** <<u>> type conversion
+*/
+
 char	*ft_u_conv(t_format format, va_list args)
 {
 	long long int	num;
-	(void)format;
 
-	//1º gestión de error
-	//2º conversión de tipo
+	(void)format;
 	if (format.length == 'l')
 		num = va_arg(args, long int);
 	else if (format.length == 'L')

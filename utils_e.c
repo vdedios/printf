@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:17:00 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/18 17:09:09 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:00:42 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int					ft_count_figures(long long int num)
 {
 	int d;
-	
+
 	d = 0;
-	while (num)		
+	while (num)
 	{
 		num = num / 10;
 		d++;
@@ -27,9 +27,9 @@ int					ft_count_figures(long long int num)
 
 unsigned long long	ft_get_integer(double num, char type)
 {
-	unsigned long long	i_num; 
+	unsigned long long	i_num;
 	int					i;
-	
+
 	i = 0;
 	if (*((long long int *)&num) == 0)
 		return (0);
@@ -39,23 +39,23 @@ unsigned long long	ft_get_integer(double num, char type)
 		if (ft_count_figures(i_num) < 1)
 		{
 			i++;
-			i_num = (long long int)(num * ft_ten_power(i));	
+			i_num = (long long int)(num * ft_ten_power(i));
 		}
-		else 
+		else
 		{
 			i--;
-			i_num = (long long int)num * ft_ten_power(i);	
+			i_num = (long long int)num * ft_ten_power(i);
 		}
 	}
 	if (type == 'i')
 		return (i_num);
-	else 
+	else
 		return (i);
 }
 
 char				*ft_get_decimals(double num, int *exp, t_format format)
 {
-	int 				decimals;
+	int					decimals;
 	unsigned long long	f_num;
 	char				*f_str;
 
@@ -63,13 +63,16 @@ char				*ft_get_decimals(double num, int *exp, t_format format)
 	*exp = ft_get_integer(num, 'f');
 	if (format.precision == 0)
 		return (ft_strjoin_second("e", ft_itoa_special(-*exp)));
-	f_num =	num * ft_ten_power(format.precision + *exp) -
-		(unsigned long long)(num * ft_ten_power(*exp)) * ft_ten_power(format.precision);
-	if ((num * ft_ten_power(format.precision + *exp) - (long long int)(num * ft_ten_power(format.precision + *exp)) >= 0.5))
+	f_num = num * ft_ten_power(format.precision + *exp) -
+		(unsigned long long)(num * ft_ten_power(*exp)) *
+			ft_ten_power(format.precision);
+	if ((num * ft_ten_power(format.precision + *exp) -
+				(long long int)(num * ft_ten_power(format.precision + *exp))
+					>= 0.5))
 		f_num = f_num + 1;
 	f_str = ft_itoa(f_num);
 	f_num = (unsigned long long)ft_strlen(f_str);
-	while (decimals++ < format.precision - (int)f_num) 
+	while (decimals++ < format.precision - (int)f_num)
 		f_str = ft_strjoin_second("0", f_str);
 	if (format.type == 'E')
 		f_str = ft_strjoin_first(f_str, "E");
@@ -88,7 +91,7 @@ char				*ft_exp_str(double num, int *exp, t_format format)
 	i_str = 0;
 	if (num < 0)
 	{
-		num = - num;
+		num = -num;
 		i_str = "-";
 	}
 	i_num = ft_get_integer(num, 'i');

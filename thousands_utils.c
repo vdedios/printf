@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:51:47 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 15:30:29 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:47:23 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	ft_mix_strings(char *aux2, char *str, int i)
 	aux2[1] = str[i - 2];
 	aux2[2] = str[i - 1];
 	aux2[3] = '\0';
-}	
+}
 
 char	*ft_thousands_sep(char *str, t_format format)
 {
-	int 	i;
-	int 	new_size;
+	int		i;
+	int		new_size;
 	char	*aux1;
 	char	*aux2;
 
 	i = ft_strlen(str);
 	new_size = ft_strlen(str) + (int)(ft_strlen(str) / 3);
-	if (!(aux1 = malloc(new_size *sizeof(char) + 1)))
+	if (!(aux1 = malloc(new_size * sizeof(char) + 1)))
 		return (NULL);
 	if (!(aux2 = malloc(4 * sizeof(char))))
 		return (NULL);
@@ -41,7 +41,7 @@ char	*ft_thousands_sep(char *str, t_format format)
 		i -= 3;
 	}
 	aux2[i] = '\0';
-	while(i-- >= 0)
+	while (i-- >= 0)
 		aux2[i] = str[i];
 	aux1 = ft_strjoin(aux2, aux1);
 	free(format.flags->apostrophe);
@@ -49,11 +49,10 @@ char	*ft_thousands_sep(char *str, t_format format)
 	return (aux1);
 }
 
-
 void	ft_separate_float(int i, char *integer, char *decimal, char *str)
 {
-	int 	k;
-	int 	j;
+	int	k;
+	int	j;
 
 	k = -1;
 	j = 0;

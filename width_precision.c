@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 03:01:36 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:23:07 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 char	*ft_set_spaces(int num, char symbol)
 {
 	char	*spaces;
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (num > 0)
 	{
-		if(!(spaces = malloc(num * sizeof(char) + 1)))	
+		if (!(spaces = malloc(num * sizeof(char) + 1)))
 			return (NULL);
-		while (i < num)	
+		while (i < num)
 			spaces[i++] = symbol;
 		spaces[i] = '\0';
 		return (spaces);
@@ -45,41 +45,41 @@ char	*ft_trim_string(char *str, int pos)
 		i++;
 	}
 	trimmed[i] = '\0';
-	free (str);
+	free(str);
 	str = NULL;
 	return (trimmed);
 }
 
 char	*ft_width(t_format *format, char *str)
 {
-	if (format->flags->zero && !format->flags->minus 
+	if (format->flags->zero && !format->flags->minus
 			&& format->precision == -1)
 	{
-			if (format->width > (int)ft_strlen(str))
+		if (format->width > (int)ft_strlen(str))
+		{
+			if (str[0] == '-')
 			{
-				if (str[0] == '-')
-				{
-					str[0] = '0';
-					format->width = format->width - ft_strlen(str) - 1;
-					str = ft_strjoin(ft_set_spaces(format->width, '0'), str);
-					return (ft_strjoin_second("-", str));
-				}
-				format->width = format->width - ft_strlen(str);
-				return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
+				str[0] = '0';
+				format->width = format->width - ft_strlen(str) - 1;
+				str = ft_strjoin(ft_set_spaces(format->width, '0'), str);
+				return (ft_strjoin_second("-", str));
 			}
+			format->width = format->width - ft_strlen(str);
+			return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
+		}
 	}
 	format->width = format->width - ft_strlen(str);
 	if (format->flags->minus)
 		return (ft_strjoin(str, ft_set_spaces(format->width, ' ')));
-	else 
+	else
 		return (ft_strjoin(ft_set_spaces(format->width, ' '), str));
 }
 
 char	*ft_precision(t_format format, char *str)
 {
 	if (format.type == 'd' || format.type == 'i' ||
-			format.type == 'u' ||format.type == 'x'
-			|| format.type == 'X' || (format.type == 'p' 
+			format.type == 'u' || format.type == 'x'
+			|| format.type == 'X' || (format.type == 'p'
 				&& format.precision))
 	{
 		if (format.precision > (int)ft_strlen(str))
@@ -100,4 +100,3 @@ char	*ft_precision(t_format format, char *str)
 		return (ft_trim_string(str, format.precision));
 	return (0);
 }
-

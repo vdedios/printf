@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_utils.c                                     :+:      :+:    :+:   */
+/*   utils_printf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/21 13:51:26 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 03:04:31 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/22 17:17:04 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/22 17:17:43 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char 	*ft_string_to_char(char *s)
+char	*ft_string_to_char(char *s)
 {
 	char *aux;
 
 	if (!(aux = malloc(2 * sizeof(char))))
 		return (0);
 	*aux = *s;
-	*(aux + 1 ) = '\0';
+	*(aux + 1) = '\0';
 	return (aux);
 }
 
 void	ft_initialize_format(t_format *format)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	format->flags->zero = 0;

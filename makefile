@@ -6,11 +6,11 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/21 13:41:13 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/22 17:28:35 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	 libftprintf.a
+NAME	=	libftprintf.a
 LIBFT 	=	libft.a
 
 LIB_DIR 	= 	libft/
@@ -25,13 +25,13 @@ SRC	=		flags.c				\
 			printf.c			\
 			thousands_utils.c	\
 			types_cspdiu.c		\
-			types_xXfegn.c		\
+			types_hexfegn.c		\
 			utils_e.c			\
 			utils_f.c			\
 			utils_format.c		\
 			utils_g.c			\
 			utils_printf.c		\
-			utils_xXp.c			\
+			utils_hexp.c		\
 			width_precision.c	
 
 BONUS	=	flags_bonus.c			\

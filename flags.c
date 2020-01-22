@@ -6,13 +6,12 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:27:31 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/20 15:12:51 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:18:05 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-//la funcion que los llama es porque comprueba que existen
 char	*ft_plus(char *str, t_format format)
 {
 	(void)format;
@@ -42,12 +41,12 @@ char	*ft_apostrophe(char *str, t_format format)
 {
 	char	*decimal;
 	char	*integer;
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (format.type == 'd' || format.type == 'i' || format.type == 'u')
 		str = ft_thousands_sep(str, format);
-	if(format.type == 'f' || format.type == 'g')
+	if (format.type == 'f' || format.type == 'g')
 	{
 		while (str[i] != '.')
 			i++;
@@ -59,8 +58,8 @@ char	*ft_apostrophe(char *str, t_format format)
 				return (NULL);
 			ft_separate_float(i, integer, decimal, str);
 			integer = ft_thousands_sep(integer, format);
-			free (str);
-				str = NULL;
+			free(str);
+			str = NULL;
 			return (ft_strjoin(integer, decimal));
 		}
 	}

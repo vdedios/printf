@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types_xXfegn.c                                     :+:      :+:    :+:   */
+/*   types_hexfegn.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 15:16:41 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 02:56:28 by vde-dios         ###   ########.fr       */
+/*   Created: 2020/01/22 15:54:59 by vde-dios          #+#    #+#             */
+/*   Updated: 2020/01/22 15:56:55 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 /*
 ** <<xX>> type conversion
 */
-long long	ft_xX_values(t_format format, va_list args) 
+
+long long	ft_hex_values(t_format format, va_list args)
 {
-	long long int 	num;
+	long long int	num;
 
 	if (format.length == 'l')
 		num = va_arg(args, long int);
@@ -28,16 +29,16 @@ long long	ft_xX_values(t_format format, va_list args)
 	return (num);
 }
 
-char		*ft_xX_conv(t_format format, va_list args)
+char		*ft_hex_conv(t_format format, va_list args)
 {
 	long long int	num;
-	int 			s;
-	int 			aux;
+	int				s;
+	int				aux;
 	char			*hex;
 
 	s = 0;
 	aux = 0;
-	num = ft_xX_values(format, args);
+	num = ft_hex_values(format, args);
 	while (aux)
 	{
 		aux = aux / 10;
@@ -56,6 +57,7 @@ char		*ft_xX_conv(t_format format, va_list args)
 /*
 ** <<f>> <<e>> <<g>> type conversion
 */
+
 char		*ft_floatpoint_conv(t_format format, va_list args)
 {
 	double				num;
@@ -85,14 +87,14 @@ char		*ft_floatpoint_conv(t_format format, va_list args)
 /*
 ** <<n>> type conversion
 */
+
 void		ft_n_conv(t_format format, va_list args, char *printf_buf)
 {
 	long int	dir;
 	int			*num;
-	(void)format;
 
+	(void)format;
 	dir = (long int)va_arg(args, int *);
-	//dir = (long int)va_arg(args, char *);
 	num = (int *)dir;
 	*num = (int)ft_strlen(printf_buf);
 }
