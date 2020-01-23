@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 17:23:07 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:02:37 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ char	*ft_trim_string(char *str, int pos)
 char	*ft_width(t_format *format, char *str)
 {
 	if (format->flags->zero && !format->flags->minus
-			&& format->precision == -1)
+			&& (format->precision == -1 || format->type == 'f'
+				|| format->type == 'F' || format->type == 'e'
+				|| format->type == 'E' || format->type == 'g'
+				|| format->type == 'G'))
 	{
 		if (format->width > (int)ft_strlen(str))
 		{

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:54:59 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 15:56:55 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:52:41 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,33 @@ char		*ft_hex_conv(t_format format, va_list args)
 ** <<f>> <<e>> <<g>> type conversion
 */
 
+static char	*ft_check_specials(double num)
+{
+	unsigned long long	aux;
+
+	aux = *((unsigned long long int *)&num);
+	if (aux >= INF && aux < NAN)
+		return (ft_strjoin_none("inf", 0));
+	else if ((aux >= NAN && aux < NEGS) || aux > MINF)
+		return (ft_strjoin_none("nan", 0));
+	else if (aux == MINF)
+		return (ft_strjoin_none("-inf", 0));
+	return (NULL);
+}
+
 char		*ft_floatpoint_conv(t_format format, va_list args)
 {
 	double				num;
 	int					exp;
-	unsigned long long	aux;
+	char				*ret_spe;
 
 	exp = 0;
 	num = va_arg(args, double);
-	aux = *((unsigned long long int *)&num);
+	ret_spe = ft_check_specials(num);
+	if (ret_spe)
+		return (ret_spe);
 	if (format.precision == -1)
 		format.precision = 6;
-	if (aux >= INF && aux < NAN)
-		return (ft_strjoin_none("inf", 0));
-	else if (aux >= NAN && aux < MINF)
-		return (ft_strjoin_none("nan", 0));
-	else if (aux >= MINF)
-		return (ft_strjoin_none("-inf", 0));
 	if (format.type == 'f' || format.type == 'F')
 		return (ft_float_str(num, format));
 	else if (format.type == 'e' || format.type == 'E')

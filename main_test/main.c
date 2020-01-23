@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 19:39:23 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/23 12:41:41 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:02:14 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int main(void)
 {
+	printf("\n---------EXIT--------\n");
 	//ft_printf("F:%8.90x\n", 1123);
 	//printf("%x", 4294967295u);
 	//ft_printf("%1$");
-	ft_printf("%f", 1.5);
-	printf("%f", 1.5);
+	ft_printf("%010.f\n", 1.2);
+	printf("%010.f\n", 1.2);
 	//n2 = printf("Ohello, world!");
 	//ft_printf("F:'%s'", "hello");
 	/*

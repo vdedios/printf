@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 17:16:41 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:20:57 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char					*ft_add_zeroes(char *f_str, int precision)
 
 static char				*ft_check_neg(double *num)
 {
-	if (num < 0)
+	if (*num < 0)
 	{
 		*num = -(*num);
 		return ("-");
