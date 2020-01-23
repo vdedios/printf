@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/23 12:50:16 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/23 16:59:54 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ LIBFT 	=	libft.a
 LIB_DIR 	= 	libft/
 OBJ_DIR 	=	obj/
 SRC_DIR 	= 	src/
-BONUS_DIR 	= 	src_bonus/
 HEAD_DIR	=	header/
 
 CC	=	gcc
@@ -33,18 +32,15 @@ SRC_FILES	=		flags.c		\
 			utils_format.c		\
 			utils_printf.c		\
 			utils_hexp.c		\
-			width_precision.c	
-
-BONUS_FILES	=	thousands_utils_bonus.c		\
-			utils_e_bonus.c					\
-			utils_f_bonus.c					\
-			utils_g_bonus.c					\
+			width_precision.c	\
+			thousands_utils.c	\
+			utils_e.c			\
+			utils_f.c			\
+			utils_g.c
 
 OBJ_FILES	=	$(SRC_FILES:%.c=%.o)
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-OBJ_BONUS_FILES	=	$(BONUS_FILES:%.c=%.o)
-OBJ_BONUS = $(addprefix $(OBJ_DIR), $(OBJ_BONUS_FILES))
 
 all	:	$(OBJ_DIR) $(NAME)
 
@@ -63,13 +59,9 @@ $(NAME)	: 	$(OBJ_FILES)
 $(OBJ_FILES):
 		@$(CC) $(FLAGS) $(LFLAGS) -c -o $(OBJ_DIR)$@ $(SRC_DIR)$(@:%.o=%.c)
 
-$(OBJ_BONUS_FILES):
-		@$(CC) $(FLAGS) $(LFLAGS) -c -o $(OBJ_DIR)$@ $(BONUS_DIR)$(@:%.o=%.c)
 
-bonus	:	all $(OBJ_BONUS_FILES)
-	@echo buildind bonus functions ...🌟
-	@$(AR) $(NAME) $(OBJ_BONUS) $(OBJ)
-	@echo success!!🍾
+bonus	:	all
+	@echo you got the bonus!...🌟
 
 clean	:
 	@echo Cleaning ...🧼
