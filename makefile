@@ -6,7 +6,7 @@
 #    By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/03 14:19:32 by vde-dios          #+#    #+#              #
-#    Updated: 2020/01/23 12:31:44 by vde-dios         ###   ########.fr        #
+#    Updated: 2020/01/23 12:46:57 by vde-dios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ $(OBJ_DIR):
 $(NAME)	: 	$(OBJ_FILES)
 		@echo Loading libft ...⏳
 		@make -C $(LIB_DIR)
-		@cp $(LIB_DIR)$(LIBFT) .
+		@cp $(LIB_DIR)$(LIBFT) ./$(NAME)
 		@echo buildind basic functions ...🔨
 		@$(AR) $(NAME) $(OBJ)
 		@echo done, like a boss 😎
