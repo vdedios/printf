@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/23 16:02:37 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:40:33 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ char	*ft_precision(t_format format, char *str)
 			|| format.type == 'X' || (format.type == 'p'
 				&& format.precision))
 	{
-		if (format.precision > (int)ft_strlen(str))
+		if (format.precision > (int)ft_strlen(str) ||
+				(str[0] == '-' && format.precision >= (int)ft_strlen(str)))
 		{
 			if (str[0] == '-')
 			{
