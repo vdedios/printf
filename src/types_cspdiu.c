@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:16:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/30 14:52:34 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/02 20:05:46 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,20 +115,20 @@ char	*ft_di_conv(t_format format, va_list args)
 
 char	*ft_u_conv(t_format format, va_list args)
 {
-	long long int	num;
+	unsigned long long int	num;
 
 	(void)format;
 	if (format.length == 'l')
-		num = va_arg(args, long int);
+		num = va_arg(args, unsigned long int);
 	else if (format.length == 'L')
-		num = va_arg(args, long long int);
+		num = va_arg(args, unsigned long long int);
 	else
-		num = va_arg(args, int);
+		num = va_arg(args, unsigned int);
 	if (num < 0)
 		num = num + 4294967296;
 	if (format.precision)
-		return (ft_precision(format, ft_itoa(num)));
+		return (ft_precision(format, ft_uitoa(num)));
 	else if (!format.precision && !num)
 		return (ft_strjoin_none(NULL, NULL));
-	return (ft_itoa(num));
+	return (ft_uitoa(num));
 }
