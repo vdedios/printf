@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:17:04 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 17:17:43 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 18:24:29 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_string_to_char(char *s)
 	return (aux);
 }
 
-void	ft_initialize_format(t_format *format)
+void	ft_initialize_format(t_format *format, int **c_nulls)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ void	ft_initialize_format(t_format *format)
 	format->float_precision = 0;
 	format->length = '\0';
 	format->type = '\0';
-	format->print_l = NULL;
+	format->print_l = *c_nulls;
 	format->last_pos = -1;
 }
 
@@ -53,12 +53,14 @@ char	*ft_post_format(char *format_aux, t_format *format)
 		format_aux = ft_plus(format_aux, *format);
 	if (format->flags->space)
 		format_aux = ft_space(format_aux, *format);
-	if (format->flags->hash)
-		format_aux = ft_hash(format_aux, *format);
 	if (format->flags->apostrophe)
 		format_aux = ft_apostrophe(format_aux, *format);
+	if (format->flags->hash && (!format->flags->zero || format->precision > 0))
+		format_aux = ft_hash(format_aux, format);
 	if (format->width)
 		format_aux = ft_width(format, format_aux);
+	if (format->flags->hash)
+		format_aux = ft_hash(format_aux, format);
 	if (format->flags->plus && format->flags->zero)
 		format_aux = ft_plus(format_aux, *format);
 	if (format->last_pos != -1 && !format->flags->minus)

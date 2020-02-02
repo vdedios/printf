@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 13:10:13 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 17:26:35 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 16:48:44 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int		ft_putstr_len(char *s, int fd, int *pos)
 		{
 			s[pos[i++]] = 0;
 		}
+	write(fd, s, l);
 	free(pos);
 	pos = NULL;
-	write(fd, s, l);
+	free(s);
+	s = NULL;
 	return (l);
 }

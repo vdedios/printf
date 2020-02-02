@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 20:15:51 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/23 16:02:53 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 17:14:05 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct			s_format
 ** flags.c
 */
 char					*ft_plus(char *str, t_format format);
-char					*ft_hash(char *str, t_format format);
+char					*ft_hash(char *str, t_format *format);
 char					*ft_space(char *str, t_format format);
 char					*ft_apostrophe(char *str, t_format format);
 
@@ -86,7 +86,7 @@ char					*ft_u_conv(t_format format, va_list args);
 /*
 ** types_xXfegn.c
 */
-char					*ft_hex_conv(t_format format, va_list args);
+char					*ft_hex_conv(t_format *format, va_list args);
 char					*ft_floatpoint_conv(t_format format, va_list args);
 void					ft_n_conv(t_format format, va_list args,
 							char *printf_buf);
@@ -129,7 +129,7 @@ char					*ft_g_conv(double num, int *exp, t_format format);
 ** utils_printf.c
 */
 char					*ft_string_to_char(char *s);
-void					ft_initialize_format(t_format *format);
+void					ft_initialize_format(t_format *format, int **c_nulls);
 char					*ft_post_format(char *format_aux, t_format *format);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:54:59 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/23 15:52:41 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 18:21:04 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** <<xX>> type conversion
 */
 
-long long	ft_hex_values(t_format format, va_list args)
+long long int	ft_hex_values(t_format format, va_list args)
 {
 	long long int	num;
 
@@ -29,16 +29,18 @@ long long	ft_hex_values(t_format format, va_list args)
 	return (num);
 }
 
-char		*ft_hex_conv(t_format format, va_list args)
+char			*ft_hex_conv(t_format *format, va_list args)
 {
 	long long int	num;
+	long long int	aux;
 	int				s;
-	int				aux;
 	char			*hex;
 
 	s = 0;
-	aux = 0;
-	num = ft_hex_values(format, args);
+	num = ft_hex_values(*format, args);
+	aux = num;
+	if (!num)
+		format->flags->hash = 0;
 	while (aux)
 	{
 		aux = aux / 10;
@@ -46,10 +48,10 @@ char		*ft_hex_conv(t_format format, va_list args)
 	}
 	if (!(hex = malloc(s * sizeof(char))))
 		return (NULL);
-	ft_print_hex(hex, num, format.type);
-	if (format.precision)
-		return (ft_precision(format, hex));
-	else if (!format.precision && !num)
+	ft_print_hex(hex, num, format->type);
+	if (format->precision)
+		return (ft_precision(*format, hex));
+	else if (!format->precision && !num)
 		return (ft_strjoin_none(NULL, NULL));
 	return (hex);
 }
@@ -58,7 +60,7 @@ char		*ft_hex_conv(t_format format, va_list args)
 ** <<f>> <<e>> <<g>> type conversion
 */
 
-static char	*ft_check_specials(double num)
+static char		*ft_check_specials(double num)
 {
 	unsigned long long	aux;
 
@@ -72,7 +74,7 @@ static char	*ft_check_specials(double num)
 	return (NULL);
 }
 
-char		*ft_floatpoint_conv(t_format format, va_list args)
+char			*ft_floatpoint_conv(t_format format, va_list args)
 {
 	double				num;
 	int					exp;
@@ -98,7 +100,7 @@ char		*ft_floatpoint_conv(t_format format, va_list args)
 ** <<n>> type conversion
 */
 
-void		ft_n_conv(t_format format, va_list args, char *printf_buf)
+void			ft_n_conv(t_format format, va_list args, char *printf_buf)
 {
 	long int	dir;
 	int			*num;

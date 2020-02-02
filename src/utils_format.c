@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:07:37 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 17:14:17 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 18:05:12 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			ft_check_number(char *format_info, int *i,
 	}
 	j = *i;
 	num = ft_num_noarg(j, i, format_info);
-	return (ft_atoi(num));
+	return (ft_atoi_free(num));
 }
 
 char		ft_check_length(char *format_info, int *i)

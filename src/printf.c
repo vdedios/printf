@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:35:34 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 15:40:31 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 18:21:30 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_pre_format(va_list args, t_format *format, char *print_buf)
 	if (format->type == 'u')
 		return (ft_u_conv(*format, args));
 	if (format->type == 'x' || format->type == 'X')
-		return (ft_hex_conv(*format, args));
+		return (ft_hex_conv(format, args));
 	if (format->type == 'f' || format->type == 'e' ||
 			format->type == 'g' || format->type == 'F' ||
 			format->type == 'E' || format->type == 'G')
@@ -67,9 +67,8 @@ void	ft_formater(const char **s, char **print_buf,
 	t_format	format;
 	t_flags		flags;
 
-	(void)args;
 	format.flags = &flags;
-	ft_initialize_format(&format);
+	ft_initialize_format(&format, c_nulls);
 	format_info = ft_extract_format(*s);
 	ft_classify_format(format_info, &format, args);
 	format_aux = ft_pre_format(args, &format, *print_buf);
@@ -79,7 +78,11 @@ void	ft_formater(const char **s, char **print_buf,
 		*s = *s + ft_strlen(format_info) - 1;
 	else
 		*s = *s + ft_strlen(*s) - 1;
+	free(*c_nulls);
+	*c_nulls = NULL;
 	*c_nulls = format.print_l;
+	free(format_info);
+	format_info = NULL;
 }
 
 int		ft_printf(const char *s, ...)
@@ -89,10 +92,8 @@ int		ft_printf(const char *s, ...)
 	va_list		args;
 
 	va_start(args, s);
-	if (!(print_buf = malloc(1)))
-		return (0);
-	print_buf = 0;
-	c_nulls = 0;
+	print_buf = NULL;
+	c_nulls = NULL;
 	while (*s)
 	{
 		if (*s == '%')

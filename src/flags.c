@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:27:31 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 15:18:05 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/01 18:20:36 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ char	*ft_plus(char *str, t_format format)
 		return (str);
 }
 
-char	*ft_hash(char *str, t_format format)
+char	*ft_hash(char *str, t_format *format)
 {
-	if (format.type == 'x')
+	format->flags->hash = 0;
+	if (format->type == 'x')
 		return (ft_strjoin_second("0x", str));
-	else if (format.type == 'X')
+	if (format->type == 'X')
 		return (ft_strjoin_second("0X", str));
 	return (str);
 }

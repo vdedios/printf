@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/30 14:40:33 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/02 13:13:37 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,9 @@ char	*ft_trim_string(char *str, int pos)
 char	*ft_width(t_format *format, char *str)
 {
 	if (format->flags->zero && !format->flags->minus
-			&& (format->precision == -1 || format->type == 'f'
-				|| format->type == 'F' || format->type == 'e'
-				|| format->type == 'E' || format->type == 'g'
-				|| format->type == 'G'))
+	&& (format->precision == -1 || format->type == 'f' ||
+	format->type == 'F' || format->type == 'e' ||
+	format->type == 'E' || format->type == 'g' || format->type == 'G'))
 	{
 		if (format->width > (int)ft_strlen(str))
 		{
@@ -67,7 +66,9 @@ char	*ft_width(t_format *format, char *str)
 				str = ft_strjoin(ft_set_spaces(format->width, '0'), str);
 				return (ft_strjoin_second("-", str));
 			}
-			format->width = format->width - ft_strlen(str);
+			format->width = format->width - ft_strlen(str) -
+			((format->flags->hash && (format->type == 'x' ||
+			format->type == 'X')) ? 2 : 0);
 			return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
 		}
 	}
