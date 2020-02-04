@@ -124,8 +124,6 @@ char	*ft_u_conv(t_format format, va_list args)
 		num = va_arg(args, unsigned long long int);
 	else
 		num = va_arg(args, unsigned int);
-	if (num < 0)
-		num = num + 4294967296;
 	if (format.precision)
 		return (ft_precision(format, ft_uitoa(num)));
 	else if (!format.precision && !num)

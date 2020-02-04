@@ -1,13 +1,14 @@
 FALLOS:
 
-- Mandatory: SIGABORT - (previo test-mix)
-- l
-- ll
-- h
-- #
+- SIGABORT ? - (previo test-mix)
+- l - ok
+- ll - ok
+- h ?
+- # ?
 
 
 HE ARREGLADO ERRORES DE:
 
+tipo %: arreglado para que sólo devuelva %
 tipo d: l y ll con mínimos de long long
 tipo u: l y ll con máximo de long long

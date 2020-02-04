@@ -68,7 +68,7 @@ char	*ft_width(t_format *format, char *str)
 			}
 			format->width = format->width - ft_strlen(str) -
 			((format->flags->hash && (format->type == 'x' ||
-			format->type == 'X')) ? 2 : 0);
+			format->type == 'X')) ? 2 : 0) - (format->flags->plus ? 1 : 0);
 			return (ft_strjoin(ft_set_spaces(format->width, '0'), str));
 		}
 	}

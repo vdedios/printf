@@ -33,6 +33,8 @@ short		ft_check_flags(t_format *format, char set)
 		format->flags->apostrophe[0] = ',';
 		format->flags->apostrophe[1] = '\0';
 	}
+	if (format->flags->minus && format->flags->zero)
+		format->flags->zero = 0;
 	return (1);
 }
 

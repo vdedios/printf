@@ -72,7 +72,9 @@ void	ft_formater(const char **s, char **print_buf,
 	format_info = ft_extract_format(*s);
 	ft_classify_format(format_info, &format, args);
 	format_aux = ft_pre_format(args, &format, *print_buf);
-	format_aux = ft_post_format(format_aux, &format);
+	if (format_aux)
+		if (*format_aux != '%')
+			format_aux = ft_post_format(format_aux, &format);
 	*print_buf = ft_strjoin(*print_buf, format_aux);
 	if (format_info)
 		*s = *s + ft_strlen(format_info) - 1;
@@ -97,9 +99,7 @@ int		ft_printf(const char *s, ...)
 	while (*s)
 	{
 		if (*s == '%')
-		{
 			ft_formater(&s, &print_buf, args, &c_nulls);
-		}
 		else
 			print_buf = ft_strjoin(print_buf, ft_string_to_char((char *)s));
 		s++;

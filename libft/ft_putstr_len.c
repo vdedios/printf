@@ -20,10 +20,13 @@ int		ft_putstr_len(char *s, int fd, int *pos)
 	i = 0;
 	l = ft_strlen(s);
 	if (pos)
+	{
 		while (pos[i] != -1)
 		{
 			s[pos[i++]] = 0;
 		}
+
+	}
 	write(fd, s, l);
 	free(pos);
 	pos = NULL;
