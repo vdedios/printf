@@ -1,10 +1,8 @@
 #include "header/printf.h"
+#include <limits.h>
 
 int main()
 {
-	int l;
-
-	printf("%n\n", &l);
-	ft_printf("%n\n", &l);
-	system("leaks printf");
+	printf("o:%lx, %lx\n", 0ul, ULONG_MAX);
+	ft_printf("f:%lx, %lx\n", 0ul, ULONG_MAX);
 }

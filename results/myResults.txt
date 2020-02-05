@@ -4,11 +4,28 @@ FALLOS:
 - l - ok
 - ll - ok
 - h ?
-- # ?
-
+- # ? -> pff los pasa todos
 
 HE ARREGLADO ERRORES DE:
 
 tipo %: arreglado para que sólo devuelva %
 tipo d: l y ll con mínimos de long long
 tipo u: l y ll con máximo de long long
+
+
+
+—TESTS—
+	->PFT:
+		SIGABORT 
+		l - OK
+		ll - OK
+		h - OK
+		# - OK
+
+	->Test Edu:
+		Todo ok!
+
+	->MOULITEST:
+		c
+
+	-> (Mirar el de amazava -> h hace conversiones de neg a max?
