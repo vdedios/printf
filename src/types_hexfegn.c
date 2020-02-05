@@ -16,9 +16,9 @@
 ** <<xX>> type conversion
 */
 
-long long int	ft_hex_values(t_format format, va_list args)
+unsigned long long int	ft_hex_values(t_format format, va_list args)
 {
-	long long int	num;
+	unsigned long long int	num;
 
 	if (format.length == 'l')
 		num = va_arg(args, long int);
@@ -31,8 +31,8 @@ long long int	ft_hex_values(t_format format, va_list args)
 
 char			*ft_hex_conv(t_format *format, va_list args)
 {
-	long long int	num;
-	long long int	aux;
+	unsigned long long int	num;
+	unsigned long long int	aux;
 	int				s;
 	char			*hex;
 
