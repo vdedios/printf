@@ -31,17 +31,22 @@ double					ft_ten_power(int p)
 	return (t);
 }
 
-unsigned long long		ft_rounding(unsigned long long i_num,
+unsigned long long		ft_rounding(unsigned long long *i_num,
 		unsigned long long f_num, float num, int precision)
 {
+	double f_aux;
+
+	f_aux = f_num;
 	if (precision <= 0)
 	{
-		if (i_num + 0.5 <= num)
-			i_num = i_num + 1;
-		return (i_num);
+		if (*i_num + 0.5 <= num)
+			*i_num = *i_num + 1;
+		return (*i_num);
 	}
-	if (f_num + 0.5 <= (num - i_num) * ft_ten_power(precision))
-		f_num = f_num + 1;
+	if (f_num + 0.5 <= (num - *i_num) * ft_ten_power(precision))
+		f_num = (f_num + 1) % (long long int)ft_ten_power(precision);
+	if (f_aux && !f_num)
+		*i_num = *i_num + 1;
 	return (f_num);
 }
 
@@ -80,15 +85,15 @@ char					*ft_float_str(double num, t_format format)
 		i_num * ft_ten_power(format.precision);
 	if (format.precision <= 0)
 	{
-		i_num = ft_rounding(i_num, f_num, num, format.precision);
+		i_num = ft_rounding(&i_num, f_num, num, format.precision);
 		i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
 		if (format.flags->hash)
 			i_str = ft_strjoin_first(i_str, ".");
 		return (i_str);
 	}
+	f_num = ft_rounding(&i_num, f_num, num, format.precision);
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
 	i_str = ft_strjoin_first(i_str, ".");
-	f_num = ft_rounding(i_num, f_num, num, format.precision);
 	f_str = ft_itoa(f_num);
 	f_str = ft_add_zeroes(f_str, format.precision);
 	return (ft_strjoin(i_str, f_str));

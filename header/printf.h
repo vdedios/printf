@@ -103,7 +103,7 @@ char					*ft_exp_str(double num, int *exp, t_format format);
 ** utils_f.c
 */
 double					ft_ten_power(int p);
-unsigned long long		ft_rounding(unsigned long long i_num,
+unsigned long long		ft_rounding(unsigned long long *i_num,
 							unsigned long long f_num, float num, int precision);
 char					*ft_add_zeroes(char *f_str, int precision);
 char					*ft_float_str(double num, t_format format);

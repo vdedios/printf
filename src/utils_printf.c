@@ -51,14 +51,14 @@ char	*ft_post_format(char *format_aux, t_format *format)
 	i = 0;
 	if (format->flags->plus && !format->flags->zero)
 		format_aux = ft_plus(format_aux, *format);
-	if (format->flags->space)
-		format_aux = ft_space(format_aux, *format);
 	if (format->flags->apostrophe)
 		format_aux = ft_apostrophe(format_aux, *format);
 	if (format->flags->hash && (!format->flags->zero || format->precision > 0))
 		format_aux = ft_hash(format_aux, format);
 	if (format->width)
 		format_aux = ft_width(format, format_aux);
+	if (format->flags->space)
+		format_aux = ft_space(format_aux, *format);
 	if (format->flags->hash)
 		format_aux = ft_hash(format_aux, format);
 	if (format->flags->plus && format->flags->zero)

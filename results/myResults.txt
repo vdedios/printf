@@ -15,8 +15,10 @@ tipo u: l y ll con máximo de long long
 
 
 —TESTS—
+	->PFT 2019:
+		Todo ok!
 	->PFT:
-		SIGABORT 
+		SIGABORT -> ¿?
 		l - OK
 		ll - OK
 		h - OK
@@ -26,6 +28,13 @@ tipo u: l y ll con máximo de long long
 		Todo ok!
 
 	->MOULITEST:
-		c
+		SIGABORT -> ¿?
+		l - OK
+		ll - OK
+		h - OK (hh -> algunos mal pero paso)
+		# - 
 
 	-> (Mirar el de amazava -> h hace conversiones de neg a max?
+
+
+** Puede haber cambios en width, volver a pasar tests

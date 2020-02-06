@@ -96,7 +96,7 @@ char				*ft_exp_str(double num, int *exp, t_format format)
 	}
 	i_num = ft_get_integer(num, 'i');
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
-	if (format.precision != 0)
+	if (format.precision != 0 || format.flags->hash)
 		i_str = ft_strjoin_first(i_str, ".");
 	f_str = ft_get_decimals(num, exp, format);
 	return (ft_strjoin(i_str, f_str));
