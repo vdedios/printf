@@ -55,7 +55,7 @@ static void	ft_set_width(t_format *format, char *str)
 	format->width = format->width - ft_strlen(str) -
 	((format->flags->hash && (format->type == 'x' ||
 	format->type == 'X')) ? 2 : 0) - (format->flags->plus ? 1 : 0) -
-	(format->flags->space ? 1 : 0) - (str[0] == '-' ? 1 : 0);
+	(format->flags->space ? 1 : 0);
 }
 
 char	*ft_width(t_format *format, char *str)
@@ -69,8 +69,8 @@ char	*ft_width(t_format *format, char *str)
 		{
 			if (str[0] == '-')
 			{
-				ft_set_width(format, str);
 				str[0] = '0';
+				format->width = format->width - ft_strlen(str) - 1;
 				str = ft_strjoin(ft_set_spaces(format->width, '0'), str);
 				return (ft_strjoin_second("-", str));
 			}
