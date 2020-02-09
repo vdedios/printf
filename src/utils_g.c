@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-char	*ft_trim_f_zeros(char *num)
+char		*ft_trim_f_zeros(char *num)
 {
 	int		i;
 	int		j;
@@ -38,7 +38,7 @@ char	*ft_trim_f_zeros(char *num)
 	return (num_trimmed);
 }
 
-char	*ft_trim_e_zeros(char *num)
+char		*ft_trim_e_zeros(char *num)
 {
 	int		i;
 	int		k;
@@ -65,39 +65,52 @@ char	*ft_trim_e_zeros(char *num)
 }
 
 /*
-** As found in C11 standard, %g conversion must be:
-** if P > X ≥ −4, the conversion is with style f (or F)
-** and precision P − (X + 1). Otherwise, the conversion
-** is with style e (or E) and precision P − 1.
-** In both cases insignificant trailing zeros are removed
-** from the significand, and the decimal point is also
-** removed if there are no remaining digits following it.
-** A precision of 0 is treated as equivalent to a
-** precision of 1
+** if the number of consecutive nines being rounded at the 
+** beginning of the number is equal to the precision (P),
+** with # flag, 
+** P = P - 1;
 */
 
-char	*ft_g_conv(double num, int *exp, t_format format)
-{
-	char	*aux;
+/*
+ ** As found in C11 standard, %g conversion must be:
+ ** if P > X ≥ −4, the conversion is with style f (or F)
+ ** and precision P − (X + 1). Otherwise, the conversion
+ ** is with style e (or E) and precision P − 1.
+ ** In both cases insignificant trailing zeros are removed
+ ** from the significand, and the decimal point is also
+ ** removed if there are no remaining digits following it.
+ ** A precision of 0 is treated as equivalent to a
+ ** precision of 1
+ ** 
+ ** Precision is not the number of decimals to be output
+ ** but the number of significant digits required. X is
+ ** the exponent you get if represented in %e with such
+ ** significant numbers. 
+ */
 
+char		*ft_g_conv(double num, int *exp, t_format format)
+{
 	if (format.type == 'G')
 		format.type = 'E';
 	else
 		format.type = 'e';
-	aux = ft_exp_str(num, exp, format);
-	free(aux);
-	aux = NULL;
 	if (format.precision == 0)
 		format.precision = 1;
+	format.precision--;
+	ft_exp_str(num, exp, format);
+	format.precision++;
 	*exp = -(*exp);
 	if (format.precision > *exp && *exp >= -4)
 	{
 		format.precision = format.precision - (*exp + 1);
 		if (format.flags->hash)
-			return (ft_float_str(num, format));
+			return (ft_float_str(num, format));		
 		else
 			return (ft_trim_f_zeros(ft_float_str(num, format)));
 	}
 	format.precision = format.precision - 1;
-	return (ft_trim_e_zeros(ft_exp_str(num, exp, format)));
+	if (format.flags->hash)
+		return (ft_exp_str(num, exp, format));		
+	else
+		return (ft_trim_e_zeros(ft_exp_str(num, exp, format)));
 }

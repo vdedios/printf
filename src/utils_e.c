@@ -25,7 +25,7 @@ int							ft_count_figures(long long int num)
 	return (d);
 }
 
-unsigned long long			ft_get_integer(double num, char type)
+unsigned long long			ft_get_integer(double num, char type, int *exp)
 {
 	unsigned long long	i_num;
 	int					i;
@@ -47,67 +47,53 @@ unsigned long long			ft_get_integer(double num, char type)
 			i_num = (long long int)num * ft_ten_power(i);
 		}
 	}
+	*exp = i;
 	if (type == 'i')
 		return (i_num);
 	else
 		return (i);
 }
 
-static unsigned long long	ft_round_exp(t_format format, int *exp, double num,
-							unsigned long long *i_num)
+static void					ft_round_exp(t_format format, unsigned long long *i_num,
+		unsigned long long *f_num, int *exp)
 {
-	double				f_num;
-	double				aux_num;
-	unsigned long long	out_num;
+	unsigned long long	i_aux;
+	unsigned long long 	f_aux;
 
-	out_num = 0;
-	f_num = num * ft_ten_power(format.precision + *exp) -
-		(unsigned long long)(num * ft_ten_power(*exp)) *
-		ft_ten_power(format.precision);
-	aux_num = f_num;
-	if ((num * ft_ten_power(format.precision + *exp) -
-	(long long int)(num * ft_ten_power(format.precision + *exp)) >= 0.5))
+	f_aux = *i_num * ft_ten_power(format.precision) +
+		*f_num / ft_ten_power(10 - format.precision);
+	i_aux = (*i_num * ft_ten_power(format.precision + 1)) +
+		(*f_num / ft_ten_power(10 - format.precision - 1));
+	if (i_aux >= f_aux * 10 + 5)
 	{
-		if ((format.precision + *exp))
-			out_num = (unsigned long long)(f_num + 1) % (unsigned long long)
-				ft_ten_power(format.precision + *exp);
-		else
-			out_num = (unsigned long long)(f_num + 1) % (unsigned long long)
-				ft_ten_power(format.precision);
-		if ((unsigned long long)aux_num && !out_num)
-			*i_num = *i_num + 1;
-		else if (!format.precision && f_num >= 0.5)
-			*i_num = *i_num + 1;
-		return (out_num);
+		i_aux = f_aux;
+		f_aux = f_aux + 1;
 	}
-	return (out_num);
+	if (ft_count_figures(f_aux) > ft_count_figures(i_aux))
+	{	
+		*exp = *exp - 1;
+		format.precision = format.precision + 1;
+	}
+	*i_num = f_aux / (unsigned long long)ft_ten_power(format.precision);
+	*f_num = f_aux % (unsigned long long)ft_ten_power(format.precision);
 }
 
-char						*ft_get_decimals(double num, int *exp, t_format format,
-		unsigned long long *i_num)
+char						*ft_get_decimals(unsigned long long f_num, int *exp,
+		t_format format)
 {
-	int					decimals;
-	unsigned long long	f_num;
-	char				*f_str;
+	char 	*f_str;
 
-	decimals = 0;
-	f_str = 0;
-	*exp = ft_get_integer(num, 'f');
-	f_num = ft_round_exp(format, exp, num, i_num);
-	if (format.precision)
+	f_str = ft_itoa(f_num);
+	f_str = ft_add_zeroes(f_str, format.precision);
+	if (!format.precision)
 	{
-		f_str = ft_itoa(f_num);
-		f_num = (unsigned long long)ft_strlen(f_str);
-		while (decimals++ < format.precision - (int)f_num)
-			f_str = ft_strjoin_second("0", f_str);
+		free(f_str);
+		f_str = NULL;
 	}
-	f_str = (format.type == 'E') ? ft_strjoin_first(f_str, "E") :
-	ft_strjoin_first(f_str, "e");
-	if (ft_count_figures(*i_num) == 2)
-	{
-		*i_num = *i_num / 10;
-		*exp = *exp - 1;
-	}
+	if (format.type == 'e')
+		f_str = ft_strjoin_first(f_str, "e");
+	else
+		f_str = ft_strjoin_first(f_str, "E");
 	f_str = ft_strjoin(f_str, ft_itoa_special(-*exp));
 	return (f_str);
 }
@@ -115,6 +101,7 @@ char						*ft_get_decimals(double num, int *exp, t_format format,
 char						*ft_exp_str(double num, int *exp, t_format format)
 {
 	unsigned long long	i_num;
+	unsigned long long	f_num;
 	char				*f_str;
 	char				*i_str;
 
@@ -124,9 +111,13 @@ char						*ft_exp_str(double num, int *exp, t_format format)
 		num = -num;
 		i_str = "-";
 	}
-	i_num = ft_get_integer(num, 'i');
-	f_str = ft_get_decimals(num, exp, format, &i_num);
+	i_num = ft_get_integer(num, 'i', exp);
+	f_num = num * ft_ten_power(10 + *exp) -
+		(unsigned long long)(num * ft_ten_power(*exp)) *
+		ft_ten_power(10);
+	ft_round_exp(format, &i_num, &f_num, exp);
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
+	f_str = ft_get_decimals(f_num, exp, format);
 	if (format.precision != 0 || format.flags->hash)
 		i_str = ft_strjoin_first(i_str, ".");
 	return (ft_strjoin(i_str, f_str));

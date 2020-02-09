@@ -95,9 +95,9 @@ void					ft_n_conv(t_format format, va_list args,
 ** utils_e.c
 */
 int						ft_count_figures(long long int num);
-unsigned long long		ft_get_integer(double num, char type);
-char					*ft_get_decimals(double num, int *exp, t_format format,
-						unsigned long long *i_num);
+unsigned long long		ft_get_integer(double num, char type, int *exp);
+char					*ft_get_decimals(unsigned long long f_num, int *exp,
+						t_format format);
 char					*ft_exp_str(double num, int *exp, t_format format);
 
 /*
