@@ -1,5 +1,7 @@
  #!/bin/bash
 
+CC="gcc -Wall -Werror -Wextra -g src/*.c libft/libft.a" 
+LIB="-I header/"
 rm -rf RESULTS.txt
 make re
 if [ ! -f /output ]; then
@@ -7,10 +9,10 @@ if [ ! -f /output ]; then
 	mkdir output
 fi
 echo Compiling original source...
-gcc -Wall -Werror -Wextra -g main/main_o.c src/*.c libft/libft.a -I header/ -o output/printf_o
+$CC tests/main_o.c $LIB -o output/printf_o
 ./output/printf_o >> src.txt
-echo Compiling replica source...
-gcc -Wall -Werror -Wextra -g main/main_f.c src/*.c libft/libft.a -I header/ -o output/printf_f
+echo Compiling your source...
+$CC tests/main_f.c $LIB -o output/printf_f
 ./output/printf_f >> dst.txt
 if [$(diff src.txt dst.txt) == ""]; then
 	echo Everything alright!✅

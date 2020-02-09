@@ -65,13 +65,6 @@ char		*ft_trim_e_zeros(char *num)
 }
 
 /*
-** if the number of consecutive nines being rounded at the 
-** beginning of the number is equal to the precision (P),
-** with # flag, 
-** P = P - 1;
-*/
-
-/*
  ** As found in C11 standard, %g conversion must be:
  ** if P > X ≥ −4, the conversion is with style f (or F)
  ** and precision P − (X + 1). Otherwise, the conversion
@@ -84,8 +77,8 @@ char		*ft_trim_e_zeros(char *num)
  ** 
  ** Precision is not the number of decimals to be output
  ** but the number of significant digits required. X is
- ** the exponent you get if represented in %e with such
- ** significant numbers. 
+ ** the exp you would get if number is represented with %e 
+ ** with such significant numbers. 
  */
 
 char		*ft_g_conv(double num, int *exp, t_format format)
