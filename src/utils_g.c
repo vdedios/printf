@@ -83,6 +83,8 @@ char		*ft_trim_e_zeros(char *num)
 
 char		*ft_g_conv(double num, int *exp, t_format format)
 {
+	char	*tmp;	
+
 	if (format.type == 'G')
 		format.type = 'E';
 	else
@@ -90,7 +92,9 @@ char		*ft_g_conv(double num, int *exp, t_format format)
 	if (format.precision == 0)
 		format.precision = 1;
 	format.precision--;
-	ft_exp_str(num, exp, format);
+	tmp = ft_exp_str(num, exp, format);
+	free(tmp);
+	tmp = NULL;
 	format.precision++;
 	*exp = -(*exp);
 	if (format.precision > *exp && *exp >= -4)

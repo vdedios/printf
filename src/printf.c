@@ -78,8 +78,6 @@ void	ft_formater(const char **s, char **print_buf,
 		*s = *s + ft_strlen(format_info) - 1;
 	else
 		*s = *s + ft_strlen(*s) - 1;
-	free(*c_nulls);
-	*c_nulls = NULL;
 	*c_nulls = format.print_l;
 	free(format_info);
 	format_info = NULL;
