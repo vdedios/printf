@@ -11,7 +11,7 @@ in a external .txt file.
 
 **main_g.c** is just a simple main with some *%#g* cases I had problems with. You would have to compiled by yourself since is not compiled by the script. 
 
-In order to make it work just replace, in run_tests.sh, these variables with your own personal compiling and directories preference.
+In order to make it work just replace, in run_tests.sh, these variables with your own personal compiling and directories preference:
 
 ```
 CC="gcc -Wall -Werror -Wextra -g src/*.c libft/libft.a" 
