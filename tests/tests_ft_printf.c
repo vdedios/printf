@@ -29,28 +29,6 @@ int main()
 		j++;
 	}
 
-	i = 0;
-	j = 0;
-	a = 31415;
-	while (j < 1000)
-	{
-		a = a - 0.01;
-		while (i < 6)
-		{
-			ft_printf("Test f- i:%d, j:%d, PREC:%.*f\n",a , i, j, i, a);
-			ft_printf("Test #f- i:%d, j:%d, PREC:%#.*f\n",a , i, j, i, a);
-
-			ft_printf("Test e- i:%d, j:%d, PREC:%.*e\n",a , i, j, i, a);
-			ft_printf("Test #e- i:%d, j:%d, PREC:%#.*e\n",a , i, j, i, a);
-
-			ft_printf("Test g- i:%d, j:%d, PREC:%.*g\n",a , i, j, i, a);
-			ft_printf("Test #g- i:%d, j:%d, PREC:%#.*g\n",a , i, j, i, a);
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-
 	/*
 	** Some more exhaustive tests for #g 
 	*/
