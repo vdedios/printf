@@ -18,10 +18,11 @@ in a external .txt file. This script has two usages.
 
 In order to make it work just replace, in run_tests.sh, these variables with your own personal compiling and directories preference:
 ```
-CC="gcc -Wall -Werror -Wextra -g src/*.c libft/libft.a" 
+CC="gcc src/*.c libft/libft.a" 
 LIB="-I header/"
 ```
 ## ADITIONAL COMMENTS
 * You would need to have a makefile in order to use this test.
-* **tests_ft_printf.c** is the file that contains all the tests. You can modify this file in order to test all different cases you desire.
-* **leaks_ft_printf.c** is the file that contains a leaks simple test.
+* All warning to error compiler flags are disabled due to some "undefined behaviour" test done.
+* **tests/tests_ft_printf.c** is the file that contains all the tests. You can modify this file in order to test all different cases you desire.
+* **tests/leaks_ft_printf.c** is the file that contains a leaks simple test.
