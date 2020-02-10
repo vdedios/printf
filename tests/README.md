@@ -22,6 +22,6 @@ CC="gcc -Wall -Werror -Wextra -g src/*.c libft/libft.a"
 LIB="-I header/"
 ```
 ## ADITIONAL COMMENTS
-*You would need to have a makefile in order to use this test.
+* You would need to have a makefile in order to use this test.
 * **tests_ft_printf.c** is the file that contains all the tests. You can modify this file in order to test all different cases you desire.
 * **leaks_ft_printf.c** is the file that contains a leaks simple test.
