@@ -11,7 +11,7 @@ in a external .txt file. This script has two usages.
 ```
 ./run_tests.sh
 ```
-*For testing leaks:*
+*For leaks testing:*
 ```
 ./run_tests.sh leaks
 ```
