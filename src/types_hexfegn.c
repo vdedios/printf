@@ -19,11 +19,20 @@
 unsigned long long int	ft_hex_values(t_format format, va_list args)
 {
 	unsigned long long int	num;
+	int						num_h;
 
 	if (format.length == 'l')
 		num = va_arg(args, long int);
 	else if (format.length == 'L')
 		num = va_arg(args, long long int);
+	else if	(format.length == 'h' ||format.length == 'H')
+	{
+		num_h = va_arg(args, int);
+		if (num_h < 0)
+			num = -num_h;
+		else
+			num = num_h;
+	}
 	else
 		num = va_arg(args, unsigned int);
 	return (num);
