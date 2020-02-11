@@ -47,27 +47,38 @@ int main()
 	/*
 	** Tests for l, ll , h, and hh. Compile it only with gcc to avoid warning errors 
 	*/
+	ft_printf("Test long int:%ld\n", 0);
 	ft_printf("Test long int:%ld\n", LONG_MAX);
 	ft_printf("Test long int:%ld\n", LONG_MIN);
+	ft_printf("Test long long int:%lld\n", 0);
 	ft_printf("Test long long int:%lld\n", LLONG_MIN);
 	ft_printf("Test long long int:%lld\n", LLONG_MAX);
 
+	ft_printf("Test long x:%#lx\n", 0);
 	ft_printf("Test long x:%#lx\n", LONG_MAX);
 	ft_printf("Test long x:%#lx\n", LONG_MIN);
+	ft_printf("Test long long x:%#llx\n", 0);
 	ft_printf("Test long long x:%#llx\n", LLONG_MIN);
 	ft_printf("Test long long x:%#llx\n", LLONG_MAX);
 
+	ft_printf("Test unisgned long:%lu\n", 0);
 	ft_printf("Test unisgned long:%lu\n", ULONG_MAX);
+	ft_printf("Test unisgned long:%llu\n", 0);
 	ft_printf("Test unisgned long:%llu\n", ULLONG_MAX);
 
+	ft_printf("Test int short:%hd\n", 0);
 	ft_printf("Test int short:%hd\n", SHRT_MIN);
 	ft_printf("Test int short:%hd\n", SHRT_MAX);
+	ft_printf("Test unsigned short:%hu\n", 0);
 	ft_printf("Test unsigned short:%hu\n", USHRT_MAX);
 
+	ft_printf("Test x short:%hx\n", 0);
+	ft_printf("Test x short:%hx\n", SHRT_MIN);
 	ft_printf("Test x short:%hx\n", SHRT_MIN);
 	ft_printf("Test x short:%hx\n", SHRT_MAX);
 	ft_printf("Test x short:%hx\n", USHRT_MAX);
 
+	ft_printf("Test x char:%#hhx\n", 0);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MIN);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MAX);
 	ft_printf("Test x char:%#hhx\n", UCHAR_MAX);
@@ -82,8 +93,10 @@ int main()
 	{
 		while (j < 20)
 		{
-			ft_printf("Test #x: %#*.*hx\n", i, j, CHAR_MAX);
-			ft_printf("Test #X: %#*.*hx\n", i, j, CHAR_MAX);
+			ft_printf("Test #x: width%d precision%d %#0*.*hx\n", i, j, i, j, CHAR_MAX);
+			ft_printf("Test #x: width%d precision%d %#-*.*hx\n", i, j, i, j, CHAR_MAX);
+			ft_printf("Test #X: width%d precision%d %#0*.*hX\n", i, j, i, j, CHAR_MAX);
+			ft_printf("Test #X: width%d precision%d %#-*.*hX\n", i, j, i, j, CHAR_MAX);
 			j++;
 		}
 	j = 0;
