@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 13:00:28 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/02/02 20:08:16 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:51:46 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static int	ft_size_num(unsigned long long int n)
 
 char		*ft_uitoa(unsigned long long int n)
 {
-	int				size;
+	int						size;
 	unsigned long long int	aux;
-	char			*num;
+	char					*num;
 
 	aux = n;
 	size = ft_size_num(aux);

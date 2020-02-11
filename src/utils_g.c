@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:17:17 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 17:16:25 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:59:26 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,24 @@ char		*ft_trim_e_zeros(char *num)
 }
 
 /*
- ** As found in C11 standard, %g conversion must be:
- ** if P > X ≥ −4, the conversion is with style f (or F)
- ** and precision P − (X + 1). Otherwise, the conversion
- ** is with style e (or E) and precision P − 1.
- ** In both cases insignificant trailing zeros are removed
- ** from the significand, and the decimal point is also
- ** removed if there are no remaining digits following it.
- ** A precision of 0 is treated as equivalent to a
- ** precision of 1
- ** 
- ** Precision is not the number of decimals to be output
- ** but the number of significant digits required. X is
- ** the exp you would get if number is represented with %e 
- ** with such significant numbers. 
- */
+** As found in C11 standard, %g conversion must be:
+** if P > X ≥ −4, the conversion is with style f (or F)
+** and precision P − (X + 1). Otherwise, the conversion
+** is with style e (or E) and precision P − 1.
+** In both cases insignificant trailing zeros are removed
+** from the significand, and the decimal point is also
+** removed if there are no remaining digits following it.
+** A precision of 0 is treated as equivalent to a
+** precision of 1
+** Precision is not the number of decimals to be output
+** but the number of significant digits required. X is
+** the exp you would get if number is represented with %e
+** with such significant numbers.
+*/
 
 static void	ft_significative_exp(double num, int *exp, t_format format)
 {
-	char	*tmp;	
+	char	*tmp;
 
 	format.precision--;
 	tmp = ft_exp_str(num, exp, format);
@@ -122,13 +121,13 @@ char		*ft_g_conv(double num, int *exp, t_format format)
 	{
 		format.precision = format.precision - (*exp + 1);
 		if (format.flags->hash)
-			return (ft_float_str(num, format));		
+			return (ft_float_str(num, format));
 		else
 			return (ft_trim_f_zeros(ft_float_str(num, format)));
 	}
 	format.precision = format.precision - 1;
 	if (format.flags->hash)
-		return (ft_exp_str(num, exp, format));		
+		return (ft_exp_str(num, exp, format));
 	else
 		return (ft_trim_e_zeros(ft_exp_str(num, exp, format)));
 }

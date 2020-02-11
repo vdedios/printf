@@ -6,13 +6,13 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:36:21 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/02/02 13:13:37 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:59:50 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*ft_set_spaces(int num, char symbol)
+char		*ft_set_spaces(int num, char symbol)
 {
 	char	*spaces;
 	int		i;
@@ -31,7 +31,7 @@ char	*ft_set_spaces(int num, char symbol)
 		return (NULL);
 }
 
-char	*ft_trim_string(char *str, int pos)
+char		*ft_trim_string(char *str, int pos)
 {
 	char	*trimmed;
 	int		i;
@@ -58,7 +58,7 @@ static void	ft_set_width(t_format *format, char *str)
 	(format->flags->space ? 1 : 0);
 }
 
-char	*ft_width(t_format *format, char *str)
+char		*ft_width(t_format *format, char *str)
 {
 	if (format->flags->zero && !format->flags->minus
 	&& (format->precision == -1 || format->type == 'f' ||
@@ -85,7 +85,7 @@ char	*ft_width(t_format *format, char *str)
 		return (ft_strjoin(ft_set_spaces(format->width, ' '), str));
 }
 
-char	*ft_precision(t_format format, char *str)
+char		*ft_precision(t_format format, char *str)
 {
 	if (format.type == 'd' || format.type == 'i' ||
 			format.type == 'u' || format.type == 'x'

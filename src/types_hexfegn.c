@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:54:59 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/02/01 18:21:04 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:56:09 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ unsigned long long int	ft_hex_values(t_format format, va_list args)
 		num = va_arg(args, long int);
 	else if (format.length == 'L')
 		num = va_arg(args, long long int);
-	else if	(format.length == 'h' ||format.length == 'H')
+	else if (format.length == 'h' ||
+			format.length == 'H')
 	{
 		num_h = va_arg(args, int);
 		if (num_h < 0)
@@ -38,12 +39,12 @@ unsigned long long int	ft_hex_values(t_format format, va_list args)
 	return (num);
 }
 
-char			*ft_hex_conv(t_format *format, va_list args)
+char					*ft_hex_conv(t_format *format, va_list args)
 {
 	unsigned long long int	num;
 	unsigned long long int	aux;
-	int				s;
-	char			*hex;
+	int						s;
+	char					*hex;
 
 	s = 0;
 	num = ft_hex_values(*format, args);
@@ -69,7 +70,7 @@ char			*ft_hex_conv(t_format *format, va_list args)
 ** <<f>> <<e>> <<g>> type conversion
 */
 
-static char		*ft_check_specials(double num)
+static char				*ft_check_specials(double num)
 {
 	unsigned long long	aux;
 
@@ -83,7 +84,7 @@ static char		*ft_check_specials(double num)
 	return (NULL);
 }
 
-char			*ft_floatpoint_conv(t_format format, va_list args)
+char					*ft_floatpoint_conv(t_format format, va_list args)
 {
 	double				num;
 	int					exp;
@@ -109,7 +110,8 @@ char			*ft_floatpoint_conv(t_format format, va_list args)
 ** <<n>> type conversion
 */
 
-void			ft_n_conv(t_format format, va_list args, char *printf_buf)
+void					ft_n_conv(t_format format, va_list args,
+						char *printf_buf)
 {
 	long int	dir;
 	int			*num;

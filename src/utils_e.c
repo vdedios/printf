@@ -6,7 +6,7 @@
 /*   By: vde-dios <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:17:00 by vde-dios          #+#    #+#             */
-/*   Updated: 2020/01/22 16:00:42 by vde-dios         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:55:33 by vde-dios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ unsigned long long			ft_get_integer(double num, char type, int *exp)
 		return (i);
 }
 
-static void					ft_round_exp(t_format format, unsigned long long *i_num,
-		unsigned long long *f_num, int *exp)
+static void					ft_round_exp(t_format format,
+							unsigned long long *i_num,
+							unsigned long long *f_num, int *exp)
 {
 	unsigned long long	i_aux;
-	unsigned long long 	f_aux;
+	unsigned long long	f_aux;
 
 	f_aux = *i_num * ft_ten_power(format.precision) +
 		*f_num / ft_ten_power(10 - format.precision);
@@ -70,7 +71,7 @@ static void					ft_round_exp(t_format format, unsigned long long *i_num,
 		f_aux = f_aux + 1;
 	}
 	if (ft_count_figures(f_aux) > ft_count_figures(i_aux))
-	{	
+	{
 		*exp = *exp - 1;
 		format.precision = format.precision + 1;
 	}
@@ -81,7 +82,7 @@ static void					ft_round_exp(t_format format, unsigned long long *i_num,
 char						*ft_get_decimals(unsigned long long f_num, int *exp,
 		t_format format)
 {
-	char 	*f_str;
+	char	*f_str;
 
 	f_str = ft_itoa(f_num);
 	f_str = ft_add_zeroes(f_str, format.precision);
