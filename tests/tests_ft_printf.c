@@ -67,16 +67,19 @@ int main()
 	ft_printf("Test unisgned long:%llu\n", ULLONG_MAX);
 
 	ft_printf("Test int short:%hd\n", 0);
+	ft_printf("Test int short:%hd\n", USHRT_MAX);
 	ft_printf("Test int short:%hd\n", SHRT_MIN);
 	ft_printf("Test int short:%hd\n", SHRT_MAX);
+
 	ft_printf("Test unsigned short:%hu\n", 0);
 	ft_printf("Test unsigned short:%hu\n", USHRT_MAX);
+	ft_printf("Test unsigned short:%hd\n", SHRT_MAX);
+	ft_printf("Test unsigned short:%hd\n", SHRT_MIN);
 
 	ft_printf("Test x short:%hx\n", 0);
-	ft_printf("Test x short:%hx\n", SHRT_MIN);
+	ft_printf("Test x short:%hx\n", USHRT_MAX);
 	ft_printf("Test x short:%hx\n", SHRT_MIN);
 	ft_printf("Test x short:%hx\n", SHRT_MAX);
-	ft_printf("Test x short:%hx\n", USHRT_MAX);
 
 	ft_printf("Test x char:%#hhx\n", 0);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MIN);

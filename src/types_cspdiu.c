@@ -71,7 +71,7 @@ char	*ft_p_conv(t_format format, va_list args)
 
 	(void)format;
 	size = 0;
-	dir = (long int)va_arg(args, char *);
+	dir = (long int)va_arg(args, void *);
 	aux = dir;
 	while (aux)
 	{
@@ -100,6 +100,10 @@ char	*ft_di_conv(t_format format, va_list args)
 		num = va_arg(args, long int);
 	else if (format.length == 'L')
 		num = va_arg(args, long long int);
+	else if (format.length == 'h')
+		num = (short)va_arg(args, int);
+	else if (format.length == 'H')
+		num = (char)va_arg(args, int);
 	else
 		num = va_arg(args, int);
 	if (format.precision)
@@ -122,6 +126,10 @@ char	*ft_u_conv(t_format format, va_list args)
 		num = va_arg(args, unsigned long int);
 	else if (format.length == 'L')
 		num = va_arg(args, unsigned long long int);
+	else if (format.length == 'h')
+		num = (unsigned short)va_arg(args, int);
+	else if (format.length == 'H')
+		num = (unsigned char)va_arg(args, int);
 	else
 		num = va_arg(args, unsigned int);
 	if (format.precision)
