@@ -12,9 +12,9 @@
 
 #include "printf.h"
 
-char	*ft_plus(char *str, t_format format)
+char	*ft_plus(char *str, t_format *format)
 {
-	(void)format;
+	format->flags->plus = 0;
 	if (str[0] != '-')
 		return (ft_strjoin_second("+", str));
 	else
@@ -33,9 +33,16 @@ char	*ft_hash(char *str, t_format *format)
 
 char	*ft_space(char *str, t_format format)
 {
-	if (!format.flags->plus && str[0] != '-'
-		&& format.type != '%')
-		return (ft_strjoin_second(" ", str));
+	int	i;
+
+	i = 0;
+	while (str[i] != '-' && str[i])
+		i++;
+	if (i == (int)ft_strlen(str))
+	{
+		if (!format.flags->plus && format.type != '%')
+			return (ft_strjoin_second(" ", str));
+	}
 	return (str);
 }
 

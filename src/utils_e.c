@@ -12,46 +12,28 @@
 
 #include "printf.h"
 
-int							ft_count_figures(long long int num)
+static int					ft_round_exp_max(t_format format,
+							unsigned long long *i_num,
+							unsigned long long *f_num)
 {
-	int d;
+	long long int	f_aux;
+	long long int	i_aux;
 
-	d = 0;
-	while (num)
+	i_aux = *i_num * ft_ten_power(format.precision) +
+		*f_num / ft_ten_power(15 - format.precision);
+	f_aux = *f_num - (long long)(*f_num / ft_ten_power(15 - format.precision))
+		* ft_ten_power(15 - format.precision);
+
+	if (5 * ft_ten_power(15 - format.precision - 1) < f_aux)
 	{
-		num = num / 10;
-		d++;
+		return (1);
 	}
-	return (d);
-}
-
-unsigned long long			ft_get_integer(double num, char type, int *exp)
-{
-	unsigned long long	i_num;
-	int					i;
-
-	i = 0;
-	if (*((long long int *)&num) == 0)
-		return (0);
-	i_num = (int)num;
-	while (ft_count_figures(i_num) != 1)
+	else if (5 * ft_ten_power(15 - format.precision - 1) == f_aux)
 	{
-		if (ft_count_figures(i_num) < 1)
-		{
-			i++;
-			i_num = (long long int)(num * ft_ten_power(i));
-		}
-		else
-		{
-			i--;
-			i_num = (long long int)num * ft_ten_power(i);
-		}
+		if ((i_aux % 10) % 2)
+			return (1);
 	}
-	*exp = i;
-	if (type == 'i')
-		return (i_num);
-	else
-		return (i);
+	return (0);
 }
 
 static void					ft_round_exp(t_format format,
@@ -62,10 +44,10 @@ static void					ft_round_exp(t_format format,
 	unsigned long long	f_aux;
 
 	f_aux = *i_num * ft_ten_power(format.precision) +
-		*f_num / ft_ten_power(10 - format.precision);
+		*f_num / ft_ten_power(15 - format.precision);
 	i_aux = (*i_num * ft_ten_power(format.precision + 1)) +
-		(*f_num / ft_ten_power(10 - format.precision - 1));
-	if (i_aux >= f_aux * 10 + 5)
+		(*f_num / ft_ten_power(15 - format.precision - 1));
+	if (ft_round_exp_max(format, i_num, f_num))
 	{
 		i_aux = f_aux;
 		f_aux = f_aux + 1;
@@ -113,9 +95,9 @@ char						*ft_exp_str(double num, int *exp, t_format format)
 		i_str = "-";
 	}
 	i_num = ft_get_integer(num, 'i', exp);
-	f_num = num * ft_ten_power(10 + *exp) -
+	f_num = num * ft_ten_power(15 + *exp) -
 		(unsigned long long)(num * ft_ten_power(*exp)) *
-		ft_ten_power(10);
+		ft_ten_power(15);
 	ft_round_exp(format, &i_num, &f_num, exp);
 	i_str = ft_strjoin_second(i_str, ft_itoa(i_num));
 	f_str = ft_get_decimals(f_num, exp, format);

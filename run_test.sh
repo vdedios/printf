@@ -27,7 +27,7 @@ else
 	$CC tests/tests_ft_printf.c $LIB -o output/printf_f
 	echo -e ...getting results...'\n'
 	./output/printf_o | cat -e > src.txt
-	./output/printf_f |	cat -e > dst.txt
+	./output/printf_f | cat -e > dst.txt
 	if [$(diff src.txt dst.txt) == ""]; then
 		echo -e ---Everything alright!✅ '\n'
 	else

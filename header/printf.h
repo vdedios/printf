@@ -52,7 +52,7 @@ typedef struct			s_format
 /*
 ** flags.c
 */
-char					*ft_plus(char *str, t_format format);
+char					*ft_plus(char *str, t_format *format);
 char					*ft_hash(char *str, t_format *format);
 char					*ft_space(char *str, t_format format);
 char					*ft_apostrophe(char *str, t_format format);

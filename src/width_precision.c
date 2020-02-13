@@ -52,10 +52,11 @@ char		*ft_trim_string(char *str, int pos)
 
 static void	ft_set_width(t_format *format, char *str)
 {
-	format->width = format->width - ft_strlen(str) -
+	format->width = format->width - (int)ft_strlen(str) -
 	((format->flags->hash && (format->type == 'x' ||
-	format->type == 'X')) ? 2 : 0) - (format->flags->plus ? 1 : 0) -
-	(format->flags->space ? 1 : 0);
+	format->type == 'X')) ? 2 : 0) -
+	((format->flags->plus && format->flags->zero) ? 1 : 0)
+	- ((format->flags->space && str[0] != '-') ? 1 : 0);
 }
 
 char		*ft_width(t_format *format, char *str)

@@ -49,8 +49,8 @@ char	*ft_post_format(char *format_aux, t_format *format)
 	int i;
 
 	i = 0;
-	if (format->flags->plus && !format->flags->zero)
-		format_aux = ft_plus(format_aux, *format);
+	if (format->flags->plus && (!format->flags->zero || format->precision >= 0))
+		format_aux = ft_plus(format_aux, format);
 	if (format->flags->apostrophe)
 		format_aux = ft_apostrophe(format_aux, *format);
 	if (format->flags->hash && (!format->flags->zero || format->precision >= 0))
@@ -62,7 +62,7 @@ char	*ft_post_format(char *format_aux, t_format *format)
 	if (format->flags->hash)
 		format_aux = ft_hash(format_aux, format);
 	if (format->flags->plus && format->flags->zero)
-		format_aux = ft_plus(format_aux, *format);
+		format_aux = ft_plus(format_aux, format);
 	if (format->last_pos != -1 && !format->flags->minus)
 	{
 		while (format->print_l[i] != -1)

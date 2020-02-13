@@ -31,6 +31,10 @@ double					ft_ten_power(int p)
 	return (t);
 }
 
+/*
+** Rounds to the even
+*/
+
 unsigned long long		ft_rounding(unsigned long long *i_num,
 		unsigned long long f_num, float num, int precision)
 {
@@ -39,12 +43,23 @@ unsigned long long		ft_rounding(unsigned long long *i_num,
 	f_aux = f_num;
 	if (precision <= 0)
 	{
-		if (*i_num + 0.5 <= num)
+		if (*i_num + 0.5 < num)
 			*i_num = *i_num + 1;
+		else if (*i_num + 0.5 == num)
+		{
+
+			if ((*i_num % 10) % 2)
+				*i_num = *i_num + 1;
+		}
 		return (*i_num);
 	}
-	if (f_num + 0.5 <= (num - *i_num) * ft_ten_power(precision))
+	if (f_num + 0.5 < (num - *i_num) * ft_ten_power(precision))
 		f_num = (f_num + 1) % (long long int)ft_ten_power(precision);
+	else if (f_num + 0.5 == (num - *i_num) * ft_ten_power(precision))
+	{
+		if ((f_num % 10) % 2)
+			f_num = (f_num + 1) % (long long int)ft_ten_power(precision);
+	}
 	if (f_aux && !f_num)
 		*i_num = *i_num + 1;
 	return (f_num);

@@ -71,6 +71,8 @@ void	ft_formater(const char **s, char **print_buf,
 	ft_initialize_format(&format, c_nulls);
 	format_info = ft_extract_format(*s);
 	ft_classify_format(format_info, &format, args);
+	if (format.flags->minus)
+		format.flags->zero = 0;
 	format_aux = ft_pre_format(args, &format, *print_buf);
 	format_aux = ft_post_format(format_aux, &format);
 	*print_buf = ft_strjoin(*print_buf, format_aux);

@@ -35,6 +35,7 @@ SRC_FILES	=		flags.c		\
 			width_precision.c	\
 			thousands_utils.c	\
 			utils_e.c			\
+			utils_e_max.c		\
 			utils_f.c			\
 			utils_g.c
 
