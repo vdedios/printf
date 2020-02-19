@@ -15,6 +15,7 @@
 char	*ft_plus(char *str, t_format *format)
 {
 	format->flags->plus = 0;
+	format->flags->space = 0;
 	if (str[0] != '-')
 		return (ft_strjoin_second("+", str));
 	else

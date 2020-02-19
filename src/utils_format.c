@@ -35,6 +35,8 @@ short		ft_check_flags(t_format *format, char set)
 	}
 	if (format->flags->minus && format->flags->zero)
 		format->flags->zero = 0;
+	if (format->flags->space && format->flags->plus)
+		format->flags->space = 0;
 	return (1);
 }
 
