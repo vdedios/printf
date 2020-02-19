@@ -36,7 +36,7 @@ double					ft_ten_power(int p)
 */
 
 unsigned long long		ft_rounding(unsigned long long *i_num,
-		unsigned long long f_num, float num, int precision)
+		unsigned long long f_num, double num, int precision)
 {
 	double f_aux;
 
@@ -53,7 +53,7 @@ unsigned long long		ft_rounding(unsigned long long *i_num,
 		}
 		return (*i_num);
 	}
-	if (f_num + 0.5 < (num - *i_num) * ft_ten_power(precision))
+	if ((f_num + 0.5) * ft_ten_power(18) < (num - *i_num) * ft_ten_power(precision + 18))
 		f_num = (f_num + 1) % (long long int)ft_ten_power(precision);
 	else if (f_num + 0.5 == (num - *i_num) * ft_ten_power(precision))
 	{
