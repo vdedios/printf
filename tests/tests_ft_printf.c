@@ -10,6 +10,7 @@ int main()
 	/*
 	 ** Tests for f, e, g with and without # flag. Compile it only with gcc to avoid warning errors 
 	 */
+	/*
 	while (j < 1000)
 	{
 		a = a - 0.01;
@@ -28,10 +29,12 @@ int main()
 		i = 0;
 		j++;
 	}
+	*/
 
 	/*
 	 ** Some more exhaustive tests for #g 
 	 */
+	/*
 	ft_printf("Exhaustive g tests: %.6f	3.	%#.*g	\n", 3.1415, 0, 3.1415);
 	ft_printf("Exhaustive g tests: %.6f	6.	%#.*g	\n", -0.9884966612, 6, -0.9884966612);
 	ft_printf("Exhaustive g tests: %.6f	2.	%#.*g	\n", 0.9915020466, 2, 0.9915020466);
@@ -42,10 +45,12 @@ int main()
 	ft_printf("Exhaustive g tests: %.6f	3.	%#.*g	\n", 99.984966516, 3, 99.984966516);
 	ft_printf("Exhaustive g tests: %.6f	4.	%#.*g	\n", 999.984966516 , 4, 999.984966516);
 	ft_printf("Exhaustive g tests: %.6f	1.	%#.*g	\n", 9.944020466 , 1, 9.944020466);
+	*/
 
 	/*
 	 ** Tests for l, ll , h, and hh. Compile it only with gcc to avoid warning errors 
 	 */
+	/*
 	ft_printf("Test long int:%ld\n", 0);
 	ft_printf("Test long int:%ld\n", LONG_MAX);
 	ft_printf("Test long int:%ld\n", LONG_MIN);
@@ -64,6 +69,7 @@ int main()
 	ft_printf("Test unisgned long:%lu\n", ULONG_MAX);
 	ft_printf("Test unisgned long:%llu\n", 0);
 	ft_printf("Test unisgned long:%llu\n", ULLONG_MAX);
+	*/
 
 	ft_printf("Test int short:%hd\n", 0);
 	ft_printf("Test int short:%hd\n", (short)USHRT_MAX);
@@ -118,15 +124,18 @@ int main()
 	ft_printf("Test x short:%hx\n", (short)LLONG_MAX);
 	ft_printf("Test x short:%hx\n", (short)LLONG_MIN);
 
+	/*
 	ft_printf("Test x char:%#hhx\n", 0);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MIN);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MAX);
 	ft_printf("Test x char:%#hhx\n", UCHAR_MAX);
 	ft_printf("Test x char:%#hhx\n", CHAR_MIN);
+	*/
 
 	/*
 	 ** Tests for # with xX
 	 */
+	/*
 	i = -15;
 	j = 0;
 	int k = 0;
@@ -150,4 +159,5 @@ int main()
 		k = 0;	
 		i++;
 	}
+	*/
 }

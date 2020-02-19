@@ -21,13 +21,13 @@ unsigned long long int	ft_hex_values(t_format format, va_list args)
 	unsigned long long int	num;
 
 	if (format.length == 'l')
-		num = va_arg(args, long int);
+		num = va_arg(args, unsigned long int);
 	else if (format.length == 'L')
-		num = va_arg(args, long long int);
+		num = va_arg(args, unsigned long long int);
 	else if (format.length == 'h')
-		num = (unsigned short)va_arg(args, int);
+		num = (unsigned short)va_arg(args, unsigned int);
 	else if (format.length == 'H')
-		num = (unsigned char)va_arg(args, int);
+		num = (unsigned char)va_arg(args, unsigned int);
 	else
 		num = va_arg(args, unsigned int);
 	return (num);

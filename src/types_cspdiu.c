@@ -127,9 +127,9 @@ char	*ft_u_conv(t_format format, va_list args)
 	else if (format.length == 'L')
 		num = va_arg(args, unsigned long long int);
 	else if (format.length == 'h')
-		num = (unsigned short)va_arg(args, int);
+		num = (unsigned short)va_arg(args, unsigned int);
 	else if (format.length == 'H')
-		num = (unsigned char)va_arg(args, int);
+		num = (unsigned char)va_arg(args, unsigned int);
 	else
 		num = va_arg(args, unsigned int);
 	if (format.precision)
