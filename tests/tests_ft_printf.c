@@ -10,7 +10,6 @@ int main()
 	/*
 	 ** Tests for f, e, g with and without # flag. Compile it only with gcc to avoid warning errors 
 	 */
-	/*
 	while (j < 1000)
 	{
 		a = a - 0.01;
@@ -29,7 +28,6 @@ int main()
 		i = 0;
 		j++;
 	}
-	*/
 
 	/*
 	 ** Some more exhaustive tests for #g 
@@ -69,7 +67,6 @@ int main()
 	ft_printf("Test unisgned long:%lu\n", ULONG_MAX);
 	ft_printf("Test unisgned long:%llu\n", 0);
 	ft_printf("Test unisgned long:%llu\n", ULLONG_MAX);
-	*/
 
 	ft_printf("Test int short:%hd\n", 0);
 	ft_printf("Test int short:%hd\n", (short)USHRT_MAX);
@@ -124,7 +121,6 @@ int main()
 	ft_printf("Test x short:%hx\n", (short)LLONG_MAX);
 	ft_printf("Test x short:%hx\n", (short)LLONG_MIN);
 
-	/*
 	ft_printf("Test x char:%#hhx\n", 0);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MIN);
 	ft_printf("Test x char:%#hhx\n", SCHAR_MAX);
@@ -158,6 +154,17 @@ int main()
 		}
 		k = 0;	
 		i++;
+	}
+	*/
+
+	/*
+	i = -1000000;
+	while (i++ < 100000)
+	{
+		ft_printf("Test int short:%hd\n", i);
+		ft_printf("Test int short:%hu\n", i);
+		ft_printf("Test int short:%hx\n", i);
+		ft_printf("Test int short:%#hx\n", i);
 	}
 	*/
 }

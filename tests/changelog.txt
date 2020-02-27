@@ -1,0 +1,33 @@
+
+change long final version:
+
+	- He añadido unsigned a los xX y u
+	- He arreglado problemas de redondeo de los float
+	- He arreglado problemas de incompatibilidad de flags
+	- He arreglado problemas de incompatibilidades de precision + zero
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
